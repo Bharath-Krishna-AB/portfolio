@@ -4,7 +4,6 @@ import { use, useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { projects, Project } from "../../data/portfolio";
 import { motion, AnimatePresence } from "framer-motion";
-import gsap from "gsap";
 
 // Grid Motion Gallery Component from sooryaa.me
 interface GridMotionProps {
@@ -32,13 +31,19 @@ function GridMotionGallery({ images, onImageClick }: GridMotionProps) {
     if (typeof window === "undefined") return;
 
     mouseXRef.current = window.innerWidth / 2;
+    // Track the current x position for each of the 4 rows to apply lerp smoothing
+    const currentX = [0, 0, 0, 0];
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseXRef.current = e.clientX;
     };
 
+    let animationFrameId: number;
+
     const animateRows = () => {
-      const rowDelays = [0.6, 0.4, 0.3, 0.2];
+      // Row delays correspond to speed factor in lerp (lower means smoother/slower catch-up)
+      const rowSpeeds = [0.06, 0.08, 0.1, 0.12];
+      
       rowsRef.current.forEach((row, rowIndex) => {
         if (!row) return;
         // Alternate directions
@@ -47,21 +52,22 @@ function GridMotionGallery({ images, onImageClick }: GridMotionProps) {
         const targetX =
           ((mouseXRef.current / window.innerWidth) * 300 - 150) * dirSign;
 
-        gsap.to(row, {
-          x: targetX,
-          duration: 0.8 + rowDelays[rowIndex % rowDelays.length],
-          ease: "power3.out",
-          overwrite: "auto",
-        });
+        // Linear interpolation (lerp): current = current + (target - current) * factor
+        const speed = rowSpeeds[rowIndex % rowSpeeds.length];
+        currentX[rowIndex] += (targetX - currentX[rowIndex]) * speed;
+
+        row.style.transform = `translateX(${currentX[rowIndex]}px)`;
       });
+
+      animationFrameId = requestAnimationFrame(animateRows);
     };
 
-    const tickerToken = gsap.ticker.add(animateRows);
+    animationFrameId = requestAnimationFrame(animateRows);
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      gsap.ticker.remove(animateRows);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 

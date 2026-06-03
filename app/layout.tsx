@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Bharath Krishna A B | Developer & Designer",
-  description: "Passionate self-taught Frontend Web Developer & Co-Founder of Aevon. Specialized in JavaScript, Next.js, GSAP, and AI integrations.",
+  description: "Passionate self-taught Frontend Web Developer & Co-Founder of Aevon. Specialized in JavaScript, Next.js, Framer Motion, and AI integrations.",
 };
 
 export default function RootLayout({

@@ -70,7 +70,7 @@ export const projects: Project[] = [
     type: "Data Storytelling & Web Development",
     role: "Full-Stack Web Developer",
     timeline: "Feb 2024 - Present",
-    stack: ["React", "Next.js", "GSAP", "Tailwind CSS", "Node.js"],
+    stack: ["React", "Next.js", "Framer Motion", "Tailwind CSS", "Node.js"],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
     images: [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600",
@@ -169,13 +169,13 @@ export const projects: Project[] = [
     type: "Brand Identity & Motion Design",
     role: "Frontend Engineer / Motion Designer",
     timeline: "Jan 2024",
-    stack: ["React", "GSAP", "Framer Motion", "Tailwind CSS"],
+    stack: ["React", "CSS Transitions", "Framer Motion", "Tailwind CSS"],
     image: "https://images.unsplash.com/photo-1622416011230-0196720516bd?auto=format&fit=crop&q=80&w=1200",
     images: [
       "https://images.unsplash.com/photo-1543258103-a62bdc069871?auto=format&fit=crop&q=80&w=1600"
     ],
     problem: "Nutritional energy beverage brands often rely on static websites that fail to express the physical kick and high-velocity nature of their products.",
-    solution: "Designed a liquid-motion web experience using GSAP and SVG animations to bring the energy product showcase to life.",
+    solution: "Designed a liquid-motion web experience using CSS and SVG animations to bring the energy product showcase to life.",
     keyFeatures: [
       "Custom SVG liquid animations on scroll",
       "Parallax product showcase layout",
@@ -217,7 +217,7 @@ export const projects: Project[] = [
     type: "Elite Fitness Product Design",
     role: "Frontend Developer / UI Designer",
     timeline: "Sep 2023",
-    stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind CSS"],
+    stack: ["Next.js", "Framer Motion", "Tailwind CSS"],
     image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200",
     images: ["https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=1600"],
     problem: "Elite performance athletes require macro tracking and coaching protocols that traditional flat fitness blogs cannot visually represent.",
@@ -289,7 +289,7 @@ export const services: ServiceItem[] = [
   },
   {
     title: "Frontend Engineering",
-    description: "Developing pixel-perfect React & Next.js interfaces with rich micro-animations using GSAP."
+    description: "Developing pixel-perfect React & Next.js interfaces with rich micro-animations using Framer Motion."
   },
   {
     title: "AI Integration & RAG",

@@ -9,7 +9,10 @@ export default function About() {
     <section id="about" className="py-24 bg-[#f9f8f4] relative overflow-hidden">
       <div className="w-full max-w-5xl mx-auto px-6">
         {/* Section Label */}
-        <span className="section-label mb-8">About</span>
+        <span className="section-label mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
+          About
+        </span>
 
         {/* About Grid Card Block (ShopDropApp inspired layout) */}
         <div className="grid md:grid-cols-12 gap-8 items-stretch mt-6">
@@ -65,7 +68,6 @@ export default function About() {
                   <span className="relative z-10 font-instrument font-normal text-clay-accent italic tracking-normal">
                     Aevon
                   </span>
-                  <span className="absolute bottom-1 left-0 w-full h-3 bg-clay-light -z-10" />
                 </span>.
               </h2>
               

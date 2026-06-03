@@ -252,15 +252,36 @@ export default function ProjectsArchive() {
                   </div>
 
                   {/* Arrow up-right Icon */}
-                  <svg
-                    className="w-3.5 h-3.5 text-[#70706c] group-hover:text-[#121212] transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 mt-0.5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
+                  <div className="w-5 h-5 relative overflow-hidden flex items-center justify-center shrink-0">
+                    {/* Active Arrow (slides out top-right on hover) */}
+                    <svg
+                      className="w-3.5 h-3.5 text-[#70706c] absolute transition-all duration-300 ease-in-out -rotate-45 group-hover:translate-x-5 group-hover:-translate-y-5 group-hover:opacity-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5 12h14M12 5l7 7-7 7"
+                      />
+                    </svg>
+                    {/* Incoming Arrow (slides in from bottom-left on hover) */}
+                    <svg
+                      className="w-3.5 h-3.5 text-[#121212] absolute transition-all duration-300 ease-in-out -rotate-45 -translate-x-5 translate-y-5 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5 12h14M12 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
                 </div>
 
                 <p className="text-xs text-[#70706c] mb-4 line-clamp-2 leading-relaxed">

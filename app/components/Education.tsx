@@ -16,14 +16,16 @@ export default function Education() {
         >
           {/* Section Label */}
           <div>
-            <span className="section-label">Education</span>
+            <span className="section-label">
+              <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
+              Education
+            </span>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general text-left">
               Educational background. <br />
               <span className="relative inline-block mt-2">
                 <span className="relative z-10 font-instrument font-normal text-clay-accent italic tracking-normal">
                   Academic milestones.
                 </span>
-                <span className="absolute bottom-1 left-0 w-full h-3.5 bg-clay-light -z-10" />
               </span>
             </h2>
           </div>

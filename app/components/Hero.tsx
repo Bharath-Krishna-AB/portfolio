@@ -74,12 +74,6 @@ export default function Hero({ introComplete = true }: HeroProps) {
               <span className="relative z-10 font-instrument font-normal text-clay-accent italic tracking-normal">
                 Bharath
               </span>
-              <motion.span
-                initial={{ width: 0 }}
-                animate={{ width: introComplete ? "100%" : 0 }}
-                transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
-                className="absolute bottom-2 md:bottom-3 left-0 h-4 bg-clay-light -z-10"
-              />
             </span>
           </motion.span>
           
@@ -94,12 +88,6 @@ export default function Hero({ introComplete = true }: HeroProps) {
               <span className="relative z-10 font-instrument font-normal italic text-[#121212] tracking-normal">
                 scalable
               </span>
-              <motion.span
-                initial={{ width: 0 }}
-                animate={{ width: introComplete ? "100%" : 0 }}
-                transition={{ delay: 0.95, duration: 0.8, ease: "easeOut" }}
-                className="absolute bottom-2 md:bottom-3 left-0 h-4 bg-[#e5ebe6] -z-10"
-              />
             </span>{" "}
             web & SaaS products
           </motion.span>
@@ -128,9 +116,24 @@ export default function Hero({ introComplete = true }: HeroProps) {
             className="group relative flex items-center justify-between sm:justify-start gap-4 px-6 py-3 w-full sm:w-auto bg-[#121212] text-white rounded-full font-semibold text-sm sm:text-base hover:scale-105 hover:bg-[#222] transition-all duration-300 shadow-xl shadow-black/10 cursor-pointer"
           >
             <span>Get in Touch</span>
-            <div className="w-7 h-7 rounded-full bg-clay-accent flex items-center justify-center group-hover:rotate-45 transition-transform duration-300 shrink-0">
+            <div className="w-7 h-7 rounded-full bg-clay-accent flex items-center justify-center shrink-0 relative overflow-hidden">
+              {/* Active Arrow (slides out top-right on hover) */}
               <svg
-                className="w-3.5 h-3.5 text-white"
+                className="w-3.5 h-3.5 text-white absolute transition-all duration-300 ease-in-out -rotate-45 group-hover:translate-x-5 group-hover:-translate-y-5 group-hover:opacity-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                strokeWidth="2.5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 12h14M12 5l7 7-7 7"
+                />
+              </svg>
+              {/* Incoming Arrow (slides in from bottom-left on hover) */}
+              <svg
+                className="w-3.5 h-3.5 text-white absolute transition-all duration-300 ease-in-out -rotate-45 -translate-x-5 translate-y-5 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

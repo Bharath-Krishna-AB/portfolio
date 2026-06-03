@@ -1,180 +1,273 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "../data/portfolio";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function Projects() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const deckRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  // Display exactly 2 projects as requested
+  const selectedProjects = projects.slice(0, 2);
 
-  // Top 4 selected projects
-  const selectedProjects = projects.slice(0, 4);
-
-  useEffect(() => {
-    const cards = deckRef.current?.querySelectorAll(".project-stack-card");
-    if (!cards || cards.length === 0) return;
-
-    // Set CSS sticky position
-    gsap.set(cards, {
-      position: "sticky",
-      top: "120px",
-    });
-
-    const ctx = gsap.context(() => {
-      cards.forEach((card, index) => {
-        gsap.to(card, {
-          scale: 1 - (cards.length - 1 - index) * 0.015,
-          scrollTrigger: {
-            trigger: card,
-            start: "top 120px",
-            end: "bottom top",
-            scrub: 0.5,
-          },
-        });
-      });
-    }, containerRef);
-
-    return () => {
-      ctx.revert();
-    };
-  }, []);
+  // Arc Browser inspired theme workspaces for each card
+  const arcThemes = [
+    {
+      headerBg: "bg-gradient-to-r from-[#fbeee9] via-[#fae7df] to-[#f0eee4]",
+      addressBorder: "border-clay-accent/15 text-clay-accent",
+      shadowGlow: "shadow-[0_20px_50px_rgba(189,164,149,0.045)] hover:shadow-[0_30px_70px_rgba(189,164,149,0.08)]",
+    },
+    {
+      headerBg: "bg-gradient-to-r from-[#e5ebe6] via-[#dce4dd] to-[#f0eee4]",
+      addressBorder: "border-[#607361]/15 text-[#607361]",
+      shadowGlow: "shadow-[0_20px_50px_rgba(96,115,97,0.045)] hover:shadow-[0_30px_70px_rgba(96,115,97,0.08)]",
+    }
+  ];
 
   return (
     <section
       id="work"
-      ref={containerRef}
-      className="py-16 bg-[#f9f8f4]"
+      className="w-full relative bg-[#f9f8f4] py-24 overflow-hidden"
     >
-      <div className="w-full max-w-3xl mx-auto px-6">
-        {/* Section Label */}
-        <span className="section-label">
-          Work
-        </span>
+      <div className="w-full flex flex-col gap-10 md:gap-12">
+        {/* Section Header */}
+        <div className="w-full max-w-5xl mx-auto px-6 text-left flex items-end justify-between shrink-0">
+          <div>
+            <span className="section-label">
+              <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
+              Work
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general">
+              Selected craft. <br />
+              <span className="relative inline-block mt-2">
+                <span className="relative z-10 font-instrument font-normal text-clay-accent italic tracking-normal">
+                  Case studies.
+                </span>
+              </span>
+            </h2>
+          </div>
+        </div>
 
-        <h2 className="text-2xl font-serif text-[#121212] mb-8 leading-snug">
-          Selected projects I have designed and built end-to-end.
-        </h2>
+        {/* 3-Column Grid Cards Deck */}
+        <div className="w-full max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+          {selectedProjects.map((project, index) => {
+            const displayUrl = project.links?.live
+              ? project.links.live.replace("https://", "").replace("www.", "")
+              : `${project.id}.dev`;
+            const theme = arcThemes[index] || arcThemes[0];
 
-        {/* Stacked Cards Deck Container */}
-        <div ref={deckRef} className="space-y-8 relative">
-          {selectedProjects.map((project, index) => (
-            <div
-              key={project.id}
-              onClick={() => router.push(`/project/${project.id}`)}
-              className="project-stack-card group cursor-pointer soft-card overflow-hidden bg-[#f3f2eb] border border-black/8 hover:border-black/15 shadow-sm hover:shadow-md transition-all duration-300"
-              style={{
-                zIndex: index + 1,
-              }}
-            >
-              {/* Aspect Video Image Preview */}
-              <div className="p-4 pb-0">
-                <div className="aspect-video w-full overflow-hidden rounded-xl bg-black/5 relative">
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.015]"
-                  />
+            return (
+              <div
+                key={project.id}
+                className={`w-full h-[510px] md:h-[530px] rounded-[2rem] md:rounded-[2.25rem] bg-[#f0eee4] border border-black/[0.05] overflow-hidden flex flex-col justify-between select-none hover:border-black/[0.08] transition-all duration-500 ease-out group ${theme.shadowGlow}`}
+              >
+                {/* Top Portion: Arc Browser Mock Frame */}
+                <div
+                  onClick={() => router.push(`/project/${project.id}`)}
+                  className="w-full cursor-pointer flex flex-col overflow-hidden bg-black/[0.01] border-b border-black/[0.05] shrink-0"
+                >
+                  {/* Arc Browser Header */}
+                  <div className={`px-4 py-3.5 flex items-center justify-between border-b border-black/[0.04] select-none shrink-0 ${theme.headerBg}`}>
+                    {/* Control Dots */}
+                    <div className="flex gap-1.5 items-center shrink-0">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]/90 shadow-sm" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/90 shadow-sm" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]/90 shadow-sm" />
+                    </div>
+
+                    {/* Address Bar */}
+                    <div className={`mx-auto w-full max-w-[130px] sm:max-w-[170px] bg-white/75 backdrop-blur-sm border ${theme.addressBorder} text-[9px] font-mono px-3 py-1 rounded-full text-center truncate flex items-center justify-center gap-1.5 shadow-inner`}>
+                      <svg
+                        className="w-2.5 h-2.5 text-[#2ecc71]/90 shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                        />
+                      </svg>
+                      <span className="truncate">{displayUrl}</span>
+                    </div>
+
+                    {/* Spacer */}
+                    <div className="w-[35px] shrink-0" />
+                  </div>
+
+                  {/* Screenshot aspect frame */}
+                  <div className="aspect-video w-full overflow-hidden relative">
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    />
+                    {/* Glass hover details indicator */}
+                    <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full shadow-sm text-[9px] font-mono font-bold text-[#121212] tracking-wider uppercase scale-90 group-hover:scale-100 transition-all duration-300">
+                        View Details
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Project Card Text Content */}
-              <div className="p-5">
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs text-[#70706c] font-mono opacity-50">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="text-lg font-medium text-[#121212] group-hover:text-clay-accent transition-colors">
-                      {project.name}
-                    </h3>
-                    
-                    {/* Trophy Badge for Achievements */}
-                    {project.achievement && (
-                      <span className="flex items-center gap-1 text-[10px] px-2 py-0.5 bg-clay-light text-clay-accent rounded-full border border-clay-accent/10 font-mono">
-                        {/* Trophy Icon SVG */}
+                {/* Bottom Portion: Information Details & CTAs */}
+                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between gap-3 text-left bg-transparent">
+                  <div className="space-y-3">
+                    {/* Meta information tags */}
+                    <div className="flex items-center justify-between gap-4 select-none">
+                      <span className="text-[9px] font-mono text-[#70706c]/90 font-bold tracking-widest uppercase">
+                        {String(index + 1).padStart(2, "0")} /{" "}
+                        {project.category === "client"
+                          ? "Client"
+                          : project.category === "hackathon"
+                          ? "Hackathon"
+                          : "Personal"}
+                      </span>
+                      {project.achievement && (
+                        <span className="text-[8px] font-mono font-bold uppercase tracking-wide px-2 py-0.5 bg-clay-light text-clay-accent rounded border border-clay-accent/15 shadow-sm">
+                          ★ {project.achievement.title || "Winner"}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Project Name and Duration */}
+                    <div>
+                      <h3
+                        onClick={() => router.push(`/project/${project.id}`)}
+                        className="text-xl sm:text-2xl font-bold tracking-tight text-[#121212] group-hover:text-clay-accent cursor-pointer transition-colors duration-300 font-general"
+                      >
+                        {project.name}
+                      </h3>
+                      <p className="text-[9px] font-mono text-[#70706c]/90 mt-1 select-none font-semibold">
+                        {project.role} • {project.timeline || "Ongoing"}
+                      </p>
+                    </div>
+
+                    {/* Tech stack badges */}
+                    <div className="flex flex-wrap gap-1.5 pt-0.5 select-none">
+                      {project.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-[8px] font-mono px-2 py-0.5 bg-white/90 border border-black/5 text-[#70706c] rounded font-bold shadow-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-xs text-[#70706c] leading-relaxed line-clamp-2 md:line-clamp-3">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* Action Pill Buttons */}
+                  <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-black/[0.05] select-none shrink-0">
+                    {/* Primary pill */}
+                    <button
+                      onClick={() => router.push(`/project/${project.id}`)}
+                      className="px-3.5 py-1.5 bg-[#121212] hover:bg-[#222] text-white rounded-full font-bold text-[9px] font-mono uppercase tracking-wider shadow-sm hover:scale-102 active:scale-98 transition-all cursor-pointer inline-flex items-center gap-1 group/btn"
+                    >
+                      Case Study
+                      <div className="w-3.5 h-3.5 relative overflow-hidden flex items-center justify-center shrink-0">
+                        {/* Active Arrow */}
                         <svg
-                          className="w-3.5 h-3.5"
+                          className="w-3 h-3 text-white absolute transition-all duration-300 ease-in-out -rotate-45 group-hover/btn:translate-x-3.5 group-hover/btn:-translate-y-3.5 group-hover/btn:opacity-0"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          strokeWidth="2"
+                          strokeWidth="2.5"
                         >
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.475 3.475 0 011.89 1.89 3.475 3.475 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.475 3.475 0 01-1.89 1.89 3.475 3.475 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.475 3.475 0 01-1.89-1.89 3.475 3.475 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.475 3.475 0 011.89-1.89z"
+                            d="M5 12h14M12 5l7 7-7 7"
                           />
                         </svg>
-                        Winner
-                      </span>
+                        {/* Incoming Arrow */}
+                        <svg
+                          className="w-3 h-3 text-white absolute transition-all duration-300 ease-in-out -rotate-45 -translate-x-3.5 translate-y-3.5 opacity-0 group-hover/btn:translate-x-0 group-hover/btn:translate-y-0 group-hover/btn:opacity-100"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 12h14M12 5l7 7-7 7"
+                          />
+                        </svg>
+                      </div>
+                    </button>
+
+                    {/* Secondary pills */}
+                    {project.links?.live && (
+                      <a
+                        href={project.links.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-2.5 py-1.5 border border-black/10 hover:border-black/20 bg-white text-[#70706c] hover:text-[#121212] rounded-full font-bold text-[9px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm"
+                      >
+                        Live
+                        <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    )}
+
+                    {project.links?.github && (
+                      <a
+                        href={project.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-2.5 py-1.5 border border-black/10 hover:border-black/20 bg-white text-[#70706c] hover:text-[#121212] rounded-full font-bold text-[9px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm"
+                      >
+                        Code
+                        <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
                     )}
                   </div>
-
-                  {/* Arrow up-right SVG icon */}
-                  <svg
-                    className="w-4 h-4 text-[#70706c] group-hover:text-[#121212] transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0 mt-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </div>
-
-                <p className="text-sm text-[#70706c] mb-4 line-clamp-2 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Project Tech Stack tags */}
-                <div className="flex flex-wrap gap-1.5">
-                  {project.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[10px] px-2.5 py-1 bg-white/70 border border-black/5 text-[#121212] rounded font-mono"
-                    >
-                      {tech}
-                    </span>
-                  ))}
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            );
+          })}
 
-        {/* View All Projects CTA */}
-        <div className="mt-10 text-center">
-          <button
+          {/* View All Projects Card */}
+          <div
             onClick={() => router.push("/projects")}
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#70706c] hover:text-[#121212] transition-colors group font-semibold border-b border-dashed border-[#70706c]/30 pb-1"
+            className="w-full h-[510px] md:h-[530px] rounded-[2rem] md:rounded-[2.25rem] bg-[#edeae0]/40 border border-dashed border-black/15 flex flex-col items-center justify-center p-8 text-center gap-4 hover:bg-[#edeae0]/70 transition-colors duration-300 select-none cursor-pointer group shadow-sm"
           >
-            View all {projects.length} projects
-            <svg
-              className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </button>
+            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-black/5 shadow-sm relative overflow-hidden group-hover:scale-110 transition-transform duration-300">
+              {/* Active Arrow */}
+              <svg
+                className="w-5 h-5 text-clay-accent absolute transition-all duration-300 ease-in-out -rotate-45 group-hover:translate-x-6 group-hover:-translate-y-6 group-hover:opacity-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+              {/* Incoming Arrow */}
+              <svg
+                className="w-5 h-5 text-clay-accent absolute transition-all duration-300 ease-in-out -rotate-45 -translate-x-6 translate-y-6 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="font-general font-bold text-lg text-[#121212]">View All Projects</h3>
+              <p className="text-xs text-[#70706c] mt-1">Explore the complete archive of {projects.length} works</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

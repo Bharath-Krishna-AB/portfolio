@@ -16,14 +16,16 @@ export default function Experience() {
         >
           {/* Section Label */}
           <div>
-            <span className="section-label">Experience</span>
+            <span className="section-label">
+              <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
+              Experience
+            </span>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general text-left">
               Professional history. <br />
               <span className="relative inline-block mt-2">
                 <span className="relative z-10 font-instrument font-normal text-clay-accent italic tracking-normal">
                   Career journey.
                 </span>
-                <span className="absolute bottom-1 left-0 w-full h-3.5 bg-clay-light -z-10" />
               </span>
             </h2>
           </div>
