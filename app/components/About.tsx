@@ -41,12 +41,11 @@ export default function About() {
               </div>
             </div>
 
-            {/* Sub-label badges */}
             <div className="mt-6 flex flex-wrap justify-center gap-1.5 z-10">
-              <span className="text-[10px] font-mono px-3 py-1 bg-[#e5ebe6] text-[#607361] border border-[#607361]/10 rounded-full font-bold">
+              <span className="text-[10px] font-mono px-3 py-1 bg-secondary-light text-secondary border border-secondary/10 rounded-full font-bold">
                 Developer
               </span>
-              <span className="text-[10px] font-mono px-3 py-1 bg-clay-light text-clay-accent border border-clay-accent/10 rounded-full font-bold">
+              <span className="text-[10px] font-mono px-3 py-1 bg-secondary-light text-secondary border border-secondary/10 rounded-full font-bold">
                 Co-Founder
               </span>
             </div>
@@ -103,7 +102,7 @@ export default function About() {
                 className="group inline-flex items-center gap-3 px-6 py-3 bg-[#121212] text-white rounded-full font-semibold text-xs sm:text-sm shadow-md hover:bg-[#222] transition-all cursor-pointer font-mono uppercase tracking-wider"
               >
                 <span>Download Resume</span>
-                <div className="w-6 h-6 rounded-full bg-clay-accent flex items-center justify-center group-hover:translate-y-0.5 transition-transform">
+                <div className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center group-hover:translate-y-0.5 transition-transform">
                   <svg
                     className="w-3.5 h-3.5 text-white"
                     fill="none"

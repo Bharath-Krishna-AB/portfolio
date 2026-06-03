@@ -20,7 +20,7 @@ export default function Skills() {
   // Specific visual styling classes for each category block
   const cardStyles = [
     "bg-clay-light/35 border-clay-accent/10 hover:border-clay-accent/20",
-    "bg-sage-light/25 border-sage-accent/10 hover:border-sage-accent/20",
+    "bg-secondary-light/25 border-secondary/10 hover:border-secondary/20",
     "bg-[#f3f2eb]/60 border-black/5 hover:border-black/10",
     "bg-white border-black/5 hover:border-black/10"
   ];
@@ -42,11 +42,9 @@ export default function Skills() {
               Skills
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general text-left">
-              Toolbox & expertise. <br />
-              <span className="relative inline-block mt-2">
-                <span className="relative z-10 font-instrument font-normal text-clay-accent italic tracking-normal">
-                  Fully equipped.
-                </span>
+              Toolbox{" "}
+              <span className="font-instrument font-normal text-secondary italic tracking-normal">
+                expertise.
               </span>
             </h2>
           </div>

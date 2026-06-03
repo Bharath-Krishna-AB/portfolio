@@ -7,10 +7,12 @@
   --foreground: #121212; /* Deep Charcoal */
   
   --sand-bg: #f3f2eb;    /* Warm Sand/Eggshell */
-  --sage-accent: #607361; /* Sage Green */
-  --sage-light: #e5ebe6;
-  --clay-accent: #c86a52; /* Clay/Terracotta */
-  --clay-light: #fbeee9;
+  --sage-accent: #c15f3c; /* Sage Green overridden to Terracotta #c15f3c */
+  --sage-light: #fdf5f2;  /* Sage Light overridden to Light Terracotta */
+  --clay-accent: #c15f3c; /* Clay Accent overridden to Terracotta #c15f3c */
+  --clay-light: #fdf5f2;  /* Clay Light overridden to Light Terracotta */
+  --secondary: #c15f3c;   /* Terracotta (#c15f3c) as secondary color */
+  --secondary-light: #fdf5f2; /* Light Terracotta */
   --slate-accent: #70706c;
 }
 
@@ -25,6 +27,8 @@
   --color-sage-light: var(--sage-light);
   --color-clay-accent: var(--clay-accent);
   --color-clay-light: var(--clay-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
   --color-slate-accent: var(--slate-accent);
 }
 
@@ -113,7 +117,7 @@ body {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--sage-accent);
+  background: var(--secondary);
 }
 
 /* UI Component Classes adapted for Light Editorial Design */

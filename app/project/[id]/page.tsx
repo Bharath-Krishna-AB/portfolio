@@ -477,9 +477,8 @@ export default function ProjectDetailsPage({
             className="fixed inset-0 z-[100] bg-[#f9f8f4]/95 backdrop-blur-md flex items-center justify-center p-4 cursor-pointer"
             onClick={() => setSelectedZoomImage(null)}
           >
-            {/* Close button in zoom overlay */}
             <button
-              className="absolute top-6 right-6 p-2.5 rounded-full bg-[#f3f2eb] hover:bg-[#c86a52] hover:text-white transition-colors border border-black/5 cursor-pointer z-[110]"
+              className="absolute top-6 right-6 p-2.5 rounded-full bg-[#f3f2eb] hover:bg-secondary hover:text-white transition-colors border border-black/5 cursor-pointer z-[110]"
               onClick={() => setSelectedZoomImage(null)}
               aria-label="Close Preview"
             >

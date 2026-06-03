@@ -44,11 +44,9 @@ export default function Achievements() {
               Achievements
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general">
-              Milestones & recognition. <br />
-              <span className="relative inline-block mt-2">
-                <span className="relative z-10 font-instrument font-normal text-clay-accent italic tracking-normal">
-                  Honors sheet.
-                </span>
+              Key{" "}
+              <span className="font-instrument font-normal text-secondary italic tracking-normal">
+                milestones.
               </span>
             </h2>
           </div>

@@ -11,14 +11,14 @@ export default function Projects() {
   // Arc Browser inspired theme workspaces for each card
   const arcThemes = [
     {
-      headerBg: "bg-gradient-to-r from-[#fbeee9] via-[#fae7df] to-[#f0eee4]",
-      addressBorder: "border-clay-accent/15 text-clay-accent",
-      shadowGlow: "shadow-[0_20px_50px_rgba(189,164,149,0.045)] hover:shadow-[0_30px_70px_rgba(189,164,149,0.08)]",
+      headerBg: "bg-gradient-to-r from-[#fdf5f2] via-[#fbeee9] to-[#f0eee4]",
+      addressBorder: "border-secondary/15 text-secondary",
+      shadowGlow: "shadow-[0_20px_50px_rgba(193,95,60,0.045)] hover:shadow-[0_30px_70px_rgba(193,95,60,0.08)]",
     },
     {
-      headerBg: "bg-gradient-to-r from-[#e5ebe6] via-[#dce4dd] to-[#f0eee4]",
-      addressBorder: "border-[#607361]/15 text-[#607361]",
-      shadowGlow: "shadow-[0_20px_50px_rgba(96,115,97,0.045)] hover:shadow-[0_30px_70px_rgba(96,115,97,0.08)]",
+      headerBg: "bg-gradient-to-r from-[#fdf5f2] via-[#fbeee9] to-[#f0eee4]",
+      addressBorder: "border-secondary/15 text-secondary",
+      shadowGlow: "shadow-[0_20px_50px_rgba(193,95,60,0.045)] hover:shadow-[0_30px_70px_rgba(193,95,60,0.08)]",
     }
   ];
 
@@ -36,11 +36,9 @@ export default function Projects() {
               Work
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general">
-              Selected craft. <br />
-              <span className="relative inline-block mt-2">
-                <span className="relative z-10 font-instrument font-normal text-clay-accent italic tracking-normal">
-                  Case studies.
-                </span>
+              Selected{" "}
+              <span className="font-instrument font-normal text-secondary italic tracking-normal">
+                work.
               </span>
             </h2>
           </div>
@@ -244,7 +242,7 @@ export default function Projects() {
             <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-black/5 shadow-sm relative overflow-hidden group-hover:scale-110 transition-transform duration-300">
               {/* Active Arrow */}
               <svg
-                className="w-5 h-5 text-clay-accent absolute transition-all duration-300 ease-in-out -rotate-45 group-hover:translate-x-6 group-hover:-translate-y-6 group-hover:opacity-0"
+                className="w-5 h-5 text-secondary absolute transition-all duration-300 ease-in-out -rotate-45 group-hover:translate-x-6 group-hover:-translate-y-6 group-hover:opacity-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -254,7 +252,7 @@ export default function Projects() {
               </svg>
               {/* Incoming Arrow */}
               <svg
-                className="w-5 h-5 text-clay-accent absolute transition-all duration-300 ease-in-out -rotate-45 -translate-x-6 translate-y-6 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+                className="w-5 h-5 text-secondary absolute transition-all duration-300 ease-in-out -rotate-45 -translate-x-6 translate-y-6 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

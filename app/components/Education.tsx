@@ -21,11 +21,9 @@ export default function Education() {
               Education
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general text-left">
-              Educational background. <br />
-              <span className="relative inline-block mt-2">
-                <span className="relative z-10 font-instrument font-normal text-clay-accent italic tracking-normal">
-                  Academic milestones.
-                </span>
+              Learning{" "}
+              <span className="font-instrument font-normal text-secondary italic tracking-normal">
+                path.
               </span>
             </h2>
           </div>
@@ -45,7 +43,7 @@ export default function Education() {
                 className="relative"
               >
                 {/* Timeline node dot with pulse */}
-                <div className="absolute left-[20px] top-6 w-2.5 h-2.5 rounded-full bg-sage-accent border border-white ring-4 ring-sage-light z-10 hidden sm:block" />
+                <div className="absolute left-[20px] top-6 w-2.5 h-2.5 rounded-full bg-secondary border border-white ring-4 ring-secondary-light z-10 hidden sm:block" />
 
                 {/* Card Container */}
                 <div className="soft-card p-6 sm:ml-16 bg-white hover:border-[#121212]/15 hover:shadow-[0_8px_30px_rgba(18,18,18,0.02)] transition-all text-left">
@@ -58,8 +56,8 @@ export default function Education() {
                         {item.degree}
                       </h3>
                       {item.status && (
-                        <span className="inline-flex items-center gap-1.5 text-[9px] font-mono font-bold px-2 py-0.5 mt-2 bg-[#e5ebe6] border border-[#607361]/15 text-[#607361] rounded-full uppercase tracking-wide">
-                          <span className="status-dot w-1 h-1 bg-[#607361]" />
+                        <span className="inline-flex items-center gap-1.5 text-[9px] font-mono font-bold px-2 py-0.5 mt-2 bg-secondary-light border border-secondary/15 text-secondary rounded-full uppercase tracking-wide">
+                          <span className="status-dot w-1 h-1 bg-secondary" />
                           {item.status}
                         </span>
                       )}

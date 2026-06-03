@@ -113,12 +113,12 @@ export default function Home() {
                 onMouseLeave={() => setIsStatusHovered(false)}
                 animate={{ width: isStatusHovered ? 230 : 120 }}
                 transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                className="flex items-center gap-2 px-3 py-1.5 bg-[#e5ebe6] border border-[#607361]/10 rounded-full cursor-help h-8 overflow-hidden select-none shrink-0 whitespace-nowrap"
+                className="flex items-center gap-2 px-3 py-1.5 bg-secondary-light border border-secondary/10 rounded-full cursor-help h-8 overflow-hidden select-none shrink-0 whitespace-nowrap"
               >
                 {/* Radar Node pulse */}
                 <div className="relative flex items-center justify-center w-2 h-2 shrink-0">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-[#607361] opacity-75 animate-ping" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#607361]" />
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75 animate-ping" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary" />
                 </div>
 
                 <AnimatePresence mode="wait">
@@ -129,7 +129,7 @@ export default function Home() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 5 }}
                       transition={{ duration: 0.12 }}
-                      className="text-[10px] font-mono font-bold text-[#607361] uppercase tracking-wider"
+                      className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wider"
                     >
                       Open to work
                     </motion.span>
@@ -140,7 +140,7 @@ export default function Home() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 5 }}
                       transition={{ duration: 0.12 }}
-                      className="text-[10px] font-mono font-bold text-[#607361] uppercase tracking-wider"
+                      className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wider"
                     >
                       Available for Q2 projects • IST
                     </motion.span>

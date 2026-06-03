@@ -28,11 +28,9 @@ export default function FAQ() {
               FAQ
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general text-left">
-              Frequently asked. <br />
-              <span className="relative inline-block mt-2">
-                <span className="relative z-10 font-instrument font-normal text-clay-accent italic tracking-normal">
-                  Questions.
-                </span>
+              Got{" "}
+              <span className="font-instrument font-normal text-secondary italic tracking-normal">
+                questions?
               </span>
             </h2>
           </div>
@@ -56,7 +54,7 @@ export default function FAQ() {
                   >
                     <span className="pr-4">{faq.question}</span>
                     {/* Rotate Chevron Icon */}
-                    <div className={`w-7 h-7 rounded-full bg-[#f3f2eb] flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 bg-clay-accent text-white" : "text-[#70706c]"}`}>
+                    <div className={`w-7 h-7 rounded-full bg-[#f3f2eb] flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 bg-secondary text-white" : "text-[#70706c]"}`}>
                       <svg
                         className="w-3.5 h-3.5"
                         fill="none"

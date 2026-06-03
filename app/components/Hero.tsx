@@ -15,7 +15,7 @@ export default function Hero({ introComplete = true }: HeroProps) {
       {/* Background Decorative Glow Blobs */}
       <div className="absolute top-0 left-0 right-0 h-[600px] overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[55%] h-[75%] bg-clay-accent opacity-[0.06] blur-[120px] rounded-full mix-blend-multiply" />
-        <div className="absolute top-[-10%] right-[-5%] w-[50%] h-[70%] bg-sage-accent opacity-[0.06] blur-[120px] rounded-full mix-blend-multiply" />
+        <div className="absolute top-[-10%] right-[-5%] w-[50%] h-[70%] bg-secondary opacity-[0.06] blur-[120px] rounded-full mix-blend-multiply" />
       </div>
 
       {/* Editorial Grid Lines Overlay */}
@@ -116,7 +116,7 @@ export default function Hero({ introComplete = true }: HeroProps) {
             className="group relative flex items-center justify-between sm:justify-start gap-4 px-6 py-3 w-full sm:w-auto bg-[#121212] text-white rounded-full font-semibold text-sm sm:text-base hover:scale-105 hover:bg-[#222] transition-all duration-300 shadow-xl shadow-black/10 cursor-pointer"
           >
             <span>Get in Touch</span>
-            <div className="w-7 h-7 rounded-full bg-clay-accent flex items-center justify-center shrink-0 relative overflow-hidden">
+            <div className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center shrink-0 relative overflow-hidden">
               {/* Active Arrow (slides out top-right on hover) */}
               <svg
                 className="w-3.5 h-3.5 text-white absolute transition-all duration-300 ease-in-out -rotate-45 group-hover:translate-x-5 group-hover:-translate-y-5 group-hover:opacity-0"

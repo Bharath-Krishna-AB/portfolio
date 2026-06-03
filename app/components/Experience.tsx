@@ -21,11 +21,9 @@ export default function Experience() {
               Experience
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general text-left">
-              Professional history. <br />
-              <span className="relative inline-block mt-2">
-                <span className="relative z-10 font-instrument font-normal text-clay-accent italic tracking-normal">
-                  Career journey.
-                </span>
+              Career{" "}
+              <span className="font-instrument font-normal text-secondary italic tracking-normal">
+                log.
               </span>
             </h2>
           </div>
