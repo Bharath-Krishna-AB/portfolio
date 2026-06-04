@@ -62,7 +62,8 @@ export default function Hero({ introComplete = true }: HeroProps) {
         </motion.div>
 
         {/* Large Centered Typographic Statement */}
-        <h1 className="text-[10vw] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight text-[#121212] font-claude mb-8 flex flex-col items-center select-none">
+        <h1 className="text-[9vw] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.15] tracking-tighter text-[#121212] font-claude mb-8 flex flex-col items-center select-none">
+          {/* Line 1 */}
           <motion.span
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 25 }}
@@ -77,19 +78,38 @@ export default function Hero({ introComplete = true }: HeroProps) {
             </span>
           </motion.span>
           
+          {/* Line 2 */}
           <motion.span
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 25 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="text-[#70706c] block mt-1.5"
+            className="text-[#70706c] block mt-2 text-[4vw] xs:text-[4.2vw] sm:text-3xl md:text-4xl lg:text-[3.25rem] font-bold tracking-tighter whitespace-nowrap sm:whitespace-normal"
           >
-            I build{" "}
-            <span className="relative inline-block px-1">
-              <span className="relative z-10 font-instrument font-normal italic text-[#121212] tracking-normal">
-                scalable
-              </span>
+            I build web products that{" "}
+            <span className="font-instrument font-normal italic text-[#121212] tracking-normal">
+              actually
             </span>{" "}
-            web & SaaS products
+            get{" "}
+            <span className="font-instrument font-normal italic text-clay-accent tracking-normal">
+              shipped
+            </span>
+          </motion.span>
+
+          {/* Line 3 */}
+          <motion.span
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 25 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="text-[#70706c] block mt-3 text-[3.5vw] xs:text-[3.8vw] sm:text-2xl md:text-3xl lg:text-[2rem] font-medium tracking-tighter whitespace-nowrap sm:whitespace-normal"
+          >
+            from{" "}
+            <span className="font-instrument font-normal italic text-[#121212] tracking-normal">
+              idea
+            </span>{" "}
+            to{" "}
+            <span className="font-mono text-xs sm:text-sm md:text-base font-bold tracking-[0.1em] uppercase text-[#121212] align-middle mx-1">
+              deployment
+            </span>
           </motion.span>
         </h1>
 
