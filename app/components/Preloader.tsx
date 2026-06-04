@@ -54,7 +54,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="fixed inset-0 z-[9999] bg-[#f9f8f4] flex items-center justify-center"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-general tracking-tight text-[#121212] select-none font-medium">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-claude tracking-tight text-[#121212] select-none font-medium">
             <span>{text}</span>
             {showCursor && (
               <span className="animate-pulse text-[#70706c] ml-0.5 font-light">|</span>

@@ -127,7 +127,7 @@ export default function ProjectDetailsPage({
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-[#f9f8f4] flex items-center justify-center text-[#121212] font-general">
+      <div className="min-h-screen bg-[#f9f8f4] flex items-center justify-center text-[#121212] font-claude">
         <div className="text-center space-y-4">
           <p className="text-[#70706c] text-sm">Project not found</p>
           <button
@@ -147,7 +147,7 @@ export default function ProjectDetailsPage({
   );
 
   return (
-    <div className="min-h-screen bg-[#f9f8f4] text-[#121212] font-general selection:bg-clay-light selection:text-clay-accent pb-24">
+    <div className="min-h-screen bg-[#f9f8f4] text-[#121212] font-claude selection:bg-clay-light selection:text-clay-accent pb-24">
       {/* Dynamic Header Mouse-interactive Motion Gallery */}
       <div className="relative h-[55vh] overflow-hidden bg-[#f3f2eb]/60">
         <GridMotionGallery
@@ -211,7 +211,7 @@ export default function ProjectDetailsPage({
           )}
 
           {/* Project Title */}
-          <h1 className="text-3xl md:text-4xl font-serif text-[#121212] mb-2 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-claude text-[#121212] mb-2 leading-tight">
             {project.name}
           </h1>
           <p className="text-base sm:text-lg text-[#70706c] mb-6 max-w-xl leading-relaxed">

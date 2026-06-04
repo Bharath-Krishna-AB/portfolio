@@ -110,7 +110,7 @@ export default function About() {
             <div className="space-y-8">
               {/* Executive Summary Headline */}
               <div>
-                <h2 className="text-2xl sm:text-3xl font-serif text-[#121212] leading-snug select-none flex flex-wrap gap-x-1.5 items-center">
+                <h2 className="text-2xl sm:text-3xl font-claude text-[#121212] leading-snug select-none flex flex-wrap gap-x-1.5 items-center">
                   {summaryWords.map((word, i) => (
                     <span key={i}>{word}</span>
                   ))}

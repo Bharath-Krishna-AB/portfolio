@@ -64,7 +64,7 @@ export default function ProjectsArchive() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f9f8f4] text-[#121212] font-general selection:bg-clay-light selection:text-clay-accent pb-24">
+    <div className="min-h-screen bg-[#f9f8f4] text-[#121212] font-claude selection:bg-clay-light selection:text-clay-accent pb-24">
       {/* Header Banner */}
       <div className="relative border-b border-black/5 bg-[#f3f2eb]/30">
         <div className="max-w-3xl mx-auto px-6 py-12">
@@ -86,7 +86,7 @@ export default function ProjectsArchive() {
             Back Home
           </Link>
 
-          <h1 className="text-4xl font-serif text-[#121212] mb-3 leading-snug">
+          <h1 className="text-4xl font-claude text-[#121212] mb-3 leading-snug">
             All Projects
           </h1>
           <p className="text-[#70706c] text-sm max-w-md leading-relaxed">

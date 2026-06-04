@@ -4,26 +4,11 @@ import { motion } from "framer-motion";
 import { skills } from "../data/portfolio";
 
 export default function Skills() {
-  // SVG Icons matching each categories indices:
-  // 0: Frontend, 1: Exploring/AI, 2: Backend/DB, 3: Tools
-  const icons = [
-    // Frontend
-    <svg key="0" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
-    // Exploring/AI
-    <svg key="1" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-    // Backend/DB
-    <svg key="2" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>,
-    // Tools
-    <svg key="3" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-  ];
 
-  // Specific visual styling classes for each category block
-  const cardStyles = [
-    "bg-clay-light/35 border-clay-accent/10 hover:border-clay-accent/20",
-    "bg-secondary-light/25 border-secondary/10 hover:border-secondary/20",
-    "bg-[#f3f2eb]/60 border-black/5 hover:border-black/10",
-    "bg-white border-black/5 hover:border-black/10"
-  ];
+  const frontend = skills[0];
+  const ai = skills[1];
+  const backend = skills[2];
+  const tools = skills[3];
 
   return (
     <section id="skills" className="py-24 bg-[#f9f8f4] relative overflow-hidden">
@@ -33,15 +18,15 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="space-y-12"
+          className="space-y-16"
         >
           {/* Section Label */}
           <div>
             <span className="section-label">
-              <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
+              <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
               Skills
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general text-left">
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left">
               Toolbox{" "}
               <span className="font-instrument font-normal text-secondary italic tracking-normal">
                 expertise.
@@ -49,42 +34,171 @@ export default function Skills() {
             </h2>
           </div>
 
-          {/* 2x2 Grid Toolbox layout */}
-          <div className="grid sm:grid-cols-2 gap-6 mt-12">
-            {skills.map((category, idx) => (
-              <motion.div
-                key={category.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className={`soft-card p-6 flex flex-col justify-between select-none ${cardStyles[idx]} shadow-[0_4px_20px_rgba(18,18,18,0.01)] h-[190px] text-left`}
-              >
-                <div className="space-y-4">
-                  {/* Category Header */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center text-[#121212]">
-                      {icons[idx]}
-                    </div>
-                    <h3 className="text-xs font-bold font-mono uppercase tracking-wider text-[#121212]">
-                      {category.label}
-                    </h3>
-                  </div>
+          {/* Priority Editorial Layout - Perfect Fit Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-12">
+            
+            {/* 1. DELIVERY BANNER - Full Width (12 columns) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="lg:col-span-12 bg-white border border-black/[0.06] rounded-3xl p-8 lg:p-10 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col lg:flex-row items-center justify-between gap-10 overflow-hidden relative"
+            >
+              {/* Premium Corner Ribbon */}
+              <div className="absolute -right-[36px] top-[26px] w-[150px] rotate-45 bg-gradient-to-b from-[#1f1f1f] to-[#0a0a0a] border-t border-white/20 border-b border-black text-white text-[10px] font-bold tracking-[0.2em] uppercase py-1.5 text-center shadow-[-4px_4px_15px_rgba(0,0,0,0.2)] flex justify-center items-center gap-2.5 z-20 pointer-events-none">
+                <span className="text-secondary font-medium text-[12px] opacity-90 drop-shadow-[0_0_6px_rgba(193,95,60,0.5)] mt-[-1px]">&lt;</span>
+                <span className="mt-[1px]">WEB DEV</span>
+                <span className="text-secondary font-medium text-[12px] opacity-90 drop-shadow-[0_0_6px_rgba(193,95,60,0.5)] mt-[-1px]">&gt;</span>
+              </div>
 
-                  {/* Skills tags list */}
-                  <div className="flex flex-wrap gap-1.5">
-                    {category.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="text-[10px] px-2.5 py-1 bg-white border border-black/5 text-[#121212] rounded font-mono shadow-sm"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+              <div className="lg:w-1/3 text-center lg:text-left relative z-10">
+                <h3 className="text-2xl sm:text-3xl font-bold font-claude text-[#121212]">
+                  End-to-End Delivery
+                </h3>
+                <p className="text-[#70706c] text-sm mt-2 max-w-sm mx-auto lg:mx-0">
+                  I architect scalable codebases and deliver flawless live products directly to my clients.
+                </p>
+              </div>
+
+              <div className="w-full lg:w-2/3 flex items-center justify-center relative py-4 lg:py-0">
+                {/* Connecting Line Track */}
+                <div className="absolute left-[10%] right-[10%] top-1/2 -translate-y-1/2 h-[2px] bg-black/[0.06] z-0 overflow-hidden rounded-full">
+                  {/* Ray of Light Animation */}
+                  <motion.div 
+                    className="absolute top-0 bottom-0 w-[150px] bg-gradient-to-r from-transparent via-secondary to-transparent"
+                    initial={{ left: '-150px' }}
+                    animate={{ left: '100%' }}
+                    transition={{ 
+                      repeat: Infinity, 
+                      duration: 1.5, 
+                      ease: "easeInOut",
+                      repeatDelay: 0.5
+                    }}
+                  />
+                </div>
+
+                {/* Middle Badge */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#121212] text-[#f5f5f5] border border-white/10 text-[9px] font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full z-10 whitespace-nowrap shadow-2xl flex items-center gap-2">
+                  <div className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-secondary shadow-[0_0_8px_rgba(193,95,60,0.6)]"></span>
+                  </div>
+                  Deploying
+                  <div className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-secondary shadow-[0_0_8px_rgba(193,95,60,0.6)]"></span>
                   </div>
                 </div>
-              </motion.div>
-            ))}
+
+                <div className="flex w-full justify-between items-center relative z-10 px-2 sm:px-10 max-w-xl mx-auto">
+                  {/* Left: Developer */}
+                  <div className="bg-white border border-black/[0.08] shadow-lg rounded-[20px] p-5 flex flex-col items-center gap-4 w-[110px] sm:w-[130px]">
+                     <div className="w-14 h-14 bg-[#121212] rounded-full flex items-center justify-center text-white shrink-0">
+                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
+                     </div>
+                     <div className="bg-[#f3f2eb] text-[#121212] text-xs font-semibold px-3 py-1.5 rounded-lg w-full text-center">
+                       Codebase
+                     </div>
+                  </div>
+
+                  {/* Right: Client/Product */}
+                  <div className="bg-[#121212] shadow-2xl rounded-[20px] p-5 flex flex-col items-center gap-4 w-[110px] sm:w-[130px]">
+                     <div className="w-14 h-14 bg-secondary rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(193,95,60,0.4)] shrink-0">
+                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" /></svg>
+                     </div>
+                     <div className="bg-white/10 text-white text-[11px] sm:text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg w-full text-center whitespace-nowrap border border-white/5">
+                       Product <span className="text-secondary">Live</span>
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* 2. FRONTEND - 5 Columns */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="lg:col-span-5 relative overflow-hidden bg-white border border-black/[0.06] rounded-3xl p-8 lg:p-10 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col justify-between h-full group hover:border-black/[0.12] transition-colors"
+            >
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-8 pb-5 border-b border-black/[0.08]">
+                  <h3 className="text-2xl font-bold font-claude text-[#121212] tracking-tight">
+                    {frontend.label}
+                  </h3>
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap gap-2.5 mt-auto relative z-10">
+                {frontend.skills.map((skill) => (
+                  <span 
+                    key={skill} 
+                    className="text-sm px-4 py-2 bg-[#f3f2eb]/60 text-[#121212] rounded-xl font-medium border border-black/[0.04] group-hover:border-black/[0.08] transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* 3. BACKEND - 4 Columns */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="lg:col-span-4 relative overflow-hidden bg-[#121212] text-white border border-black/[0.06] rounded-3xl p-8 shadow-[0_4px_20px_rgba(18,18,18,0.08)] flex flex-col justify-between h-full group"
+            >
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-8 pb-5 border-b border-white/10">
+                  <h3 className="text-2xl font-bold font-claude text-white tracking-tight">
+                    {backend.label}
+                  </h3>
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap gap-2 mt-auto relative z-10">
+                {backend.skills.map((skill) => (
+                  <span 
+                    key={skill} 
+                    className="text-xs px-3 py-1.5 bg-white/5 text-white/90 rounded-lg font-medium border border-white/10 group-hover:border-white/20 transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* 4. TOOLS - 3 Columns */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="lg:col-span-3 relative overflow-hidden bg-white border border-black/[0.06] rounded-3xl p-8 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col justify-between h-full group hover:border-black/[0.12] transition-colors"
+            >
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-8 pb-5 border-b border-black/[0.08]">
+                  <h3 className="text-xl font-bold font-claude text-[#121212] tracking-tight">
+                    {tools.label}
+                  </h3>
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap gap-2 mt-auto relative z-10">
+                {tools.skills.map((skill) => (
+                  <span 
+                    key={skill} 
+                    className="text-xs px-3 py-1.5 bg-[#f3f2eb]/60 text-[#70706c] rounded-lg font-medium border border-black/[0.03] group-hover:text-[#121212] transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
           </div>
         </motion.div>
       </div>

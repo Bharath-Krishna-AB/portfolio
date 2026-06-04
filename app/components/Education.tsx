@@ -20,7 +20,7 @@ export default function Education() {
               <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
               Education
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general text-left">
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left">
               Learning{" "}
               <span className="font-instrument font-normal text-secondary italic tracking-normal">
                 path.

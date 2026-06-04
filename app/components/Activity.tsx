@@ -358,7 +358,7 @@ export default function Activity() {
                 <span className="w-1.5 h-1.5 rounded-full bg-clay-accent" />
                 Activity
               </span>
-              <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general">
+              <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude">
                 Developer{" "}
                 <span className="font-instrument font-normal text-secondary italic tracking-normal">
                   pulse.
@@ -476,7 +476,7 @@ export default function Activity() {
                           {stat.value === null ? (
                             <div className="h-7 w-20 bg-black/5 animate-pulse rounded-md mt-1 mb-1.5" />
                           ) : (
-                            <div className="text-2xl sm:text-3xl font-bold text-[#121212] tracking-tight font-general leading-tight">
+                            <div className="text-2xl sm:text-3xl font-bold text-[#121212] tracking-tight font-claude leading-tight">
                               {stat.value}
                             </div>
                           )}
@@ -669,7 +669,7 @@ export default function Activity() {
                               <span className="text-[10px] font-mono text-[#70706c] bg-[#f3f2eb] px-1.5 py-0.5 rounded border border-black/5 select-none font-bold">
                                 {commit.hash}
                               </span>
-                              <span className="text-xs font-bold text-[#121212] tracking-tight ml-1 font-general">
+                              <span className="text-xs font-bold text-[#121212] tracking-tight ml-1 font-claude">
                                 {commit.message}
                               </span>
                             </div>
@@ -678,7 +678,7 @@ export default function Activity() {
                               {commit.time}
                             </span>
                           </div>
-                          <p className="text-xs text-[#70706c] mt-2 leading-relaxed max-w-2xl font-general">
+                          <p className="text-xs text-[#70706c] mt-2 leading-relaxed max-w-2xl font-claude">
                             {commit.description}
                           </p>
                         </div>

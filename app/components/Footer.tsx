@@ -35,7 +35,7 @@ export default function Footer() {
         >
           {/* Main Footer Header */}
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-serif text-[#121212] leading-snug">
+            <h2 className="text-3xl md:text-4xl font-claude text-[#121212] leading-snug">
               Let's build something meaningful.
             </h2>
             <p className="text-sm text-[#70706c] max-w-sm mx-auto leading-relaxed">

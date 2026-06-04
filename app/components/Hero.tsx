@@ -62,7 +62,7 @@ export default function Hero({ introComplete = true }: HeroProps) {
         </motion.div>
 
         {/* Large Centered Typographic Statement */}
-        <h1 className="text-[10vw] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight text-[#121212] font-general mb-8 flex flex-col items-center select-none">
+        <h1 className="text-[10vw] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight text-[#121212] font-claude mb-8 flex flex-col items-center select-none">
           <motion.span
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 25 }}

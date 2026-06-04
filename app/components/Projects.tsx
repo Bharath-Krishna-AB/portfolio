@@ -35,7 +35,7 @@ export default function Projects() {
               <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
               Work
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-general">
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude">
               Selected{" "}
               <span className="font-instrument font-normal text-secondary italic tracking-normal">
                 work.
@@ -133,7 +133,7 @@ export default function Projects() {
                     <div>
                       <h3
                         onClick={() => router.push(`/project/${project.id}`)}
-                        className="text-xl sm:text-2xl font-bold tracking-tight text-[#121212] group-hover:text-clay-accent cursor-pointer transition-colors duration-300 font-general"
+                        className="text-xl sm:text-2xl font-bold tracking-tight text-[#121212] group-hover:text-clay-accent cursor-pointer transition-colors duration-300 font-claude"
                       >
                         {project.name}
                       </h3>
@@ -262,7 +262,7 @@ export default function Projects() {
               </svg>
             </div>
             <div>
-              <h3 className="font-general font-bold text-lg text-[#121212]">View All Projects</h3>
+              <h3 className="font-claude font-bold text-lg text-[#121212]">View All Projects</h3>
               <p className="text-xs text-[#70706c] mt-1">Explore the complete archive of {projects.length} works</p>
             </div>
           </div>
