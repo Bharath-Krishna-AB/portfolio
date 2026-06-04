@@ -8,30 +8,15 @@ export default function About() {
   const pillars = [
     {
       title: "Product Execution",
-      desc: "Delivering polished, user-centric web applications from concept to deployment.",
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      )
+      desc: "Delivering polished, user-centric web applications from concept to deployment."
     },
     {
       title: "Engineering Quality",
-      desc: "Writing scalable, maintainable, and well-documented TypeScript & React code.",
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      )
+      desc: "Writing scalable, maintainable, and well-documented TypeScript & React code."
     },
     {
       title: "Strategic Leadership",
-      desc: "Leading technical direction and startup operations as a Co-Founder.",
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      )
+      desc: "Leading technical direction and startup operations as a Co-Founder."
     }
   ];
 
@@ -107,7 +92,7 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             className="md:col-span-7 soft-card p-8 md:p-10 bg-[#f3f2eb]/70 border border-black/[0.04] flex flex-col justify-center"
           >
-            <div className="space-y-8">
+            <div className="space-y-0">
               {/* Executive Summary Headline */}
               <div>
                 <h2 className="text-2xl sm:text-3xl font-claude text-[#121212] leading-snug select-none flex flex-wrap gap-x-1.5 items-center">
@@ -125,38 +110,52 @@ export default function About() {
                 </p>
               </div>
               
-              {/* Core Pillars Grid */}
-              <div className="space-y-4">
-                <h3 className="text-xs font-mono uppercase tracking-widest text-slate-accent mb-4">Core Competencies</h3>
-                <div className="grid sm:grid-cols-2 gap-4">
+              {/* Engineering Capability Matrix */}
+              <div className="mt-10 pt-8 border-t border-black/[0.06]">
+                <h3 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#121212] mb-6">Core Competencies</h3>
+                
+                <div className="flex flex-col">
                   {pillars.map((pillar, idx) => (
-                    <div key={idx} className="bg-white/60 border border-black/5 p-4 rounded-xl hover:bg-white transition-colors">
-                      <div className="w-8 h-8 rounded-full bg-secondary-light text-secondary flex items-center justify-center mb-3">
-                        {pillar.icon}
+                    <div 
+                      key={idx} 
+                      className="group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-6 py-5 border-b border-black/[0.04] last:border-0"
+                    >
+                      {/* Typographic Index */}
+                      <span className="text-xs font-mono text-secondary font-bold pt-0.5 w-6 shrink-0">
+                        0{idx + 1}.
+                      </span>
+                      
+                      {/* Matrix Content */}
+                      <div className="space-y-1.5 flex-1">
+                        <h4 className="text-[#121212] font-bold text-base sm:text-lg tracking-tight group-hover:text-secondary transition-colors duration-300">
+                          {pillar.title}
+                        </h4>
+                        <p className="text-[#70706c] text-xs sm:text-sm leading-relaxed max-w-sm">
+                          {pillar.desc}
+                        </p>
                       </div>
-                      <h4 className="text-[#121212] font-semibold text-sm mb-1.5">{pillar.title}</h4>
-                      <p className="text-[#70706c] text-xs leading-relaxed">{pillar.desc}</p>
                     </div>
                   ))}
-                  
-                  {/* Quick Facts Card */}
-                  <div className="bg-secondary text-white p-4 rounded-xl shadow-sm flex flex-col justify-center">
-                     <h4 className="font-semibold text-sm mb-2 opacity-90">Quick Facts</h4>
-                     <ul className="text-xs space-y-2 opacity-80">
-                       <li className="flex items-center gap-2">
-                         <div className="w-1 h-1 rounded-full bg-white" />
-                         Based in India
-                       </li>
-                       <li className="flex items-center gap-2">
-                         <div className="w-1 h-1 rounded-full bg-white" />
-                         Available for full-time roles
-                       </li>
-                       <li className="flex items-center gap-2">
-                         <div className="w-1 h-1 rounded-full bg-white" />
-                         Focus: Frontend & Fullstack UI
-                       </li>
-                     </ul>
-                  </div>
+                </div>
+              </div>
+
+              {/* Quick Facts HR Status Bar */}
+              <div className="mt-8 bg-[#121212] text-white p-5 sm:px-6 sm:py-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-lg border border-white/10">
+                <div className="flex items-center gap-3">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#d0fc4a] animate-pulse shrink-0 shadow-[0_0_8px_rgba(208,252,74,0.6)]" />
+                  <span className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.15em] uppercase text-[#d0fc4a]">
+                    Available for Full-time Roles
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-4 text-[10px] sm:text-xs font-medium text-white/70 uppercase tracking-wider font-mono">
+                  <span className="flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-white/40" />
+                    Based in India
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-white/40" />
+                    Frontend & Fullstack
+                  </span>
                 </div>
               </div>
               

@@ -6,22 +6,22 @@ import { achievements } from "../data/portfolio";
 export default function Achievements() {
   const achievementDetails = [
     {
-      index: "01",
+      date: "2023 — Present",
       category: "STUDIO FOUNDER",
       description: "Co-founded and scaled Aevon Digital Studio, managing premium Next.js engineering pipelines, interactive design specs, and client acquisition."
     },
     {
-      index: "02",
+      date: "2023 — 2024",
       category: "PORTAL ARCHITECT",
       description: "Developed and deployed full-stack event and startup management portals for Christ College of Engineering's (CCE) incubation hub."
     },
     {
-      index: "03",
+      date: "2022 — 2023",
       category: "AI PRODUCT DEV",
       description: "Engineered AI-integrated web applications like Resume IQ (ATS analysis with OpenAI RAG) and StudyHive (real-time synchronized study rooms)."
     },
     {
-      index: "04",
+      date: "2021 — 2022",
       category: "TECH LEADERSHIP",
       description: "Mentored fellow students and collaborated on innovation workshops, technical hackathons, and product development sprints."
     }
@@ -40,7 +40,7 @@ export default function Achievements() {
           {/* Section Header */}
           <div className="text-left">
             <span className="section-label">
-              <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
+              <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
               Achievements
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude">
@@ -51,51 +51,59 @@ export default function Achievements() {
             </h2>
           </div>
 
-          {/* Resume Style Divided List */}
-          <div className="divide-y divide-black/10">
-            {achievements.map((item, index) => {
-              const detail = achievementDetails[index];
-              return (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
-                  viewport={{ once: true }}
-                  className="py-10 first:pt-0 last:pb-0 grid md:grid-cols-12 gap-6 items-start text-left group"
-                >
-                  {/* Left Column: Index & Category Badge */}
-                  <div className="md:col-span-4 flex gap-4 items-start select-none">
-                    <span className="text-xs font-mono text-[#70706c] font-bold opacity-60 pt-0.5">
-                      {detail.index}
-                    </span>
-                    <div className="space-y-2">
-                      <span className="inline-flex text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 bg-[#f3f2eb] border border-black/5 text-[#70706c] rounded">
-                        {detail.category}
-                      </span>
-                      {item.highlight && (
-                        <div className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-clay-accent animate-pulse" />
-                          <span className="text-[8px] font-mono text-clay-accent font-bold uppercase tracking-widest">
-                            Key Milestone
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+          {/* Architectural Timeline Layout */}
+          <div className="relative">
+            {/* Continuous Vertical Timeline Line */}
+            <div className="absolute left-0 top-3 bottom-0 w-[1px] bg-black/[0.08]" />
 
-                  {/* Right Column: Title & Detailed Description */}
-                  <div className="md:col-span-8 space-y-3">
-                    <h3 className="font-bold text-base sm:text-lg text-[#121212] tracking-tight group-hover:text-clay-accent transition-colors duration-300">
-                      {item.label}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#70706c] leading-relaxed">
-                      {detail.description}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+            <div className="space-y-12">
+              {achievements.map((item, index) => {
+                const detail = achievementDetails[index];
+                return (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="relative pl-8 sm:pl-12 grid md:grid-cols-12 gap-4 sm:gap-6 items-start text-left group"
+                  >
+                    {/* Glowing Node Marker */}
+                    <div className="absolute left-[-4.5px] top-1.5 w-[10px] h-[10px] rounded-full bg-secondary ring-4 ring-[#f9f8f4] group-hover:scale-125 transition-transform duration-300" />
+
+                    {/* Left Column: Date & Category */}
+                    <div className="md:col-span-4 flex flex-col gap-2 select-none pt-0.5">
+                      <span className="text-sm font-mono text-[#121212] font-semibold tracking-tight">
+                        {detail.date}
+                      </span>
+                      <div className="flex flex-col items-start gap-2">
+                        <span className="inline-flex text-[10px] font-mono font-bold uppercase tracking-widest px-2.5 py-1 bg-white border border-black/5 text-[#70706c] rounded-md shadow-sm">
+                          {detail.category}
+                        </span>
+                        {item.highlight && (
+                          <div className="flex items-center gap-1.5 mt-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+                            <span className="text-[9px] font-mono text-secondary font-bold uppercase tracking-widest">
+                              Key Milestone
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Right Column: Title & Impact Description */}
+                    <div className="md:col-span-8 space-y-3 bg-white p-6 sm:p-8 rounded-2xl border border-black/[0.04] shadow-[0_4px_20px_rgba(18,18,18,0.02)] group-hover:border-black/[0.08] transition-colors">
+                      <h3 className="font-bold text-lg sm:text-xl font-claude text-[#121212] tracking-tight group-hover:text-secondary transition-colors duration-300">
+                        {item.label}
+                      </h3>
+                      <p className="text-sm text-[#70706c] leading-relaxed">
+                        {detail.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </motion.div>
       </div>
