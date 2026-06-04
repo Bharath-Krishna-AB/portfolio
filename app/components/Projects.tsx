@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { projects } from "../data/portfolio";
+import { ExternalLink } from "lucide-react";
 
 export default function Projects() {
   const router = useRouter();
@@ -55,7 +56,7 @@ export default function Projects() {
             return (
               <div
                 key={project.id}
-                className={`w-full h-[510px] md:h-[530px] rounded-[2rem] md:rounded-[2.25rem] bg-[#f0eee4] border border-black/[0.05] overflow-hidden flex flex-col justify-between select-none hover:border-black/[0.08] transition-all duration-500 ease-out group ${theme.shadowGlow}`}
+                className={`w-full h-full min-h-[550px] md:min-h-[580px] rounded-[2rem] md:rounded-[2.5rem] bg-[#f0eee4] border border-black/[0.05] overflow-hidden flex flex-col justify-between select-none hover:border-black/[0.08] transition-all duration-500 ease-out group ${theme.shadowGlow}`}
               >
                 {/* Top Portion: Arc Browser Mock Frame */}
                 <div
@@ -64,11 +65,11 @@ export default function Projects() {
                 >
                   {/* Arc Browser Header */}
                   <div className={`px-4 py-3.5 flex items-center justify-between border-b border-black/[0.04] select-none shrink-0 ${theme.headerBg}`}>
-                    {/* Control Dots */}
+                    {/* Control Dots (Exact MacOS/Arc Colors) */}
                     <div className="flex gap-1.5 items-center shrink-0">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]/90 shadow-sm" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/90 shadow-sm" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]/90 shadow-sm" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] border border-black/10" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] border border-black/10" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#28C840] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] border border-black/10" />
                     </div>
 
                     {/* Address Bar */}
@@ -89,8 +90,21 @@ export default function Projects() {
                       <span className="truncate">{displayUrl}</span>
                     </div>
 
-                    {/* Spacer */}
-                    <div className="w-[35px] shrink-0" />
+                    {/* External Link Action */}
+                    <div className="w-[35px] shrink-0 flex justify-end">
+                      {project.links?.live && (
+                        <a 
+                          href={project.links.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="w-7 h-7 rounded-full hover:bg-black/5 flex items-center justify-center transition-colors text-[#70706c] hover:text-[#121212]"
+                          title="Visit live site"
+                        >
+                          <ExternalLink size={14} strokeWidth={2} />
+                        </a>
+                      )}
+                    </div>
                   </div>
 
                   {/* Screenshot aspect frame */}
@@ -110,11 +124,11 @@ export default function Projects() {
                 </div>
 
                 {/* Bottom Portion: Information Details & CTAs */}
-                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between gap-3 text-left bg-transparent">
-                  <div className="space-y-3">
+                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between gap-4 text-left bg-transparent">
+                  <div className="space-y-4">
                     {/* Meta information tags */}
                     <div className="flex items-center justify-between gap-4 select-none">
-                      <span className="text-[9px] font-mono text-[#70706c]/90 font-bold tracking-widest uppercase">
+                      <span className="text-[9px] font-mono text-[#70706c]/80 font-bold tracking-[0.2em] uppercase">
                         {String(index + 1).padStart(2, "0")} /{" "}
                         {project.category === "client"
                           ? "Client"
@@ -123,8 +137,9 @@ export default function Projects() {
                           : "Personal"}
                       </span>
                       {project.achievement && (
-                        <span className="text-[8px] font-mono font-bold uppercase tracking-wide px-2 py-0.5 bg-clay-light text-clay-accent rounded border border-clay-accent/15 shadow-sm">
-                          ★ {project.achievement.title || "Winner"}
+                        <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-secondary flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(193,95,60,0.6)] animate-pulse" />
+                          {project.achievement.title || "Winner"}
                         </span>
                       )}
                     </div>
@@ -142,16 +157,11 @@ export default function Projects() {
                       </p>
                     </div>
 
-                    {/* Tech stack badges */}
-                    <div className="flex flex-wrap gap-1.5 pt-0.5 select-none">
-                      {project.stack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-[8px] font-mono px-2 py-0.5 bg-white/90 border border-black/5 text-[#70706c] rounded font-bold shadow-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                    {/* Tech stack inline text */}
+                    <div className="pt-1 select-none">
+                      <p className="text-[10px] font-mono text-secondary font-semibold tracking-widest uppercase">
+                        {project.stack.join(" • ")}
+                      </p>
                     </div>
 
                     {/* Description */}
@@ -161,13 +171,13 @@ export default function Projects() {
                   </div>
 
                   {/* Action Pill Buttons */}
-                  <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-black/[0.05] select-none shrink-0">
+                  <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-black/[0.04] select-none shrink-0">
                     {/* Primary pill */}
                     <button
                       onClick={() => router.push(`/project/${project.id}`)}
-                      className="px-3.5 py-1.5 bg-[#121212] hover:bg-[#222] text-white rounded-full font-bold text-[9px] font-mono uppercase tracking-wider shadow-sm hover:scale-102 active:scale-98 transition-all cursor-pointer inline-flex items-center gap-1 group/btn"
+                      className="px-4 py-2 bg-[#121212] hover:bg-secondary text-white rounded-full font-bold text-[9px] font-mono uppercase tracking-wider shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer inline-flex items-center gap-1.5 group/btn"
                     >
-                      Case Study
+                      Project Details
                       <div className="w-3.5 h-3.5 relative overflow-hidden flex items-center justify-center shrink-0">
                         {/* Active Arrow */}
                         <svg
@@ -237,7 +247,7 @@ export default function Projects() {
           {/* View All Projects Card */}
           <div
             onClick={() => router.push("/projects")}
-            className="w-full h-[510px] md:h-[530px] rounded-[2rem] md:rounded-[2.25rem] bg-[#edeae0]/40 border border-dashed border-black/15 flex flex-col items-center justify-center p-8 text-center gap-4 hover:bg-[#edeae0]/70 transition-colors duration-300 select-none cursor-pointer group shadow-sm"
+            className="w-full h-full min-h-[550px] md:min-h-[580px] rounded-[2rem] md:rounded-[2.5rem] bg-[#edeae0]/40 border border-dashed border-black/15 flex flex-col items-center justify-center p-8 text-center gap-4 hover:bg-[#edeae0]/70 transition-colors duration-300 select-none cursor-pointer group shadow-sm"
           >
             <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-black/5 shadow-sm relative overflow-hidden group-hover:scale-110 transition-transform duration-300">
               {/* Active Arrow */}
