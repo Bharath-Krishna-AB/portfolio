@@ -43,7 +43,7 @@ export default function Footer() {
         >
           {/* Main Footer Header */}
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-claude text-foreground leading-snug whitespace-nowrap flex items-baseline justify-center transition-colors duration-500">
+            <h2 className="text-3xl md:text-4xl font-claude text-foreground leading-snug flex-wrap sm:whitespace-nowrap flex items-baseline justify-center transition-colors duration-500">
               <TextReveal text="Let's build something " />
               <TextReveal text="meaningful." className="font-instrument font-normal text-secondary italic tracking-normal ml-1" delay={0.1} />
             </h2>

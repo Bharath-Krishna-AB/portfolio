@@ -94,7 +94,7 @@ export default function Home() {
 
           {/* Absolute Header Navigation */}
           <header className="absolute top-0 left-0 right-0 z-20 py-6">
-            <div className="max-w-5xl mx-auto px-6 flex items-center justify-between">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-wrap gap-3 sm:gap-4 items-center justify-between">
               {/* Brand Label (Morphing rolling ticker) */}
               <a
                 href="#home"

@@ -70,7 +70,7 @@ export default function About() {
 
             {/* Right: Content */}
             <div className="flex flex-col items-start text-left flex-1">
-              <h2 className="text-3xl sm:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline transition-colors duration-500">
+              <h2 className="text-3xl sm:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mt-4 font-claude text-left flex-wrap sm:whitespace-nowrap flex items-baseline transition-colors duration-500">
                 <TextReveal text="Who " />
                 <TextReveal text="am I." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
               </h2>
@@ -101,8 +101,8 @@ export default function About() {
 
               <MagneticButton strength={20} className="w-full sm:w-auto mt-2">
                 <a 
-                  href="/bharathresume.pdf" 
-                  download="bharathresume.pdf" 
+                  href="/bharath-resume.pdf" 
+                  download="bharath-resume.pdf" 
                   className="group flex items-center justify-center gap-2.5 px-6 py-3.5 bg-foreground hover:opacity-85 hover:scale-[1.02] active:scale-[0.98] border border-transparent rounded-full text-foreground-inverse text-[13px] md:text-sm transition-all duration-300 font-claude w-full sm:w-auto shadow-sm hover:shadow-md"
                 >
                   <svg className="w-4 h-4 text-foreground-inverse/80 group-hover:text-foreground-inverse group-hover:-translate-y-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4-4m0 0l-4-4m4 4V4" /></svg>
