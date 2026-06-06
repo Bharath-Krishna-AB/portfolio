@@ -105,7 +105,7 @@ export default function ProjectsArchive() {
   }, [selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-claude selection:bg-foreground selection:text-foreground-inverse pb-32 transition-colors duration-500">
+    <div className="min-h-dvh bg-background text-foreground font-claude selection:bg-foreground selection:text-foreground-inverse pb-32 transition-colors duration-500">
       {/* Immersive Header */}
       <div className="pt-32 pb-16 px-6 max-w-[1400px] mx-auto relative z-10">
         <Link

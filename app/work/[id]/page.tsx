@@ -30,7 +30,7 @@ export default function ProjectDetailsPage({
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-[#f9f8f4] flex items-center justify-center text-[#121212]">
+      <div className="min-h-dvh bg-[#f9f8f4] flex items-center justify-center text-[#121212]">
         <div className="text-center">
           <h1 className="text-4xl font-claude mb-4">404</h1>
           <p className="text-[#70706c] text-sm uppercase tracking-widest font-mono mb-8">Project not found</p>
@@ -50,7 +50,7 @@ export default function ProjectDetailsPage({
   );
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-secondary selection:text-white pb-32 transition-colors duration-500">
+    <div className="min-h-dvh bg-background text-foreground selection:bg-secondary selection:text-white pb-32 transition-colors duration-500">
       
       {/* Absolute Back Button */}
       <button
@@ -64,7 +64,7 @@ export default function ProjectDetailsPage({
       </button>
 
       {/* 100vh Hero Parallax */}
-      <div ref={heroRef} className="w-full h-screen relative overflow-hidden bg-[#121212]">
+      <div ref={heroRef} className="w-full h-dvh relative overflow-hidden bg-[#121212]">
         <motion.div 
           style={{ scale: 1.05 }} 
           className="absolute inset-0 w-full h-full"

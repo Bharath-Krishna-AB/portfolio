@@ -83,7 +83,7 @@ export default function Home() {
       <Preloader onComplete={() => setIsLoaded(true)} />
 
       {isLoaded && (
-        <div className="flex flex-col min-h-screen bg-background text-foreground font-claude selection:bg-clay-light selection:text-clay-accent transition-colors duration-500">
+        <div className="flex flex-col min-h-dvh bg-background text-foreground font-claude selection:bg-clay-light selection:text-clay-accent transition-colors duration-500">
           {/* Top Thin Scroll Progress Bar */}
           <div className="fixed top-0 left-0 right-0 z-[100] h-[2px] bg-transparent">
             <div
