@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import TextReveal from "./ui/TextReveal";
 
 export default function Footer() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -35,8 +36,9 @@ export default function Footer() {
         >
           {/* Main Footer Header */}
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-claude text-[#121212] leading-snug">
-              Let's build something meaningful.
+            <h2 className="text-3xl md:text-4xl font-claude text-[#121212] leading-snug whitespace-nowrap flex items-baseline justify-center">
+              <TextReveal text="Let's build something " />
+              <TextReveal text="meaningful." className="font-instrument font-normal text-secondary italic tracking-normal ml-1" delay={0.1} />
             </h2>
             <p className="text-sm text-[#70706c] max-w-sm mx-auto leading-relaxed">
               Have a project in mind or just want to chat? I'm always open to new opportunities.
@@ -85,7 +87,7 @@ export default function Footer() {
 
             {/* Direct Call Secondary Button */}
             <a
-              href="tel:+918848749033"
+              href="tel:+916235311216"
               className="group flex items-center justify-between gap-3 px-6 py-3 w-full sm:w-auto bg-white text-[#121212] rounded-full font-semibold text-sm sm:text-base border border-black/10 hover:bg-gray-50 hover:scale-105 transition-all duration-300 cursor-pointer"
             >
               <div className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center group-hover:translate-y-0.5 transition-transform shrink-0">

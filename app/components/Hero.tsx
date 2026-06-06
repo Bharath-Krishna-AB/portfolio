@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import MagneticButton from "./ui/MagneticButton";
 
 interface HeroProps {
   introComplete?: boolean;
@@ -65,114 +66,141 @@ export default function Hero({ introComplete = true }: HeroProps) {
         <div className="flex flex-col items-center text-center mb-12 w-full max-w-5xl px-4 mx-auto mt-8 sm:mt-12">
           <h1 className="text-[11vw] sm:text-[7.5vw] md:text-7xl lg:text-[6rem] font-bold leading-[1.05] tracking-[-0.03em] font-claude">
             {/* Line 1 */}
-            <motion.span
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 25 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="block text-[#121212]"
-            >
-              Hey, I'm <span className="font-instrument font-normal tracking-normal text-clay-accent">Bharath</span>
-            </motion.span>
+            <span className="block overflow-hidden relative">
+              <motion.span
+                initial={{ y: "110%", rotateZ: 8, skewY: 5 }}
+                animate={introComplete ? { y: "0%", rotateZ: 0, skewY: 0 } : { y: "110%", rotateZ: 8, skewY: 5 }}
+                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                className="block text-[#121212] origin-top-left"
+              >
+                Hey, I'm <span className="font-instrument font-normal tracking-normal text-clay-accent">Bharath</span>
+              </motion.span>
+            </span>
             
             {/* Line 2 */}
-            <motion.span
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 25 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="block text-[#121212]"
-            >
-              I build <span className="font-instrument font-normal italic tracking-[-0.02em] text-[#121212]">web products</span>
-            </motion.span>
+            <span className="block overflow-hidden relative pt-1">
+              <motion.span
+                initial={{ y: "110%", rotateZ: 8, skewY: 5 }}
+                animate={introComplete ? { y: "0%", rotateZ: 0, skewY: 0 } : { y: "110%", rotateZ: 8, skewY: 5 }}
+                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+                className="block text-[#121212] origin-top-left"
+              >
+                I build <span className="font-instrument font-normal italic tracking-[-0.02em] text-[#121212]">web products</span>
+              </motion.span>
+            </span>
 
             {/* Line 3 */}
-            <motion.span
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 25 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="block text-[#121212]"
-            >
-              that actually <span className="font-instrument font-normal italic tracking-[-0.02em] text-clay-accent">ship</span>
-            </motion.span>
+            <span className="block overflow-hidden relative pt-1">
+              <motion.span
+                initial={{ y: "110%", rotateZ: 8, skewY: 5 }}
+                animate={introComplete ? { y: "0%", rotateZ: 0, skewY: 0 } : { y: "110%", rotateZ: 8, skewY: 5 }}
+                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+                className="block text-[#121212] origin-top-left"
+              >
+                that actually <span className="font-instrument font-normal italic tracking-[-0.02em] text-clay-accent">ship</span>
+              </motion.span>
+            </span>
           </h1>
         </div>
 
         {/* Hero Subtext Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 20 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="text-base sm:text-lg text-[#70706c] leading-relaxed max-w-2xl text-center mb-10"
-        >
-          Full-stack engineer crafting modern applications with MERN, Next.js, and AI integrations.
-        </motion.p>
+        <div className="overflow-hidden mb-10">
+          <motion.p
+            initial={{ y: "100%", opacity: 0, skewY: 2 }}
+            animate={introComplete ? { y: "0%", opacity: 1, skewY: 0 } : { y: "100%", opacity: 0, skewY: 2 }}
+            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
+            className="text-base sm:text-lg text-[#70706c] leading-relaxed max-w-2xl text-center"
+          >
+            Full-stack engineer crafting modern applications with MERN, Next.js, and AI integrations.
+          </motion.p>
+        </div>
 
         {/* Action CTAs (Pill layout with custom nested circles) */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 20 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 30 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
         >
           {/* Primary CTA */}
-          <a
-            href="mailto:bharathkrishna.ab.dev@gmail.com"
-            className="group relative flex items-center justify-between sm:justify-start gap-4 px-6 py-3 w-full sm:w-auto bg-[#121212] text-white rounded-full font-semibold text-sm sm:text-base hover:scale-105 hover:bg-[#222] transition-all duration-300 shadow-xl shadow-black/10 cursor-pointer"
-          >
-            <span>Get in Touch</span>
-            <div className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center shrink-0 relative overflow-hidden">
-              {/* Active Arrow (slides out top-right on hover) */}
-              <svg
-                className="w-3.5 h-3.5 text-white absolute transition-all duration-300 ease-in-out -rotate-45 group-hover:translate-x-5 group-hover:-translate-y-5 group-hover:opacity-0"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth="2.5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 12h14M12 5l7 7-7 7"
-                />
-              </svg>
-              {/* Incoming Arrow (slides in from bottom-left on hover) */}
-              <svg
-                className="w-3.5 h-3.5 text-white absolute transition-all duration-300 ease-in-out -rotate-45 -translate-x-5 translate-y-5 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth="2.5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 12h14M12 5l7 7-7 7"
-                />
-              </svg>
-            </div>
-          </a>
+          <MagneticButton strength={20}>
+            <a
+              href="mailto:bharathkrishna.ab.dev@gmail.com"
+              className="group relative flex items-center justify-between sm:justify-start gap-4 px-6 py-3 w-full sm:w-auto bg-[#121212] text-white rounded-full font-semibold text-sm sm:text-base hover:scale-105 hover:bg-[#222] transition-all duration-300 shadow-xl shadow-black/10 cursor-pointer"
+            >
+              <span>Get in Touch</span>
+              <div className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center shrink-0 relative overflow-hidden">
+                {/* Active Arrow (slides out top-right on hover) */}
+                <svg
+                  className="w-3.5 h-3.5 text-white absolute transition-all duration-300 ease-in-out -rotate-45 group-hover:translate-x-5 group-hover:-translate-y-5 group-hover:opacity-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 12h14M12 5l7 7-7 7"
+                  />
+                </svg>
+                {/* Incoming Arrow (slides in from bottom-left on hover) */}
+                <svg
+                  className="w-3.5 h-3.5 text-white absolute transition-all duration-300 ease-in-out -rotate-45 -translate-x-5 translate-y-5 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 12h14M12 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
+            </a>
+          </MagneticButton>
 
           {/* Secondary CTA */}
-          <a
-            href="#work"
-            className="group flex items-center justify-between sm:justify-start gap-3 px-6 py-3 w-full sm:w-auto bg-white text-[#121212] rounded-full font-semibold text-sm sm:text-base border border-black/10 hover:bg-gray-50 hover:scale-105 transition-all duration-300 cursor-pointer"
-          >
-            <div className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center group-hover:translate-y-0.5 transition-transform shrink-0">
-              <svg
-                className="w-3.5 h-3.5 text-[#121212]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth="2.5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                />
-              </svg>
-            </div>
-            <span>View Work</span>
-          </a>
+          <MagneticButton strength={15}>
+            <a
+              href="#work"
+              className="group relative flex items-center justify-between sm:justify-center gap-4 px-6 py-3 w-full sm:w-auto bg-white text-[#121212] rounded-full font-semibold text-sm sm:text-base border border-black/10 hover:border-black/20 hover:bg-[#fcfcfc] hover:scale-105 transition-all duration-300 shadow-sm cursor-pointer"
+            >
+              <span>View Work</span>
+              <div className="w-7 h-7 rounded-full bg-black/[0.04] flex items-center justify-center group-hover:bg-black/[0.08] transition-colors shrink-0 relative overflow-hidden">
+                {/* Active Arrow (slides out bottom on hover) */}
+                <svg
+                  className="w-3.5 h-3.5 text-[#121212] absolute transition-all duration-300 ease-in-out group-hover:translate-y-5 group-hover:opacity-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                  />
+                </svg>
+                {/* Incoming Arrow (slides in from top on hover) */}
+                <svg
+                  className="w-3.5 h-3.5 text-[#121212] absolute transition-all duration-300 ease-in-out -translate-y-5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                  />
+                </svg>
+              </div>
+            </a>
+          </MagneticButton>
         </motion.div>
       </div>
     </section>

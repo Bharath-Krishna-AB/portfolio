@@ -1,7 +1,16 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import TextReveal from "./ui/TextReveal";
 import { services } from "../data/portfolio";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Services() {
   const serviceDetails = [
@@ -43,27 +52,52 @@ export default function Services() {
     }
   ];
 
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(".service-header",
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 80%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+      }
+    );
+
+    gsap.fromTo(".service-item",
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+      }
+    );
+  }, { scope: container });
+
   return (
-    <section id="services" className="py-24 bg-[#f9f8f4] border-y border-black/[0.04] relative">
+    <section ref={container} id="services" className="py-24 bg-[#f9f8f4] border-y border-black/[0.04] relative">
       <div className="w-full max-w-4xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="space-y-16"
-        >
+        <div className="space-y-16">
           {/* Section Header */}
-          <div className="text-left">
+          <div className="service-header text-left">
             <span className="section-label">
               <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
               Services
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude">
-              Core{" "}
-              <span className="font-instrument font-normal text-secondary italic tracking-normal">
-                competencies.
-              </span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+              <TextReveal text="Core " />
+              <TextReveal text="competencies." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
             </h2>
           </div>
 
@@ -74,7 +108,7 @@ export default function Services() {
               return (
                 <div
                   key={service.title}
-                  className="py-10 first:pt-0 last:pb-0 grid md:grid-cols-12 gap-6 items-start text-left group"
+                  className="service-item py-10 first:pt-0 last:pb-0 grid md:grid-cols-12 gap-6 items-start text-left group"
                 >
                   {/* Left Column: Index & Service Title */}
                   <div className="md:col-span-4 flex gap-4 items-start">
@@ -119,7 +153,7 @@ export default function Services() {
               );
             })}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

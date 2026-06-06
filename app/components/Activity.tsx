@@ -1,7 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import TextReveal from "./ui/TextReveal";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 // Helper function to format ISO date into relative time
 function getRelativeTime(dateString: string): string {
@@ -337,32 +345,56 @@ export default function Activity() {
   }, []);
 
   const commits = commitFeed;
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(".activity-header",
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 80%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+      }
+    );
+    
+    gsap.fromTo(".activity-content",
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.2,
+        ease: "power3.out",
+      }
+    );
+  }, { scope: container });
 
   return (
-    <section className="py-24 bg-[#f9f8f4] relative overflow-hidden">
+    <section ref={container} className="py-24 bg-[#f9f8f4] relative overflow-hidden">
       {/* Subtle background glow */}
       <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-clay-light/10 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
 
       <div className="w-full max-w-5xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="space-y-12"
-        >
+        <div className="space-y-12">
           {/* Header Block */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 text-left">
+          <div className="activity-header flex flex-col md:flex-row md:items-end justify-between gap-6 text-left">
             <div>
               <span className="section-label">
                 <span className="w-1.5 h-1.5 rounded-full bg-clay-accent" />
                 Activity
               </span>
-              <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude">
-                Developer{" "}
-                <span className="font-instrument font-normal text-secondary italic tracking-normal">
-                  pulse.
-                </span>
+              <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+                <TextReveal text="Developer " />
+                <TextReveal text="pulse." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
               </h2>
             </div>
 
@@ -393,7 +425,7 @@ export default function Activity() {
           </div>
 
           {/* Dynamic Content Panel with Framer Motion Animation */}
-          <div className="min-h-[400px] w-full relative">
+          <div className="activity-content min-h-[400px] w-full relative">
             <AnimatePresence mode="wait">
               {activeTab === "contributions" && (
                 <motion.div
@@ -689,7 +721,7 @@ export default function Activity() {
               )}
             </AnimatePresence>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

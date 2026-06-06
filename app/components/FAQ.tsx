@@ -1,8 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import TextReveal from "./ui/TextReveal";
 import { faqs } from "../data/portfolio";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -11,27 +19,52 @@ export default function FAQ() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(".faq-header",
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 80%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+      }
+    );
+
+    gsap.fromTo(".faq-item",
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+      }
+    );
+  }, { scope: container });
+
   return (
-    <section className="py-24 bg-[#f9f8f4] relative overflow-hidden">
+    <section ref={container} className="py-24 bg-[#f9f8f4] relative overflow-hidden">
       <div className="w-full max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="space-y-12"
-        >
+        <div className="space-y-12">
           {/* Section Label */}
-          <div>
+          <div className="faq-header">
             <span className="section-label">
               <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
               FAQ
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left">
-              Got{" "}
-              <span className="font-instrument font-normal text-secondary italic tracking-normal">
-                questions?
-              </span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+              <TextReveal text="Got " />
+              <TextReveal text="questions?" className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
             </h2>
           </div>
 
@@ -43,7 +76,7 @@ export default function FAQ() {
               return (
                 <div
                   key={index}
-                  className={`soft-card bg-white border border-black/[0.04] overflow-hidden transition-all duration-300 ${
+                  className={`faq-item soft-card bg-white border border-black/[0.04] overflow-hidden transition-all duration-300 ${
                     isOpen ? "border-black/10 shadow-sm" : "hover:border-black/10"
                   }`}
                 >
@@ -89,7 +122,7 @@ export default function FAQ() {
               );
             })}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

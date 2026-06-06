@@ -1,10 +1,47 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import TextReveal from "./ui/TextReveal";
+import MagneticButton from "./ui/MagneticButton";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function About() {
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from(".about-card", {
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 85%",
+      },
+      opacity: 0,
+      y: 60,
+      duration: 1,
+      ease: "power3.out",
+    });
+    
+    gsap.from(".about-avatar", {
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 85%",
+      },
+      opacity: 0,
+      scale: 0.8,
+      duration: 1,
+      delay: 0.2,
+      ease: "power3.out",
+    });
+  }, { scope: container });
+
   return (
-    <section id="about" className="py-24 md:py-32 bg-[#f9f8f4] relative overflow-hidden">
+    <section id="about" ref={container} className="py-24 md:py-32 bg-[#f9f8f4] relative overflow-hidden">
       <div className="w-full max-w-5xl mx-auto px-6">
         
         {/* Section Header */}
@@ -19,15 +56,9 @@ export default function About() {
 
         {/* Minimal Card Layout (Adapted to Site Theme) */}
         <div className="w-full max-w-[54rem] mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="bg-white border border-black/[0.04] rounded-[2rem] p-8 md:p-10 lg:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-start shadow-[0_8px_30px_rgba(18,18,18,0.02)]"
-          >
+          <div className="about-card bg-white border border-black/[0.04] rounded-[2rem] p-8 md:p-10 lg:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-start shadow-[0_8px_30px_rgba(18,18,18,0.02)]">
             {/* Left: Avatar */}
-            <div className="shrink-0">
+            <div className="shrink-0 about-avatar">
               <div className="w-32 h-32 md:w-40 md:h-40 rounded-[2rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 border border-black/5 bg-[#f3f2eb]">
                 <img 
                   src="https://github.com/Bharath-Krishna-AB.png" 
@@ -39,28 +70,47 @@ export default function About() {
 
             {/* Right: Content */}
             <div className="flex flex-col items-start text-left flex-1">
-              <h3 className="text-2xl sm:text-3xl md:text-[1.85rem] font-claude text-[#121212] leading-[1.4] mb-6 tracking-tight">
-                Full-Stack Developer Delivering Real-World Web Solutions.
-              </h3>
+              <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+                <TextReveal text="Who " />
+                <TextReveal text="am I." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
+              </h2>
               
-              <p className="text-[#70706c] text-sm md:text-[15px] leading-relaxed mb-5 max-w-xl font-claude">
-                Specializing in modern web technologies including JavaScript, React.js, Next.js, and Tailwind CSS.
-              </p>
+              <div className="overflow-hidden mb-5">
+                <motion.p 
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  transition={{ duration: 0.6, ease: [0.19, 1.0, 0.22, 1.0], delay: 0.1 }}
+                  viewport={{ once: true }}
+                  className="text-[#70706c] text-sm md:text-[15px] leading-relaxed max-w-xl font-claude"
+                >
+                  Specializing in modern web technologies including JavaScript, React.js, Next.js, and Tailwind CSS.
+                </motion.p>
+              </div>
 
-              <p className="text-[#70706c] text-sm md:text-[15px] leading-relaxed mb-8 max-w-xl font-claude">
-                Driven by a passion for crafting elegant user interfaces, robust architectures, and building things that actually get used.
-              </p>
+              <div className="overflow-hidden mb-8">
+                <motion.p 
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: 0 }}
+                  transition={{ duration: 0.6, ease: [0.19, 1.0, 0.22, 1.0], delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-[#70706c] text-sm md:text-[15px] leading-relaxed max-w-xl font-claude"
+                >
+                  Driven by a passion for crafting elegant user interfaces, robust architectures, and building things that actually get used.
+                </motion.p>
+              </div>
 
-              <a 
-                href="/bharathresume.pdf" 
-                download="bharathresume.pdf" 
-                className="group flex items-center gap-2.5 px-6 py-3 bg-[#121212] hover:bg-[#222222] border border-transparent rounded-full text-white text-[13px] md:text-sm transition-all duration-300 font-claude"
-              >
-                <svg className="w-4 h-4 text-white/80 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                Download Resume
-              </a>
+              <MagneticButton strength={20}>
+                <a 
+                  href="/bharathresume.pdf" 
+                  download="bharathresume.pdf" 
+                  className="group flex items-center gap-2.5 px-6 py-3 bg-[#121212] hover:bg-[#222222] border border-transparent rounded-full text-white text-[13px] md:text-sm transition-all duration-300 font-claude"
+                >
+                  <svg className="w-4 h-4 text-white/80 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4-4m0 0l-4-4m4 4V4" /></svg>
+                  Download Resume
+                </a>
+              </MagneticButton>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

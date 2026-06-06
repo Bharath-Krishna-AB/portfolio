@@ -1,9 +1,19 @@
 "use client";
 
+import { useRef } from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import TextReveal from "./ui/TextReveal";
 import { projects } from "../data/portfolio";
 import ProjectCard from "./ProjectCard";
 import { ExternalLink } from "lucide-react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Projects() {
   const router = useRouter();
@@ -21,27 +31,60 @@ export default function Projects() {
       headerBg: "bg-gradient-to-r from-[#fdf5f2] via-[#fbeee9] to-[#f0eee4]",
       addressBorder: "border-secondary/15 text-secondary",
       shadowGlow: "shadow-[0_20px_50px_rgba(193,95,60,0.045)] hover:shadow-[0_30px_70px_rgba(193,95,60,0.08)]",
+      shadowGlow: "shadow-[0_20px_50px_rgba(193,95,60,0.045)] hover:shadow-[0_30px_70px_rgba(193,95,60,0.08)]",
     }
   ];
 
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(".project-header",
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 80%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+      }
+    );
+
+    gsap.fromTo(".project-item",
+      { opacity: 0, y: 60 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
+      }
+    );
+  }, { scope: container });
+
   return (
     <section
+      ref={container}
       id="work"
       className="w-full relative bg-[#f9f8f4] py-24 overflow-hidden"
     >
       <div className="w-full flex flex-col gap-10 md:gap-12">
         {/* Section Header */}
-        <div className="w-full max-w-5xl mx-auto px-6 text-left flex items-end justify-between shrink-0">
+        <div className="project-header w-full max-w-5xl mx-auto px-6 text-left flex items-end justify-between shrink-0">
           <div>
             <span className="section-label">
               <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
               Work
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude">
-              Selected{" "}
-              <span className="font-instrument font-normal text-secondary italic tracking-normal">
-                work.
-              </span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+              <TextReveal text="Selected " />
+              <TextReveal text="work." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
             </h2>
           </div>
         </div>
@@ -49,13 +92,15 @@ export default function Projects() {
         {/* 3-Column Grid Cards Deck */}
         <div className="w-full max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {selectedProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <div key={project.id} className="project-item h-full">
+              <ProjectCard project={project} index={index} />
+            </div>
           ))}
 
           {/* View All Projects Card */}
           <div
             onClick={() => router.push("/works")}
-            className="w-full h-full min-h-[450px] md:min-h-[480px] rounded-[2rem] md:rounded-[2.5rem] bg-[#edeae0]/40 border border-dashed border-black/15 flex flex-col items-center justify-center p-8 text-center gap-4 hover:bg-[#edeae0]/70 transition-colors duration-300 select-none cursor-pointer group shadow-sm md:col-span-2 lg:col-span-1"
+            className="project-item w-full h-full min-h-[450px] md:min-h-[480px] rounded-[2rem] md:rounded-[2.5rem] bg-[#edeae0]/40 border border-dashed border-black/15 flex flex-col items-center justify-center p-8 text-center gap-4 hover:bg-[#edeae0]/70 transition-colors duration-300 select-none cursor-pointer group shadow-sm md:col-span-2 lg:col-span-1"
           >
             <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-black/5 shadow-sm relative overflow-hidden group-hover:scale-110 transition-transform duration-300">
               {/* Active Arrow */}

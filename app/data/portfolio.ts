@@ -180,88 +180,88 @@ export const projects: Project[] = [
 
 export const experience: ExperienceItem[] = [
   {
-    role: "Co-Founder & Web Developer",
-    company: "Aevon Digital Studio",
-    type: "Freelance Studio",
-    period: "Feb 2024 – Present"
+    role: "Campus Lead",
+    company: "Mulearn",
+    type: "Community Leadership",
+    period: "Feb 2026 – Present"
   },
   {
     role: "Freelance Web Developer",
-    company: "Self-employed",
-    type: "",
-    period: "2021 – Present"
+    company: "Self-Employed",
+    type: "Freelance",
+    period: "Jan 2025 – Present"
   }
 ];
 
 export const education: EducationItem[] = [
   {
-    degree: "BTech in Computer Science and Engineering",
+    degree: "B.Tech in Computer Science and Engineering",
     institution: "Christ College of Engineering, Irinjalakuda",
-    period: "2024 – 2028",
+    period: "2025 – 2029",
     status: "Pursuing"
   },
   {
-    degree: "Higher Secondary Education",
-    institution: "Kerala State Board",
-    period: "2022 – 2024",
+    degree: "Higher Secondary Education (Class XII)",
+    institution: "Bharath Vidya Mandir Valapad",
+    period: "Jun 2024 – Mar 2025",
     status: "Completed"
   }
 ];
 
 export const achievements: AchievementItem[] = [
   {
-    label: "Co-Founded Aevon, an elite Digital Craftsmanship Studio in Thrissur, Kerala",
+    label: "1st Place – Webathon 2025 (Talrop & Christ College of Engineering) out of 19 teams",
     highlight: true
   },
   {
-    label: "Designed and deployed custom platforms for CCE Innovation Hub (IEDC)",
+    label: "First Prize – EVOLVE 2.0 Innovation Challenge with AGRUS (AI-driven agritech platform)",
     highlight: true
   },
   {
-    label: "Built multiple AI and open-source applications (Resume IQ, StudyHive)",
+    label: "Completed freelance projects worth ₹40,000+ independently managing development and deployment",
     highlight: true
   },
   {
-    label: "Active member of Christ College Tech & Innovation clusters",
+    label: "Organized and led student learning initiatives and workshops as Campus Lead for Mulearn",
     highlight: false
   }
 ];
 
 export const services: ServiceItem[] = [
   {
-    title: "Full-Stack Web Development",
-    description: "Designing end-to-end web applications with modern tech stacks like MERN and Next.js."
+    title: "Custom Web Development",
+    description: "Delivering responsive websites tailored for businesses, ensuring modern UI/UX and scalable architecture."
   },
   {
     title: "Frontend Engineering",
-    description: "Developing pixel-perfect React & Next.js interfaces with rich micro-animations using Framer Motion."
+    description: "Building highly interactive web applications using React.js, Next.js, and complex GSAP animations."
   },
   {
-    title: "AI Integration & RAG",
-    description: "Implementing generative AI capabilities and RAG applications using LangChain."
+    title: "Freelance Consulting",
+    description: "Working directly with clients to translate business requirements into professional web solutions."
   },
   {
-    title: "Rapid Prototyping",
-    description: "Creating quick iterations and proof-of-concept builds for startups and hackathons."
+    title: "Performance Optimization",
+    description: "Enhancing digital platforms for lightning-fast speeds and strict technical SEO adherence."
   }
 ];
 
 export const faqs: FAQItem[] = [
   {
-    question: "What kind of roles are you open to?",
-    answer: "I'm open to full-stack web development, frontend engineering, or building AI-integrated products (RAG/LangChain) for freelance, contract, or startups."
+    question: "What technologies do you specialize in?",
+    answer: "I specialize in JavaScript, TypeScript, Next.js, React.js, and Tailwind CSS. I also have experience with Supabase, Firebase, GSAP, and Python."
   },
   {
-    question: "What tech stack do you prefer?",
-    answer: "I primarily work with JavaScript, React.js, Next.js, Node.js, and Tailwind CSS. I'm also actively building AI integrations and RAG applications using LangChain."
+    question: "Are you available for freelance projects?",
+    answer: "Yes, I am actively taking on freelance web development projects. I recently completed projects worth ₹40,000+ for an import-export company and a digital marketing agency."
   },
   {
-    question: "Do you work remotely?",
-    answer: "Yes, I work remotely and have experience running a freelance studio. I'm flexible with async workflows and communication tools."
+    question: "What is your approach to building websites?",
+    answer: "I focus on a scalable frontend architecture, modern UI/UX, and performance optimization. My goal is to translate business needs into robust, user-friendly digital experiences."
   },
   {
-    question: "How can someone contact you?",
-    answer: "You can reach out directly via email at bharathkrishna.ab.dev@gmail.com or call me at +91 88487 49033. You can also connect with me on LinkedIn or GitHub."
+    question: "How can I get in touch with you?",
+    answer: "You can email me at bharathkrishna.ab.dev@gmail.com, or reach out by phone at +91 6235311216. You can also visit my personal website at bharathkrishnaab.com."
   }
 ];
 

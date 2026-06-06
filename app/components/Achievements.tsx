@@ -1,53 +1,87 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import TextReveal from "./ui/TextReveal";
 import { achievements } from "../data/portfolio";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Achievements() {
   const achievementDetails = [
     {
-      date: "2023 — Present",
-      category: "STUDIO FOUNDER",
-      description: "Co-founded and scaled Aevon Digital Studio, managing premium Next.js engineering pipelines, interactive design specs, and client acquisition."
+      date: "Oct 2025",
+      category: "HACKATHON WINNER",
+      description: "Won 1st place among 19 teams in a competitive 12-hour Webathon by leading the frontend development of a production-ready, responsive web application."
     },
     {
-      date: "2023 — 2024",
-      category: "PORTAL ARCHITECT",
-      description: "Developed and deployed full-stack event and startup management portals for Christ College of Engineering's (CCE) incubation hub."
+      date: "Oct 2025",
+      category: "INNOVATION AWARD",
+      description: "Secured 1st Prize at EVOLVE 2.0 by presenting AGRUS, an AI-driven agritech platform designed to enhance farming decisions through real-time monitoring."
     },
     {
-      date: "2022 — 2023",
-      category: "AI PRODUCT DEV",
-      description: "Engineered AI-integrated web applications like Resume IQ (ATS analysis with OpenAI RAG) and StudyHive (real-time synchronized study rooms)."
+      date: "2025 — Present",
+      category: "FREELANCE DEV",
+      description: "Delivered responsive websites for an import-export company and a digital marketing agency, successfully managing end-to-end development."
     },
     {
-      date: "2021 — 2022",
-      category: "TECH LEADERSHIP",
-      description: "Mentored fellow students and collaborated on innovation workshops, technical hackathons, and product development sprints."
+      date: "2026 — Present",
+      category: "CAMPUS LEAD",
+      description: "Organized and led student learning initiatives, workshops, and community events, mentoring students in technology and professional development."
     }
   ];
 
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(".achieve-header",
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 80%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+      }
+    );
+
+    gsap.fromTo(".achieve-item",
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+      }
+    );
+  }, { scope: container });
+
   return (
-    <section className="py-24 bg-[#f9f8f4] border-y border-black/[0.04] relative">
+    <section ref={container} className="py-24 bg-[#f9f8f4] border-y border-black/[0.04] relative">
       <div className="w-full max-w-4xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="space-y-16"
-        >
+        <div className="space-y-16">
           {/* Section Header */}
-          <div className="text-left">
+          <div className="achieve-header text-left">
             <span className="section-label">
               <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
               Achievements
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude">
-              Key{" "}
-              <span className="font-instrument font-normal text-secondary italic tracking-normal">
-                milestones.
-              </span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+              <TextReveal text="Key " />
+              <TextReveal text="milestones." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
             </h2>
           </div>
 
@@ -60,13 +94,9 @@ export default function Achievements() {
               {achievements.map((item, index) => {
                 const detail = achievementDetails[index];
                 return (
-                  <motion.div
+                  <div
                     key={item.label}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="relative pl-8 sm:pl-12 grid md:grid-cols-12 gap-4 sm:gap-6 items-start text-left group"
+                    className="achieve-item relative pl-8 sm:pl-12 grid md:grid-cols-12 gap-4 sm:gap-6 items-start text-left group"
                   >
                     {/* Glowing Node Marker */}
                     <div className="absolute left-[-4.5px] top-1.5 w-[10px] h-[10px] rounded-full bg-secondary ring-4 ring-[#f9f8f4] group-hover:scale-125 transition-transform duration-300" />
@@ -100,12 +130,12 @@ export default function Achievements() {
                         {detail.description}
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

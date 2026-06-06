@@ -1,8 +1,17 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import TextReveal from "./ui/TextReveal";
 import { skills } from "../data/portfolio";
 import { Rocket, AppWindow } from "lucide-react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Skills() {
 
@@ -10,28 +19,52 @@ export default function Skills() {
   const ai = skills[1];
   const backend = skills[2];
   const tools = skills[3];
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(".skill-header",
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 80%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+      }
+    );
+    
+    gsap.fromTo(".skill-card",
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+      }
+    );
+  }, { scope: container });
 
   return (
-    <section id="skills" className="py-24 bg-[#f9f8f4] relative overflow-hidden">
+    <section ref={container} id="skills" className="py-24 bg-[#f9f8f4] relative overflow-hidden">
       <div className="w-full max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="space-y-16"
-        >
+        <div className="space-y-16">
           {/* Section Label */}
-          <div>
+          <div className="skill-header">
             <span className="section-label">
               <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
               Skills
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left">
-              Toolbox{" "}
-              <span className="font-instrument font-normal text-secondary italic tracking-normal">
-                expertise.
-              </span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+              <TextReveal text="Toolbox " />
+              <TextReveal text="expertise." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
             </h2>
           </div>
 
@@ -39,13 +72,7 @@ export default function Skills() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-12">
             
             {/* 1. DELIVERY BANNER - Full Width (12 columns) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              className="lg:col-span-12 bg-white border border-black/[0.06] rounded-3xl p-8 lg:p-10 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col lg:flex-row items-center justify-between gap-10 overflow-hidden relative"
-            >
+            <div className="skill-card lg:col-span-12 bg-white border border-black/[0.06] rounded-3xl p-8 lg:p-10 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col lg:flex-row items-center justify-between gap-10 overflow-hidden relative">
               {/* Premium Corner Ribbon */}
               <div className="absolute -right-[36px] top-[26px] w-[150px] rotate-45 bg-gradient-to-b from-[#1f1f1f] to-[#0a0a0a] border-t border-white/20 border-b border-black text-white text-[10px] font-bold tracking-[0.2em] uppercase py-1.5 text-center shadow-[-4px_4px_15px_rgba(0,0,0,0.2)] flex justify-center items-center gap-2.5 z-20 pointer-events-none">
                 <span className="text-secondary font-medium text-[12px] opacity-90 drop-shadow-[0_0_6px_rgba(193,95,60,0.5)] mt-[-1px]">&lt;</span>
@@ -114,16 +141,10 @@ export default function Skills() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* 2. FRONTEND - 5 Columns */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true, margin: "-50px" }}
-              className="lg:col-span-5 relative overflow-hidden bg-white border border-black/[0.06] rounded-3xl p-8 lg:p-10 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col justify-start h-full group hover:border-black/[0.12] transition-colors"
-            >
+            <div className="skill-card lg:col-span-5 relative overflow-hidden bg-white border border-black/[0.06] rounded-3xl p-8 lg:p-10 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col justify-start h-full group hover:border-black/[0.12] transition-colors">
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-8 pb-5 border-b border-black/[0.08]">
                   <h3 className="text-2xl font-bold font-claude text-[#121212] tracking-tight">
@@ -142,16 +163,10 @@ export default function Skills() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* 3. BACKEND - 4 Columns */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true, margin: "-50px" }}
-              className="lg:col-span-4 relative overflow-hidden bg-white border border-black/[0.06] rounded-3xl p-8 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col justify-start h-full group hover:border-black/[0.12] transition-colors"
-            >
+            <div className="skill-card lg:col-span-4 relative overflow-hidden bg-white border border-black/[0.06] rounded-3xl p-8 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col justify-start h-full group hover:border-black/[0.12] transition-colors">
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-8 pb-5 border-b border-black/[0.08]">
                   <h3 className="text-2xl font-bold font-claude text-[#121212] tracking-tight">
@@ -170,16 +185,10 @@ export default function Skills() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* 4. TOOLS - 3 Columns */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true, margin: "-50px" }}
-              className="lg:col-span-3 relative overflow-hidden bg-[#121212] text-white border border-black/[0.06] rounded-3xl p-8 shadow-[0_4px_20px_rgba(18,18,18,0.08)] flex flex-col justify-start h-full group"
-            >
+            <div className="skill-card lg:col-span-3 relative overflow-hidden bg-[#121212] text-white border border-black/[0.06] rounded-3xl p-8 shadow-[0_4px_20px_rgba(18,18,18,0.08)] flex flex-col justify-start h-full group">
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-8 pb-5 border-b border-white/10">
                   <h3 className="text-xl font-bold font-claude text-white tracking-tight">
@@ -198,10 +207,10 @@ export default function Skills() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
