@@ -1,9 +1,86 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { projects } from "../data/portfolio";
-import ProjectCard from "../components/ProjectCard";
+
+function ProjectRow({ project, index }: { project: any, index: number }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const yImage = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  
+  // Stagger left/right
+  const isEven = index % 2 === 0;
+
+  return (
+    <div ref={ref} className="w-full relative py-16 md:py-24 flex flex-col justify-center border-b border-black/[0.04] group">
+      <Link href={`/work/${project.id}`} className="block max-w-[1400px] mx-auto w-full px-6 relative z-10">
+        
+        <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-20`}>
+          
+          {/* Cinematic Image Container with Parallax */}
+          <div className="w-full md:w-[55%] overflow-hidden bg-black/5 rounded-2xl md:rounded-[2rem] aspect-[4/3] md:aspect-[16/10] relative">
+            <motion.div style={{ y: yImage }} className="absolute inset-[-15%] w-[130%] h-[130%]">
+              <img 
+                src={project.image} 
+                alt={project.name}
+                className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)]"
+              />
+            </motion.div>
+            
+            {/* Hover Magnetic-style Cursor Button */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#121212] text-white w-24 h-24 rounded-full flex items-center justify-center scale-0 group-hover:scale-100 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] z-20 shadow-2xl">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-bold">View</span>
+            </div>
+            
+            {/* Subtle Overlay */}
+            <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          </div>
+
+          {/* Massive Typography */}
+          <div className="w-full md:w-[45%] flex flex-col">
+            <div className="flex items-center gap-4 mb-6 md:mb-8">
+              <span className="font-mono text-secondary text-xs sm:text-sm tracking-[0.2em] font-semibold">
+                {(index + 1).toString().padStart(2, '0')}
+              </span>
+              <span className="w-8 h-[1px] bg-black/20" />
+              <span className="font-mono text-[#70706c] text-[10px] sm:text-xs uppercase tracking-[0.2em]">
+                {project.category}
+              </span>
+            </div>
+            
+            <h2 className="text-4xl sm:text-6xl md:text-[5vw] leading-[0.9] font-claude tracking-tighter mb-6 md:mb-8 group-hover:text-secondary transition-colors duration-500">
+              {project.name}
+            </h2>
+            
+            <p className="text-[#555] text-sm md:text-base leading-relaxed max-w-md font-sans">
+              {project.tagline}
+            </p>
+            
+            <div className="mt-8 md:mt-10 flex flex-wrap gap-2">
+              {project.stack.slice(0, 3).map((tech: string) => (
+                <span key={tech} className="text-[9px] sm:text-[10px] uppercase tracking-wider font-mono px-3.5 py-1.5 border border-black/10 rounded-full text-[#70706c] bg-black/[0.02]">
+                  {tech}
+                </span>
+              ))}
+              {project.stack.length > 3 && (
+                <span className="text-[9px] sm:text-[10px] uppercase tracking-wider font-mono px-3.5 py-1.5 border border-black/10 rounded-full text-[#70706c] bg-black/[0.02]">
+                  +{project.stack.length - 3}
+                </span>
+              )}
+            </div>
+          </div>
+
+        </div>
+      </Link>
+    </div>
+  )
+}
 
 export default function ProjectsArchive() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -28,29 +105,38 @@ export default function ProjectsArchive() {
   }, [selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-[#f9f8f4] text-[#121212] font-claude selection:bg-clay-light selection:text-clay-accent pb-32">
-      {/* Massive Editorial Header */}
-      <div className="pt-24 pb-12 px-6 max-w-5xl mx-auto">
+    <div className="min-h-screen bg-[#f9f8f4] text-[#121212] font-claude selection:bg-[#121212] selection:text-white pb-32">
+      {/* Immersive Header */}
+      <div className="pt-32 pb-16 px-6 max-w-[1400px] mx-auto relative z-10">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-[#70706c] hover:text-[#121212] transition-colors mb-10 group"
+          className="inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-[#70706c] hover:text-[#121212] transition-colors mb-12 group"
         >
           <span className="w-6 h-[1px] bg-current group-hover:-translate-x-2 transition-transform duration-300" />
           Back to Portfolio
         </Link>
-        <h1 className="text-[5.5rem] sm:text-[10vw] lg:text-[8vw] leading-[0.85] font-claude tracking-tighter text-[#121212] mb-6">
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-[4.5rem] sm:text-[10vw] lg:text-[12vw] leading-[0.8] font-claude tracking-tighter text-[#121212] mb-8"
+        >
           Work<span className="text-secondary">.</span>
-        </h1>
-        <p className="text-base sm:text-lg text-[#70706c] max-w-2xl leading-relaxed font-medium">
-          A comprehensive collection of software architectures, digital products, and experimental interfaces I've built.
-        </p>
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+          className="text-sm sm:text-base md:text-lg text-[#555] max-w-xl leading-relaxed font-sans"
+        >
+          An archive of premium digital experiences, robust architectures, and forward-thinking interfaces.
+        </motion.p>
       </div>
 
-      {/* Professional Filter Console */}
-      <div className="sticky top-0 z-40 bg-[#f9f8f4]/95 backdrop-blur-3xl border-b border-black/[0.08] mb-12">
-        <div className="max-w-5xl mx-auto px-6 py-5 md:py-6">
-          {/* Categories */}
-          <div className="flex items-center gap-6 md:gap-8 overflow-x-auto no-scrollbar shrink-0">
+      {/* Floating Filter Console */}
+      <div className="sticky top-0 z-40 bg-[#f9f8f4]/80 backdrop-blur-2xl border-y border-black/[0.04] mb-12">
+        <div className="max-w-[1400px] mx-auto px-6 py-4">
+          <div className="flex items-center gap-6 md:gap-10 overflow-x-auto no-scrollbar shrink-0">
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -74,31 +160,24 @@ export default function ProjectsArchive() {
         </div>
       </div>
 
-      {/* Projects Grid */}
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </div>
+      {/* Cinematic Staggered Projects List */}
+      <div className="w-full">
+        {filteredProjects.map((project, index) => (
+          <ProjectRow key={project.id} project={project} index={index} />
+        ))}
 
         {/* Empty State */}
         {filteredProjects.length === 0 && (
-          <div className="w-full py-32 flex flex-col items-center justify-center text-center">
-            <div className="w-16 h-16 rounded-full bg-black/5 flex items-center justify-center mb-6">
-              <svg className="w-6 h-6 text-[#70706c]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            <h3 className="text-2xl font-bold font-claude text-[#121212] mb-2">No projects found</h3>
-            <p className="text-[#70706c] font-mono text-xs uppercase tracking-wider mb-8 max-w-sm">
-              We couldn't find any projects in this category.
+          <div className="w-full py-32 flex flex-col items-center justify-center text-center px-6">
+            <h3 className="text-3xl font-bold font-claude text-[#121212] mb-2">No projects found</h3>
+            <p className="text-[#70706c] font-mono text-[10px] uppercase tracking-widest mb-8">
+              Adjust your filters to see more work.
             </p>
             <button
               onClick={() => setSelectedCategory("all")}
-              className="px-6 py-3 bg-[#121212] hover:bg-secondary text-white rounded-full font-bold text-[10px] font-mono uppercase tracking-widest shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="px-6 py-3 bg-[#121212] hover:bg-secondary text-white rounded-full font-bold text-[10px] font-mono uppercase tracking-widest transition-all"
             >
-              View All Works
+              Reset Filters
             </button>
           </div>
         )}

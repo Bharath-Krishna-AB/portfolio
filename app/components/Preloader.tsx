@@ -52,12 +52,12 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           initial={{ y: "0%" }}
           exit={{ y: "-100%" }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[9999] bg-[#121212] flex items-center justify-center"
+          className="fixed inset-0 z-[9999] bg-[#f9f8f4] flex items-center justify-center"
         >
           <motion.h1 
             exit={{ scale: 0.8, opacity: 0, y: -20 }}
             transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="text-3xl sm:text-4xl md:text-5xl font-claude tracking-tight text-[#f9f8f4] select-none font-medium"
+            className="text-3xl sm:text-4xl md:text-5xl font-claude tracking-tight text-[#121212] select-none font-medium"
           >
             <span>{text}</span>
             {showCursor && (
