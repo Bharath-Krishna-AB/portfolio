@@ -120,10 +120,10 @@ export default function Hero({ introComplete = true }: HeroProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 30 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4 sm:px-0"
         >
           {/* Primary CTA */}
-          <MagneticButton strength={20}>
+          <MagneticButton strength={20} className="w-full sm:w-auto">
             <a
               href="mailto:bharathkrishna.ab.dev@gmail.com"
               className="group relative flex items-center justify-between sm:justify-start gap-4 px-6 py-3 w-full sm:w-auto bg-[#121212] text-white rounded-full font-semibold text-sm sm:text-base hover:scale-105 hover:bg-[#222] transition-all duration-300 shadow-xl shadow-black/10 cursor-pointer"
@@ -163,7 +163,7 @@ export default function Hero({ introComplete = true }: HeroProps) {
           </MagneticButton>
 
           {/* Secondary CTA */}
-          <MagneticButton strength={15}>
+          <MagneticButton strength={15} className="w-full sm:w-auto">
             <a
               href="#work"
               className="group relative flex items-center justify-between sm:justify-center gap-4 px-6 py-3 w-full sm:w-auto bg-white text-[#121212] rounded-full font-semibold text-sm sm:text-base border border-black/10 hover:border-black/20 hover:bg-[#fcfcfc] hover:scale-105 transition-all duration-300 shadow-sm cursor-pointer"

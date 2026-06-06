@@ -89,9 +89,9 @@ export default function Skills() {
                 </p>
               </div>
 
-              <div className="w-full lg:w-2/3 flex items-center justify-center relative py-4 lg:py-0">
+              <div className="w-full lg:w-2/3 flex items-center justify-center relative py-8 lg:py-0 mt-4 lg:mt-0">
                 {/* Connecting Line Track */}
-                <div className="absolute left-[10%] right-[10%] top-1/2 -translate-y-1/2 h-[2px] bg-black/[0.06] z-0 overflow-hidden rounded-full">
+                <div className="absolute left-[5%] right-[5%] sm:left-[10%] sm:right-[10%] top-1/2 -translate-y-1/2 h-[2px] bg-black/[0.06] z-0 overflow-hidden rounded-full">
                   {/* Ray of Light Animation */}
                   <motion.div 
                     className="absolute top-0 bottom-0 w-[150px] bg-gradient-to-r from-transparent via-secondary to-transparent"
@@ -106,8 +106,8 @@ export default function Skills() {
                   />
                 </div>
 
-                {/* Middle Badge */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#121212] text-[#f5f5f5] border border-white/10 text-[9px] font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full z-10 whitespace-nowrap shadow-2xl flex items-center gap-2">
+                {/* Middle Badge - Full text on sm+ */}
+                <div className="hidden sm:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#121212] text-[#f5f5f5] border border-white/10 text-[9px] font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full z-10 whitespace-nowrap shadow-2xl items-center gap-2">
                   <div className="relative flex h-1.5 w-1.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-secondary shadow-[0_0_8px_rgba(193,95,60,0.6)]"></span>
@@ -119,23 +119,31 @@ export default function Skills() {
                   </div>
                 </div>
 
-                <div className="flex w-full justify-between items-center relative z-10 px-2 sm:px-10 max-w-xl mx-auto">
+                {/* Middle Badge - Dot only on mobile */}
+                <div className="flex sm:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#121212] border border-white/10 px-2.5 py-2.5 rounded-full z-10 shadow-2xl items-center justify-center">
+                  <div className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary shadow-[0_0_8px_rgba(193,95,60,0.6)]"></span>
+                  </div>
+                </div>
+
+                <div className="flex w-full justify-between items-center relative z-10 px-0 sm:px-10 max-w-xl mx-auto">
                   {/* Left: Developer */}
-                  <div className="bg-white border border-black/[0.08] shadow-lg rounded-[20px] p-5 flex flex-col items-center gap-4 w-[110px] sm:w-[130px]">
-                     <div className="w-14 h-14 bg-[#121212] rounded-full flex items-center justify-center text-white shrink-0">
-                       <AppWindow size={22} strokeWidth={1.5} />
+                  <div className="bg-white border border-black/[0.08] shadow-lg rounded-[16px] sm:rounded-[20px] p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-4 w-[95px] sm:w-[130px] shrink-0">
+                     <div className="w-10 h-10 sm:w-14 sm:h-14 bg-[#121212] rounded-full flex items-center justify-center text-white shrink-0">
+                       <AppWindow className="w-5 h-5 sm:w-[22px] sm:h-[22px]" strokeWidth={1.5} />
                      </div>
-                     <div className="bg-[#f3f2eb] text-[#121212] text-xs font-semibold px-3 py-1.5 rounded-lg w-full text-center">
+                     <div className="bg-[#f3f2eb] text-[#121212] text-[10px] sm:text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg w-full text-center truncate">
                        Codebase
                      </div>
                   </div>
 
                   {/* Right: Client/Product */}
-                  <div className="bg-[#121212] shadow-2xl rounded-[20px] p-5 flex flex-col items-center gap-4 w-[110px] sm:w-[130px]">
-                     <div className="w-14 h-14 bg-secondary rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(193,95,60,0.4)] shrink-0">
-                       <Rocket size={22} strokeWidth={1.5} />
+                  <div className="bg-[#121212] shadow-2xl rounded-[16px] sm:rounded-[20px] p-3 sm:p-5 flex flex-col items-center gap-3 sm:gap-4 w-[95px] sm:w-[130px] shrink-0">
+                     <div className="w-10 h-10 sm:w-14 sm:h-14 bg-secondary rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(193,95,60,0.4)] shrink-0">
+                       <Rocket className="w-5 h-5 sm:w-[22px] sm:h-[22px]" strokeWidth={1.5} />
                      </div>
-                     <div className="bg-white/10 text-white text-[11px] sm:text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg w-full text-center whitespace-nowrap border border-white/5">
+                     <div className="bg-white/10 text-white text-[10px] sm:text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg w-full text-center truncate border border-white/5">
                        Product <span className="text-secondary">Live</span>
                      </div>
                   </div>

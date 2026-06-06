@@ -58,7 +58,7 @@ export default function About() {
         <div className="w-full max-w-[54rem] mx-auto">
           <div className="about-card bg-white border border-black/[0.04] rounded-[2rem] p-8 md:p-10 lg:p-12 flex flex-col md:flex-row gap-8 md:gap-12 items-start shadow-[0_8px_30px_rgba(18,18,18,0.02)]">
             {/* Left: Avatar */}
-            <div className="shrink-0 about-avatar">
+            <div className="shrink-0 about-avatar mx-auto md:mx-0">
               <div className="w-32 h-32 md:w-40 md:h-40 rounded-[2rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 border border-black/5 bg-[#f3f2eb]">
                 <img 
                   src="https://github.com/Bharath-Krishna-AB.png" 
@@ -99,11 +99,11 @@ export default function About() {
                 </motion.p>
               </div>
 
-              <MagneticButton strength={20}>
+              <MagneticButton strength={20} className="w-full sm:w-auto mt-2">
                 <a 
                   href="/bharathresume.pdf" 
                   download="bharathresume.pdf" 
-                  className="group flex items-center gap-2.5 px-6 py-3 bg-[#121212] hover:bg-[#222222] border border-transparent rounded-full text-white text-[13px] md:text-sm transition-all duration-300 font-claude"
+                  className="group flex items-center justify-center gap-2.5 px-6 py-3.5 bg-[#121212] hover:bg-[#222222] border border-transparent rounded-full text-white text-[13px] md:text-sm transition-all duration-300 font-claude w-full sm:w-auto"
                 >
                   <svg className="w-4 h-4 text-white/80 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4-4m0 0l-4-4m4 4V4" /></svg>
                   Download Resume

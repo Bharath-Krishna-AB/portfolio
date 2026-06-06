@@ -399,7 +399,7 @@ export default function Activity() {
             </div>
 
             {/* Premium segmented control */}
-            <div className="flex bg-[#f3f2eb] p-1.5 rounded-full border border-black/5 gap-1 relative w-full md:w-auto shrink-0 self-start md:self-end">
+            <div className="flex overflow-x-auto no-scrollbar bg-[#f3f2eb] p-1.5 rounded-full border border-black/5 gap-1 relative w-full md:w-auto shrink-0 self-start md:self-end">
               {tabs.map((tab) => {
                 const isActive = activeTab === tab.id;
                 return (

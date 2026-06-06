@@ -175,8 +175,8 @@ export default function Footer() {
       </div>
 
       {/* Floating Bottom Glass Navigation Capsule */}
-      <nav className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-auto max-w-md sm:max-w-none">
-        <div className="liquid-glass flex items-center justify-between sm:justify-center gap-0.5 sm:gap-1 px-2.5 py-2 rounded-full">
+      <nav className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] sm:w-auto max-w-md sm:max-w-none">
+        <div className="liquid-glass flex items-center justify-start sm:justify-center gap-0.5 sm:gap-1 px-2.5 py-2 rounded-full overflow-x-auto no-scrollbar">
           {/* Navigation Links */}
           {[
             { label: "Home", href: "#home" },

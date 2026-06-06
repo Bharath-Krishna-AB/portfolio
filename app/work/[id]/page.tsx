@@ -74,7 +74,7 @@ export default function ProjectDetailsPage({
 
       {/* Brutalist Split-Pane Layout */}
       <div className="max-w-[1400px] mx-auto px-6 mt-16 md:mt-24">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.5fr] gap-16 lg:gap-32 items-start">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_2.5fr] gap-16 lg:gap-32 items-start">
           
           {/* LEFT PANE: Sticky Metadata Table */}
           <div className="lg:sticky lg:top-32 w-full flex flex-col font-mono uppercase tracking-widest text-[10px] md:text-xs text-[#121212]">
