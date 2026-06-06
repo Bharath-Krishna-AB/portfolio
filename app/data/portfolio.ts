@@ -64,171 +64,116 @@ export const projects: Project[] = [
   {
     id: "pikkcom",
     name: "PIKKCOM",
-    tagline: "Blending Data, Media & Tech for Enhanced Storytelling.",
-    description: "Data-driven product campaign and analytics platform for high-volume catalogs.",
+    tagline: "Corporate Website & Digital Brand Platform.",
+    description: "A responsive business website built with modern UI/UX principles, a scalable frontend architecture, and robust performance optimization.",
     category: "client",
-    type: "Data Storytelling & Web Development",
-    role: "Full-Stack Web Developer",
-    timeline: "Feb 2024 - Present",
-    stack: ["React", "Next.js", "Framer Motion", "Tailwind CSS", "Node.js"],
+    type: "Corporate Web Development",
+    role: "Frontend Engineer",
+    timeline: "2024",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Framer Motion"],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
-    images: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600",
-      "https://images.unsplash.com/photo-1504868584819-f8e905b6dc79?auto=format&fit=crop&q=80&w=1600"
-    ],
-    problem: "Brands with large product catalogs struggle to identify customer intent in real-time, resulting in generic campaigns that fail to engage and convert catalog viewers.",
-    solution: "Developed PIKKCOM, a platform combining intent analysis with dynamic media generation to turn raw analytics into high-performing, catalog-specific product campaigns.",
+    images: ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600"],
+    problem: "The client needed a highly scalable and interactive digital presence that aligned with their brand identity while maintaining lightning-fast performance.",
+    solution: "Architected a custom digital platform using Next.js and TypeScript, integrating fluid GSAP and Framer Motion animations to elevate the user experience.",
     keyFeatures: [
-      "Real-time intent analysis dashboard.",
-      "Dynamic media generation for product campaigns.",
-      "High-performance Next.js architecture."
+      "Custom GSAP & Framer Motion animations",
+      "Scalable Next.js frontend architecture",
+      "High-performance asset optimization"
     ],
-    impact: "Blended data-driven catalog insights with studio-grade storytelling to boost client user conversion rates.",
     links: {
-      live: "https://www.pikkcom.in"
+      live: "https://www.pikkcom.in/"
     }
   },
   {
-    id: "iedc-cce",
-    name: "IEDC CCE Portal",
-    tagline: "Empowering Innovation & Entrepreneurship.",
-    description: "Official incubation and startup management platform for Christ College of Engineering.",
+    id: "titan-global",
+    name: "Titan Global Ventures",
+    tagline: "Corporate Business Website Development.",
+    description: "A responsive corporate website for a global business firm, designed to deliver a user-friendly digital experience and optimized for SEO.",
     category: "client",
-    type: "Full-Stack Portal",
+    type: "Corporate Web Development",
+    role: "Web Developer",
+    timeline: "2024",
+    stack: ["HTML5", "CSS3", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200",
+    images: ["https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600"],
+    problem: "A global firm needed a professional digital footprint that loads quickly and ranks well in search engines to attract international clients.",
+    solution: "Developed a lightweight, highly optimized corporate website focusing on modern UI/UX and strict adherence to technical SEO best practices.",
+    keyFeatures: [
+      "SEO-optimized markup structure",
+      "Cross-device responsive design",
+      "Lightning-fast static performance"
+    ],
+    links: {
+      live: "https://titanglobalventures.com/"
+    }
+  },
+  {
+    id: "blog-app",
+    name: "Full-Stack Blog",
+    tagline: "Dynamic Publishing Platform.",
+    description: "A full-stack blog application engineered with Next.js, featuring dynamic routing and reusable UI components.",
+    category: "personal",
+    type: "Full-Stack Web Application",
     role: "Full-Stack Developer",
-    timeline: "Ongoing",
-    stack: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=1200",
-    images: ["https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1600"],
-    problem: "Fostering entrepreneurship and managing student startup ideas manually at CCE was inefficient, lacking event schedules and verified mentor networks.",
-    solution: "Built the official CCE IEDC incubation portal to manage events, register student startups, and connect student founders with a mentor network.",
+    timeline: "2024",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=1200",
+    images: ["https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&q=80&w=1600"],
+    problem: "Content platforms often struggle with sluggish load times and poor developer experience when managing dynamic routes.",
+    solution: "Built a robust publishing platform utilizing Next.js Server-Side Rendering (SSR) and dynamic routing for instant content delivery.",
     keyFeatures: [
-      "Incubation portal for student startups",
-      "Comprehensive event management system",
-      "Mentor network directory"
+      "Dynamic Next.js routing",
+      "Modular, reusable component architecture",
+      "Seamless CI/CD deployment via Vercel"
     ],
-    impact: "Established a unified innovation hub for CCE students to submit startup ideas and coordinate weekly entrepreneurship meetups.",
     links: {
-      live: "https://iedc-cce.vercel.app"
+      live: "https://blog-application-wine-six.vercel.app/"
     }
   },
   {
-    id: "resume-iq",
-    name: "Resume IQ",
-    tagline: "AI-Powered Career Optimization.",
-    description: "AI platform analyzing resumes against job descriptions to pass ATS checks.",
-    category: "hackathon",
-    type: "AI Product Engineering",
-    role: "Lead Developer",
-    timeline: "Dec 2023",
-    stack: ["Next.js", "OpenAI API", "Shadcn UI", "Tailwind CSS", "TypeScript"],
-    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1200",
-    images: [
-      "https://images.unsplash.com/photo-1454165833767-02654d578203?auto=format&fit=crop&q=80&w=1600"
-    ],
-    problem: "Job seekers struggle to optimize their resumes for Applicant Tracking Systems (ATS), leading to automatic rejections due to formatting and keyword mismatch.",
-    solution: "Engineered Resume IQ, an AI career optimization tool that analyzes resumes against job descriptions, suggesting real-time fixes and improving ATS scores.",
+    id: "splyt-clone",
+    name: "SPLYT Design",
+    tagline: "Interactive GSAP Animation Experience.",
+    description: "An immersive landing page clone leveraging advanced GSAP and scroll-triggered effects for a premium web experience.",
+    category: "personal",
+    type: "Frontend Motion Design",
+    role: "Frontend Engineer",
+    timeline: "2024",
+    stack: ["Vite", "GSAP", "JavaScript", "Tailwind CSS"],
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200",
+    images: ["https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1600"],
+    problem: "Traditional static landing pages fail to captivate users and communicate the dynamic energy of modern brands.",
+    solution: "Engineered a highly interactive web experience, mastering scroll-triggered GSAP animations to create a fluid, engaging user journey.",
     keyFeatures: [
-      "Intelligent ATS matching score calculation",
-      "Real-time suggestion engine for keyword alignment",
-      "Export to PDF/DOCX format"
+      "Advanced scroll-triggered GSAP animations",
+      "Vite-powered lightning-fast build",
+      "Responsive interactive layout"
     ],
     links: {
-      live: "https://resume-iq.vercel.app"
+      live: "https://splyt-design-gsap-mastering.vercel.app/"
     }
   },
   {
-    id: "studyhive",
-    name: "StudyHive",
-    tagline: "The Study Room Where AI Joins the Squad.",
-    description: "Collaborative student workspace featuring Bob, an AI study companion.",
-    category: "hackathon",
-    type: "AI & Collaboration Experiment",
-    role: "AI Developer / Co-Founder",
-    timeline: "Nov 2023",
-    stack: ["Next.js", "AI Integration", "Tailwind CSS", "Socket.IO"],
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200",
-    images: ["https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1600"],
-    problem: "Solo online study sessions can feel isolating for students, and traditional group study platforms lack interactive AI guidance to unblock difficult topics.",
-    solution: "Built StudyHive, a collaborative shared study room integrating Bob, an AI study assistant, directly into active work sessions.",
+    id: "salon-pos",
+    name: "Salon Management POS",
+    tagline: "Modern SaaS Dashboard Prototype.",
+    description: "A responsive dashboard prototype for salon management, streamlining appointments, billing workflows, and customer records.",
+    category: "personal",
+    type: "SaaS Dashboard Prototype",
+    role: "Frontend Developer",
+    timeline: "2024",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    image: "https://images.unsplash.com/photo-1521590832167-7bfc17484d20?auto=format&fit=crop&q=80&w=1200",
+    images: ["https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=1600"],
+    problem: "Local salons lack modern, intuitive point-of-sale (POS) and management systems, relying on clunky legacy software.",
+    solution: "Designed and developed a sleek, user-centric SaaS dashboard tailored for salon operations, emphasizing ease of use and rapid data access.",
     keyFeatures: [
-      "AI study assistant integration (Bob)",
-      "Live shared workspaces with socket connection",
-      "Resource sharing cloud drives"
+      "Appointment & scheduling management",
+      "Customer record database",
+      "Billing and analytics workflow interface"
     ],
     links: {
-      live: "https://studyhive.vercel.app"
-    }
-  },
-  {
-    id: "splyt",
-    name: "SPYLT",
-    tagline: "High-Velocity Energy. Clean Design.",
-    description: "Liquid-motion web experience for a premium energy beverage brand.",
-    category: "frontend",
-    type: "Brand Identity & Motion Design",
-    role: "Frontend Engineer / Motion Designer",
-    timeline: "Jan 2024",
-    stack: ["React", "CSS Transitions", "Framer Motion", "Tailwind CSS"],
-    image: "https://images.unsplash.com/photo-1622416011230-0196720516bd?auto=format&fit=crop&q=80&w=1200",
-    images: [
-      "https://images.unsplash.com/photo-1543258103-a62bdc069871?auto=format&fit=crop&q=80&w=1600"
-    ],
-    problem: "Nutritional energy beverage brands often rely on static websites that fail to express the physical kick and high-velocity nature of their products.",
-    solution: "Designed a liquid-motion web experience using CSS and SVG animations to bring the energy product showcase to life.",
-    keyFeatures: [
-      "Custom SVG liquid animations on scroll",
-      "Parallax product showcase layout",
-      "Mobile-first performance optimization"
-    ],
-    links: {
-      live: "https://splyt-design.vercel.app"
-    }
-  },
-  {
-    id: "farmquest",
-    name: "FarmQuest",
-    tagline: "Smart Farming for Future Generations.",
-    description: "Gamified farming experience design where users grow crops and earn rewards.",
-    category: "hackathon",
-    type: "Brand Design & UI/UX",
-    role: "UI/UX & Frontend Developer",
-    timeline: "Oct 2023",
-    stack: ["Next.js", "Framer Motion", "Tailwind CSS", "Lucide React"],
-    image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=1200",
-    images: ["https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&q=80&w=1600"],
-    problem: "Smart farming concepts are often complex for youth to learn, leading to low engagement in sustainable agricultural education.",
-    solution: "Created FarmQuest, a gamified farming experience tracking crop cycles, direct-to-consumer mock pricing, and missions.",
-    keyFeatures: [
-      "Gamified farming mechanics and missions",
-      "Real-time price tracking visualizers",
-      "Direct-to-consumer mock marketplace"
-    ],
-    links: {
-      live: "https://farmquest.vercel.app"
-    }
-  },
-  {
-    id: "bennyfit",
-    name: "BennyFit",
-    tagline: "Shatter the Limit, Own the Growth.",
-    description: "Performance fitness coaching platform utilizing custom macro trackers.",
-    category: "client",
-    type: "Elite Fitness Product Design",
-    role: "Frontend Developer / UI Designer",
-    timeline: "Sep 2023",
-    stack: ["Next.js", "Framer Motion", "Tailwind CSS"],
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200",
-    images: ["https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=1600"],
-    problem: "Elite performance athletes require macro tracking and coaching protocols that traditional flat fitness blogs cannot visually represent.",
-    solution: "Designed BennyFit, a boundaries-free coaching interface featuring visual macro calculators and dynamic progression visualizers.",
-    keyFeatures: [
-      "Custom training program engine",
-      "Progress tracking visualizer panels",
-      "Nutrition macro calculator"
-    ],
-    links: {
-      live: "https://bennyfit.vercel.app"
+      live: "https://saloonmanagement-pos-design.vercel.app/"
     }
   }
 ];
