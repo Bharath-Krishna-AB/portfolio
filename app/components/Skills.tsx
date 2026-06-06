@@ -122,7 +122,7 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true, margin: "-50px" }}
-              className="lg:col-span-5 relative overflow-hidden bg-white border border-black/[0.06] rounded-3xl p-8 lg:p-10 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col justify-between h-full group hover:border-black/[0.12] transition-colors"
+              className="lg:col-span-5 relative overflow-hidden bg-white border border-black/[0.06] rounded-3xl p-8 lg:p-10 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col justify-start h-full group hover:border-black/[0.12] transition-colors"
             >
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-8 pb-5 border-b border-black/[0.08]">
@@ -132,7 +132,7 @@ export default function Skills() {
                 </div>
               </div>
               
-              <div className="flex flex-wrap gap-2.5 mt-auto relative z-10">
+              <div className="flex flex-wrap gap-2.5 relative z-10">
                 {frontend.skills.map((skill) => (
                   <span 
                     key={skill} 
@@ -150,21 +150,21 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true, margin: "-50px" }}
-              className="lg:col-span-4 relative overflow-hidden bg-[#121212] text-white border border-black/[0.06] rounded-3xl p-8 shadow-[0_4px_20px_rgba(18,18,18,0.08)] flex flex-col justify-between h-full group"
+              className="lg:col-span-4 relative overflow-hidden bg-white border border-black/[0.06] rounded-3xl p-8 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col justify-start h-full group hover:border-black/[0.12] transition-colors"
             >
               <div className="relative z-10">
-                <div className="flex items-center justify-between mb-8 pb-5 border-b border-white/10">
-                  <h3 className="text-2xl font-bold font-claude text-white tracking-tight">
+                <div className="flex items-center justify-between mb-8 pb-5 border-b border-black/[0.08]">
+                  <h3 className="text-2xl font-bold font-claude text-[#121212] tracking-tight">
                     {backend.label}
                   </h3>
                 </div>
               </div>
               
-              <div className="flex flex-wrap gap-2 mt-auto relative z-10">
+              <div className="flex flex-wrap gap-2 relative z-10">
                 {backend.skills.map((skill) => (
                   <span 
                     key={skill} 
-                    className="text-xs px-3 py-1.5 bg-white/5 text-white/90 rounded-lg font-medium border border-white/10 group-hover:border-white/20 transition-colors"
+                    className="text-xs px-3 py-1.5 bg-[#f3f2eb]/60 text-[#70706c] rounded-lg font-medium border border-black/[0.03] group-hover:text-[#121212] transition-colors"
                   >
                     {skill}
                   </span>
@@ -178,21 +178,21 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true, margin: "-50px" }}
-              className="lg:col-span-3 relative overflow-hidden bg-white border border-black/[0.06] rounded-3xl p-8 shadow-[0_4px_20px_rgba(18,18,18,0.02)] flex flex-col justify-between h-full group hover:border-black/[0.12] transition-colors"
+              className="lg:col-span-3 relative overflow-hidden bg-[#121212] text-white border border-black/[0.06] rounded-3xl p-8 shadow-[0_4px_20px_rgba(18,18,18,0.08)] flex flex-col justify-start h-full group"
             >
               <div className="relative z-10">
-                <div className="flex items-center justify-between mb-8 pb-5 border-b border-black/[0.08]">
-                  <h3 className="text-xl font-bold font-claude text-[#121212] tracking-tight">
+                <div className="flex items-center justify-between mb-8 pb-5 border-b border-white/10">
+                  <h3 className="text-xl font-bold font-claude text-white tracking-tight">
                     {tools.label}
                   </h3>
                 </div>
               </div>
               
-              <div className="flex flex-wrap gap-2 mt-auto relative z-10">
+              <div className="flex flex-wrap gap-2 relative z-10">
                 {tools.skills.map((skill) => (
                   <span 
                     key={skill} 
-                    className="text-xs px-3 py-1.5 bg-[#f3f2eb]/60 text-[#70706c] rounded-lg font-medium border border-black/[0.03] group-hover:text-[#121212] transition-colors"
+                    className="text-xs px-3 py-1.5 bg-white/5 text-white/90 rounded-lg font-medium border border-white/10 group-hover:border-white/20 transition-colors"
                   >
                     {skill}
                   </span>
