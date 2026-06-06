@@ -52,8 +52,8 @@ export default function About() {
               </p>
 
               <a 
-                href="/resume.pdf" 
-                download="Bharath_Krishna_Resume.pdf" 
+                href="/bharathresume.pdf" 
+                download="bharathresume.pdf" 
                 className="group flex items-center gap-2.5 px-6 py-3 bg-[#121212] hover:bg-[#222222] border border-transparent rounded-full text-white text-[13px] md:text-sm transition-all duration-300 font-claude"
               >
                 <svg className="w-4 h-4 text-white/80 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
