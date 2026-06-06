@@ -54,8 +54,8 @@ export default function Projects() {
 
           {/* View All Projects Card */}
           <div
-            onClick={() => router.push("/projects")}
-            className="w-full h-full min-h-[550px] md:min-h-[580px] rounded-[2rem] md:rounded-[2.5rem] bg-[#edeae0]/40 border border-dashed border-black/15 flex flex-col items-center justify-center p-8 text-center gap-4 hover:bg-[#edeae0]/70 transition-colors duration-300 select-none cursor-pointer group shadow-sm md:col-span-2 lg:col-span-1"
+            onClick={() => router.push("/works")}
+            className="w-full h-full min-h-[450px] md:min-h-[480px] rounded-[2rem] md:rounded-[2.5rem] bg-[#edeae0]/40 border border-dashed border-black/15 flex flex-col items-center justify-center p-8 text-center gap-4 hover:bg-[#edeae0]/70 transition-colors duration-300 select-none cursor-pointer group shadow-sm md:col-span-2 lg:col-span-1"
           >
             <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-black/5 shadow-sm relative overflow-hidden group-hover:scale-110 transition-transform duration-300">
               {/* Active Arrow */}
@@ -79,9 +79,9 @@ export default function Projects() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </div>
-            <div>
-              <h3 className="font-claude font-bold text-lg text-[#121212]">View All Projects</h3>
-              <p className="text-xs text-[#70706c] mt-1">Explore the complete archive of {projects.length} works</p>
+            <div className="mt-2">
+              <h3 className="font-claude font-bold text-xl sm:text-2xl text-[#121212]">View All Projects</h3>
+              <p className="text-sm text-[#70706c] mt-2 font-medium">Explore the complete collection of {projects.length} works</p>
             </div>
           </div>
         </div>

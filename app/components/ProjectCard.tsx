@@ -47,11 +47,11 @@ export default function ProjectCard({ project, index }: { project: Project; inde
 
   return (
     <div
-      className={`w-full h-full min-h-[550px] md:min-h-[580px] rounded-[2rem] md:rounded-[2.5rem] bg-[#f0eee4] border border-black/[0.05] overflow-hidden flex flex-col justify-between select-none hover:border-black/[0.08] transition-all duration-500 ease-out group ${theme.shadowGlow}`}
+      className={`w-full h-full min-h-[450px] md:min-h-[480px] rounded-[2rem] md:rounded-[2.5rem] bg-[#f0eee4] border border-black/[0.05] overflow-hidden flex flex-col justify-between select-none hover:border-black/[0.08] transition-all duration-500 ease-out group ${theme.shadowGlow}`}
     >
       {/* Top Portion: Arc Browser Mock Frame */}
       <div
-        onClick={() => router.push(`/project/${project.id}`)}
+        onClick={() => router.push(`/work/${project.id}`)}
         className="w-full cursor-pointer flex flex-col overflow-hidden bg-black/[0.01] border-b border-black/[0.05] shrink-0"
       >
         {/* Arc Browser Header */}
@@ -103,7 +103,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           />
           {/* Glass hover details indicator */}
           <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <div className="px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full shadow-sm text-[9px] font-mono font-bold text-[#121212] tracking-wider uppercase scale-90 group-hover:scale-100 transition-all duration-300">
+            <div className="px-5 py-2.5 bg-white/95 backdrop-blur-sm rounded-full shadow-sm text-[10px] sm:text-xs font-mono font-bold text-[#121212] tracking-wider uppercase scale-90 group-hover:scale-100 transition-all duration-300">
               View Details
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         <div className="space-y-4">
           {/* Meta information tags */}
           <div className="flex items-center justify-between gap-4 select-none">
-            <span className="text-[9px] font-mono text-[#70706c]/80 font-bold tracking-[0.2em] uppercase">
+            <span className="text-[10px] font-mono text-[#70706c]/80 font-bold tracking-[0.2em] uppercase">
               {String(index + 1).padStart(2, "0")} /{" "}
               {project.category === "client"
                 ? "Client"
@@ -124,7 +124,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
                 : "Personal"}
             </span>
             {project.achievement && (
-              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-secondary flex items-center gap-1.5">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-secondary flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(193,95,60,0.6)] animate-pulse" />
                 {project.achievement.title || "Winner"}
               </span>
@@ -134,35 +134,35 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           {/* Project Name and Duration */}
           <div>
             <h3
-              onClick={() => router.push(`/project/${project.id}`)}
-              className="text-xl sm:text-2xl font-bold tracking-tight text-[#121212] group-hover:text-secondary cursor-pointer transition-colors duration-300 font-claude"
+              onClick={() => router.push(`/work/${project.id}`)}
+              className="text-2xl sm:text-3xl font-bold tracking-tight text-[#121212] group-hover:text-secondary cursor-pointer transition-colors duration-300 font-claude"
             >
               {project.name}
             </h3>
-            <p className="text-[9px] font-mono text-[#70706c]/90 mt-1 select-none font-semibold">
+            <p className="text-[10px] sm:text-xs font-mono text-[#70706c]/90 mt-1.5 select-none font-semibold">
               {project.role} • {project.timeline || "Ongoing"}
             </p>
           </div>
 
           {/* Tech stack inline text */}
           <div className="pt-1 select-none">
-            <p className="text-[10px] font-mono text-secondary font-semibold tracking-widest uppercase">
+            <p className="text-[10px] sm:text-xs font-mono text-secondary font-semibold tracking-widest uppercase">
               {project.stack.join(" • ")}
             </p>
           </div>
 
           {/* Description */}
-          <p className="text-xs text-[#70706c] leading-relaxed line-clamp-2 md:line-clamp-3">
+          <p className="text-sm md:text-[15px] text-[#70706c] leading-relaxed line-clamp-2 md:line-clamp-3">
             {project.description}
           </p>
         </div>
 
         {/* Action Pill Buttons */}
-        <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-black/[0.04] select-none shrink-0">
+        <div className="flex flex-nowrap items-center gap-2 pt-3 border-t border-black/[0.04] select-none shrink-0 overflow-x-auto no-scrollbar pb-1">
           {/* Primary pill */}
           <button
-            onClick={() => router.push(`/project/${project.id}`)}
-            className="px-4 py-2 bg-[#121212] hover:bg-secondary text-white rounded-full font-bold text-[9px] font-mono uppercase tracking-wider shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer inline-flex items-center gap-1.5 group/btn"
+            onClick={() => router.push(`/work/${project.id}`)}
+            className="px-4 py-2 bg-[#121212] hover:bg-secondary text-white rounded-full font-bold text-[10px] font-mono uppercase tracking-wider shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer inline-flex items-center gap-1.5 group/btn shrink-0"
           >
             Project Details
             <div className="w-3.5 h-3.5 relative overflow-hidden flex items-center justify-center shrink-0">
@@ -195,7 +195,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               href={project.links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-2.5 py-1.5 border border-black/10 hover:border-black/20 bg-white text-[#70706c] hover:text-[#121212] rounded-full font-bold text-[9px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm"
+              className="px-3 py-2 border border-black/10 hover:border-black/20 bg-white text-[#70706c] hover:text-[#121212] rounded-full font-bold text-[10px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm shrink-0"
             >
               Live
               <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -209,7 +209,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               href={project.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-2.5 py-1.5 border border-black/10 hover:border-black/20 bg-white text-[#70706c] hover:text-[#121212] rounded-full font-bold text-[9px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm"
+              className="px-3 py-2 border border-black/10 hover:border-black/20 bg-white text-[#70706c] hover:text-[#121212] rounded-full font-bold text-[10px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm shrink-0"
             >
               Code
               <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
