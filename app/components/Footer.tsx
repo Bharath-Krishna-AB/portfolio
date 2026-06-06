@@ -12,6 +12,12 @@ export default function Footer() {
     const isDark = localStorage.getItem("theme") === "dark";
     setIsDarkMode(isDark);
     document.documentElement.classList.toggle("dark", isDark);
+
+    const handleThemeChange = () => {
+      setIsDarkMode(localStorage.getItem("theme") === "dark");
+    };
+    window.addEventListener('theme-change', handleThemeChange);
+    return () => window.removeEventListener('theme-change', handleThemeChange);
   }, []);
 
   const toggleTheme = () => {
@@ -19,10 +25,11 @@ export default function Footer() {
     setIsDarkMode(nextDark);
     localStorage.setItem("theme", nextDark ? "dark" : "light");
     document.documentElement.classList.toggle("dark", nextDark);
+    window.dispatchEvent(new Event('theme-change'));
   };
 
   return (
-    <footer id="contact" className="relative bg-[#f9f8f4] py-16 pb-32">
+    <footer id="contact" className="relative bg-background py-16 pb-32 transition-colors duration-500">
       {/* Decorative Glow */}
       <div className="absolute bottom-[-10%] left-[20%] w-[35rem] h-[35rem] bg-clay-light/20 rounded-full glow-blur pointer-events-none" />
 
@@ -36,11 +43,11 @@ export default function Footer() {
         >
           {/* Main Footer Header */}
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-claude text-[#121212] leading-snug whitespace-nowrap flex items-baseline justify-center">
+            <h2 className="text-3xl md:text-4xl font-claude text-foreground leading-snug whitespace-nowrap flex items-baseline justify-center transition-colors duration-500">
               <TextReveal text="Let's build something " />
               <TextReveal text="meaningful." className="font-instrument font-normal text-secondary italic tracking-normal ml-1" delay={0.1} />
             </h2>
-            <p className="text-sm text-[#70706c] max-w-sm mx-auto leading-relaxed">
+            <p className="text-sm text-muted max-w-sm mx-auto leading-relaxed transition-colors duration-500">
               Have a project in mind or just want to chat? I'm always open to new opportunities.
             </p>
           </div>
@@ -50,7 +57,7 @@ export default function Footer() {
             {/* Direct Email Primary Button */}
             <a
               href="mailto:bharathkrishna.ab.dev@gmail.com"
-              className="group relative flex items-center justify-between gap-4 px-6 py-3 w-full sm:w-auto bg-[#121212] text-white rounded-full font-semibold text-sm sm:text-base hover:scale-105 hover:bg-[#222] transition-all duration-300 shadow-xl shadow-black/5 cursor-pointer"
+              className="group relative flex items-center justify-between gap-4 px-6 py-3 w-full sm:w-auto bg-foreground text-foreground-inverse rounded-full font-semibold text-sm sm:text-base hover:scale-105 transition-all duration-300 shadow-xl shadow-black/5 cursor-pointer hover:bg-secondary"
             >
               <span>Get in Touch</span>
               <div className="w-7 h-7 rounded-full bg-clay-accent flex items-center justify-center shrink-0 relative overflow-hidden">
@@ -88,11 +95,11 @@ export default function Footer() {
             {/* Direct Call Secondary Button */}
             <a
               href="tel:+916235311216"
-              className="group flex items-center justify-between gap-3 px-6 py-3 w-full sm:w-auto bg-white text-[#121212] rounded-full font-semibold text-sm sm:text-base border border-black/10 hover:bg-gray-50 hover:scale-105 transition-all duration-300 cursor-pointer"
+              className="group flex items-center justify-between gap-3 px-6 py-3 w-full sm:w-auto bg-background text-foreground rounded-full font-semibold text-sm sm:text-base border border-border hover:bg-surface hover:scale-105 transition-all duration-300 cursor-pointer"
             >
-              <div className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center group-hover:translate-y-0.5 transition-transform shrink-0">
+              <div className="w-7 h-7 rounded-full bg-surface flex items-center justify-center group-hover:translate-y-0.5 transition-transform shrink-0 border border-border">
                 <svg
-                  className="w-3.5 h-3.5 text-[#121212]"
+                  className="w-3.5 h-3.5 text-foreground"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -187,7 +194,7 @@ export default function Footer() {
             <a
               key={link.href}
               href={link.href}
-              className="flex items-center justify-center px-3 sm:px-4 py-2 text-xs sm:text-sm text-[#121212]/75 hover:text-[#121212] transition-colors duration-200 rounded-full hover:bg-black/5"
+              className="flex items-center justify-center px-3 sm:px-4 py-2 text-xs sm:text-sm text-foreground/75 hover:text-foreground transition-colors duration-200 rounded-full hover:bg-foreground/5"
             >
               {link.label}
             </a>
@@ -196,7 +203,7 @@ export default function Footer() {
           {/* Direct Email button in nav */}
           <a
             href="mailto:bharathkrishna.ab.dev@gmail.com"
-            className="flex items-center justify-center ml-1 px-4 py-2 text-xs sm:text-sm bg-[#121212] text-white rounded-full hover:opacity-90 transition-opacity duration-200 cursor-pointer"
+            className="flex items-center justify-center ml-1 px-4 py-2 text-xs sm:text-sm bg-foreground text-foreground-inverse rounded-full hover:bg-secondary transition-all duration-200 cursor-pointer"
           >
             Connect
           </a>
@@ -204,7 +211,7 @@ export default function Footer() {
           {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
-            className="p-2 ml-1 rounded-full hover:bg-black/5 text-[#121212] transition-colors duration-200 cursor-pointer"
+            className="p-2 ml-1 rounded-full hover:bg-foreground/5 text-foreground transition-colors duration-200 cursor-pointer"
             aria-label="Toggle theme"
           >
             {isDarkMode ? (

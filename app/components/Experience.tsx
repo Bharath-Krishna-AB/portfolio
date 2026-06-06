@@ -47,7 +47,7 @@ export default function Experience() {
   }, { scope: container });
 
   return (
-    <section ref={container} className="py-24 bg-[#f9f8f4] relative overflow-hidden">
+    <section ref={container} className="py-24 bg-background relative overflow-hidden transition-colors duration-500">
       <div className="w-full max-w-5xl mx-auto px-6">
         <div className="space-y-12">
           {/* Section Label */}
@@ -56,7 +56,7 @@ export default function Experience() {
               <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
               Experience
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+            <h2 className="text-3xl sm:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline transition-colors duration-500">
               <TextReveal text="Career " />
               <TextReveal text="log." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
             </h2>
@@ -65,7 +65,7 @@ export default function Experience() {
           {/* Timeline Wrapper */}
           <div className="relative space-y-6 mt-12">
             {/* Timeline line */}
-            <div className="absolute left-6 top-8 bottom-8 w-px border-l-2 border-dashed border-black/10 hidden sm:block" />
+            <div className="absolute left-6 top-8 bottom-8 w-px border-l-2 border-dashed border-foreground/10 hidden sm:block transition-colors duration-500" />
 
             {experience.map((item, index) => (
               <div
@@ -76,23 +76,23 @@ export default function Experience() {
                 <div className="absolute left-[20px] top-6 w-2.5 h-2.5 rounded-full bg-clay-accent border border-white ring-4 ring-clay-light z-10 hidden sm:block" />
 
                 {/* Card Container */}
-                <div className="soft-card p-6 sm:ml-16 bg-white hover:border-[#121212]/15 hover:shadow-[0_8px_30px_rgba(18,18,18,0.02)] transition-all text-left">
+                <div className="soft-card p-6 sm:ml-16 bg-surface hover:border-foreground/15 hover:shadow-[0_8px_30px_rgba(18,18,18,0.02)] transition-all text-left duration-500">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
-                      <span className="text-[10px] font-mono px-2.5 py-1 bg-black/5 text-[#121212] rounded-full font-bold uppercase tracking-wider">
+                      <span className="text-[10px] font-mono px-2.5 py-1 bg-foreground/5 text-foreground rounded-full font-bold uppercase tracking-wider transition-colors duration-500">
                         {item.company}
                       </span>
-                      <h3 className="text-lg font-bold text-[#121212] mt-3">
+                      <h3 className="text-lg font-bold text-foreground mt-3 transition-colors duration-500">
                         {item.role}
                       </h3>
                       {item.type && (
-                        <p className="text-xs text-[#70706c] mt-1 font-mono">
+                        <p className="text-xs text-muted mt-1 font-mono transition-colors duration-500">
                           {item.type}
                         </p>
                       )}
                     </div>
                     
-                    <span className="text-xs font-bold font-mono px-3.5 py-1.5 bg-[#f3f2eb] border border-black/5 text-[#70706c] rounded-full whitespace-nowrap self-start sm:self-center">
+                    <span className="text-xs font-bold font-mono px-3.5 py-1.5 bg-background border border-border text-muted rounded-full whitespace-nowrap self-start sm:self-center transition-colors duration-500">
                       {item.period}
                     </span>
                   </div>

@@ -18,7 +18,7 @@ function ProjectRow({ project, index }: { project: any, index: number }) {
   const isEven = index % 2 === 0;
 
   return (
-    <div ref={ref} className="w-full relative py-16 md:py-24 flex flex-col justify-center border-b border-black/[0.04] group">
+    <div ref={ref} className="w-full relative py-16 md:py-24 flex flex-col justify-center border-b border-border group transition-colors duration-500">
       <Link href={`/work/${project.id}`} className="block max-w-[1400px] mx-auto w-full px-6 relative z-10">
         
         <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-20`}>
@@ -34,7 +34,7 @@ function ProjectRow({ project, index }: { project: any, index: number }) {
             </motion.div>
             
             {/* Hover Magnetic-style Cursor Button */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#121212] text-white w-24 h-24 rounded-full flex items-center justify-center scale-0 group-hover:scale-100 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] z-20 shadow-2xl">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-foreground text-foreground-inverse w-24 h-24 rounded-full flex items-center justify-center scale-0 group-hover:scale-100 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] z-20 shadow-2xl">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-bold">View</span>
             </div>
             
@@ -48,28 +48,28 @@ function ProjectRow({ project, index }: { project: any, index: number }) {
               <span className="font-mono text-secondary text-xs sm:text-sm tracking-[0.2em] font-semibold">
                 {(index + 1).toString().padStart(2, '0')}
               </span>
-              <span className="w-8 h-[1px] bg-black/20" />
-              <span className="font-mono text-[#70706c] text-[10px] sm:text-xs uppercase tracking-[0.2em]">
+              <span className="w-8 h-[1px] bg-foreground/20" />
+              <span className="font-mono text-muted text-[10px] sm:text-xs uppercase tracking-[0.2em]">
                 {project.category}
               </span>
             </div>
             
-            <h2 className="text-4xl sm:text-6xl md:text-[5vw] leading-[0.9] font-claude tracking-tighter mb-6 md:mb-8 group-hover:text-secondary transition-colors duration-500">
+            <h2 className="text-4xl sm:text-6xl md:text-[5vw] leading-[0.9] font-claude tracking-tighter mb-6 md:mb-8 group-hover:text-secondary transition-colors duration-500 text-foreground">
               {project.name}
             </h2>
             
-            <p className="text-[#555] text-sm md:text-base leading-relaxed max-w-md font-sans">
+            <p className="text-foreground/70 text-sm md:text-base leading-relaxed max-w-md font-sans">
               {project.tagline}
             </p>
             
             <div className="mt-8 md:mt-10 flex flex-wrap gap-2">
               {project.stack.slice(0, 3).map((tech: string) => (
-                <span key={tech} className="text-[9px] sm:text-[10px] uppercase tracking-wider font-mono px-3.5 py-1.5 border border-black/10 rounded-full text-[#70706c] bg-black/[0.02]">
+                <span key={tech} className="text-[9px] sm:text-[10px] uppercase tracking-wider font-mono px-3.5 py-1.5 border border-border rounded-full text-muted bg-foreground/5">
                   {tech}
                 </span>
               ))}
               {project.stack.length > 3 && (
-                <span className="text-[9px] sm:text-[10px] uppercase tracking-wider font-mono px-3.5 py-1.5 border border-black/10 rounded-full text-[#70706c] bg-black/[0.02]">
+                <span className="text-[9px] sm:text-[10px] uppercase tracking-wider font-mono px-3.5 py-1.5 border border-border rounded-full text-muted bg-foreground/5">
                   +{project.stack.length - 3}
                 </span>
               )}
@@ -105,12 +105,12 @@ export default function ProjectsArchive() {
   }, [selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-[#f9f8f4] text-[#121212] font-claude selection:bg-[#121212] selection:text-white pb-32">
+    <div className="min-h-screen bg-background text-foreground font-claude selection:bg-foreground selection:text-foreground-inverse pb-32 transition-colors duration-500">
       {/* Immersive Header */}
       <div className="pt-32 pb-16 px-6 max-w-[1400px] mx-auto relative z-10">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-[#70706c] hover:text-[#121212] transition-colors mb-12 group"
+          className="inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-muted hover:text-foreground transition-colors mb-12 group"
         >
           <span className="w-6 h-[1px] bg-current group-hover:-translate-x-2 transition-transform duration-300" />
           Back to Portfolio
@@ -119,7 +119,7 @@ export default function ProjectsArchive() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-[4.5rem] sm:text-[10vw] lg:text-[12vw] leading-[0.8] font-claude tracking-tighter text-[#121212] mb-8"
+          className="text-[4.5rem] sm:text-[10vw] lg:text-[12vw] leading-[0.8] font-claude tracking-tighter text-foreground mb-8"
         >
           Work<span className="text-secondary">.</span>
         </motion.h1>
@@ -127,14 +127,14 @@ export default function ProjectsArchive() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-          className="text-sm sm:text-base md:text-lg text-[#555] max-w-xl leading-relaxed font-sans"
+          className="text-sm sm:text-base md:text-lg text-foreground/70 max-w-xl leading-relaxed font-sans"
         >
           An archive of premium digital experiences, robust architectures, and forward-thinking interfaces.
         </motion.p>
       </div>
 
       {/* Floating Filter Console */}
-      <div className="sticky top-0 z-40 bg-[#f9f8f4]/80 backdrop-blur-2xl border-y border-black/[0.04] mb-12">
+      <div className="sticky top-0 z-40 bg-background/80 backdrop-blur-2xl border-y border-border mb-12">
         <div className="max-w-[1400px] mx-auto px-6 py-4">
           <div className="flex items-center gap-6 md:gap-10 overflow-x-auto no-scrollbar shrink-0">
             {categories.map((cat) => (
@@ -143,15 +143,15 @@ export default function ProjectsArchive() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`relative text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.15em] transition-all duration-300 shrink-0 pb-1.5 ${
                   selectedCategory === cat.id
-                    ? "text-[#121212] font-bold"
-                    : "text-[#70706c] hover:text-[#121212]"
+                    ? "text-foreground font-bold"
+                    : "text-muted hover:text-foreground"
                 }`}
               >
                 {cat.label}
                 {/* Active Indicator Line */}
                 <span 
                   className={`absolute bottom-0 left-0 w-full h-[1.5px] transition-all duration-300 ${
-                    selectedCategory === cat.id ? "bg-[#121212]" : "bg-transparent"
+                    selectedCategory === cat.id ? "bg-foreground" : "bg-transparent"
                   }`} 
                 />
               </button>
@@ -169,13 +169,13 @@ export default function ProjectsArchive() {
         {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="w-full py-32 flex flex-col items-center justify-center text-center px-6">
-            <h3 className="text-3xl font-bold font-claude text-[#121212] mb-2">No projects found</h3>
-            <p className="text-[#70706c] font-mono text-[10px] uppercase tracking-widest mb-8">
+            <h3 className="text-3xl font-bold font-claude text-foreground mb-2">No projects found</h3>
+            <p className="text-muted font-mono text-[10px] uppercase tracking-widest mb-8">
               Adjust your filters to see more work.
             </p>
             <button
               onClick={() => setSelectedCategory("all")}
-              className="px-6 py-3 bg-[#121212] hover:bg-secondary text-white rounded-full font-bold text-[10px] font-mono uppercase tracking-widest transition-all"
+              className="px-6 py-3 bg-foreground hover:bg-secondary text-foreground-inverse rounded-full font-bold text-[10px] font-mono uppercase tracking-widest transition-all"
             >
               Reset Filters
             </button>

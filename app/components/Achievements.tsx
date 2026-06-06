@@ -70,7 +70,7 @@ export default function Achievements() {
   }, { scope: container });
 
   return (
-    <section ref={container} className="py-24 bg-[#f9f8f4] border-y border-black/[0.04] relative">
+    <section ref={container} className="py-24 bg-background border-y border-border relative transition-colors duration-500">
       <div className="w-full max-w-4xl mx-auto px-6">
         <div className="space-y-16">
           {/* Section Header */}
@@ -79,7 +79,7 @@ export default function Achievements() {
               <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
               Achievements
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+            <h2 className="text-3xl sm:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline transition-colors duration-500">
               <TextReveal text="Key " />
               <TextReveal text="milestones." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
             </h2>
@@ -88,7 +88,7 @@ export default function Achievements() {
           {/* Architectural Timeline Layout */}
           <div className="relative">
             {/* Continuous Vertical Timeline Line */}
-            <div className="absolute left-0 top-3 bottom-0 w-[1px] bg-black/[0.08]" />
+            <div className="absolute left-0 top-3 bottom-0 w-[1px] bg-border transition-colors duration-500" />
 
             <div className="space-y-12">
               {achievements.map((item, index) => {
@@ -99,15 +99,15 @@ export default function Achievements() {
                     className="achieve-item relative pl-8 sm:pl-12 grid md:grid-cols-12 gap-4 sm:gap-6 items-start text-left group"
                   >
                     {/* Glowing Node Marker */}
-                    <div className="absolute left-[-4.5px] top-1.5 w-[10px] h-[10px] rounded-full bg-secondary ring-4 ring-[#f9f8f4] group-hover:scale-125 transition-transform duration-300" />
+                    <div className="absolute left-[-4.5px] top-1.5 w-[10px] h-[10px] rounded-full bg-secondary ring-4 ring-background group-hover:scale-125 transition-all duration-300" />
 
                     {/* Left Column: Date & Category */}
                     <div className="md:col-span-4 flex flex-col gap-2 select-none pt-0.5">
-                      <span className="text-sm font-mono text-[#121212] font-semibold tracking-tight">
+                      <span className="text-sm font-mono text-foreground font-semibold tracking-tight transition-colors duration-500">
                         {detail.date}
                       </span>
                       <div className="flex flex-col items-start gap-2">
-                        <span className="inline-flex text-[10px] font-mono font-bold uppercase tracking-widest px-2.5 py-1 bg-white border border-black/5 text-[#70706c] rounded-md shadow-sm">
+                        <span className="inline-flex text-[10px] font-mono font-bold uppercase tracking-widest px-2.5 py-1 bg-surface border border-border text-muted rounded-md shadow-sm transition-colors duration-500">
                           {detail.category}
                         </span>
                         {item.highlight && (
@@ -122,11 +122,11 @@ export default function Achievements() {
                     </div>
 
                     {/* Right Column: Title & Impact Description */}
-                    <div className="md:col-span-8 space-y-3 bg-white p-6 sm:p-8 rounded-2xl border border-black/[0.04] shadow-[0_4px_20px_rgba(18,18,18,0.02)] group-hover:border-black/[0.08] transition-colors">
-                      <h3 className="font-bold text-lg sm:text-xl font-claude text-[#121212] tracking-tight group-hover:text-secondary transition-colors duration-300">
+                    <div className="md:col-span-8 space-y-3 bg-surface p-6 sm:p-8 rounded-2xl border border-border shadow-[0_4px_20px_rgba(18,18,18,0.02)] group-hover:border-foreground/20 transition-colors duration-500">
+                      <h3 className="font-bold text-lg sm:text-xl font-claude text-foreground tracking-tight group-hover:text-secondary transition-colors duration-300">
                         {item.label}
                       </h3>
-                      <p className="text-sm text-[#70706c] leading-relaxed">
+                      <p className="text-sm text-muted leading-relaxed transition-colors duration-500">
                         {detail.description}
                       </p>
                     </div>

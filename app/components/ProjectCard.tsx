@@ -32,12 +32,12 @@ export default function ProjectCard({ project, index }: { project: Project; inde
 
   const arcThemes = [
     {
-      headerBg: "bg-gradient-to-r from-[#fdf5f2] via-[#fbeee9] to-[#f0eee4]",
+      headerBg: "bg-surface",
       addressBorder: "border-secondary/15 text-secondary",
       shadowGlow: "shadow-[0_20px_50px_rgba(193,95,60,0.045)] hover:shadow-[0_30px_70px_rgba(193,95,60,0.08)]",
     },
     {
-      headerBg: "bg-gradient-to-r from-[#fdf5f2] via-[#fbeee9] to-[#f0eee4]",
+      headerBg: "bg-surface",
       addressBorder: "border-secondary/15 text-secondary",
       shadowGlow: "shadow-[0_20px_50px_rgba(193,95,60,0.045)] hover:shadow-[0_30px_70px_rgba(193,95,60,0.08)]",
     }
@@ -47,15 +47,15 @@ export default function ProjectCard({ project, index }: { project: Project; inde
 
   return (
     <div
-      className={`w-full h-full min-h-[450px] md:min-h-[480px] rounded-[2rem] md:rounded-[2.5rem] bg-[#f0eee4] border border-black/[0.05] overflow-hidden flex flex-col justify-between select-none hover:border-black/[0.08] transition-all duration-500 ease-out group ${theme.shadowGlow}`}
+      className={`w-full h-full min-h-[450px] md:min-h-[480px] rounded-[2rem] md:rounded-[2.5rem] bg-background border border-border overflow-hidden flex flex-col justify-between select-none hover:border-foreground/20 transition-all duration-500 ease-out group ${theme.shadowGlow}`}
     >
       {/* Top Portion: Arc Browser Mock Frame */}
       <div
         onClick={() => router.push(`/work/${project.id}`)}
-        className="w-full cursor-pointer flex flex-col overflow-hidden bg-black/[0.01] border-b border-black/[0.05] shrink-0"
+        className="w-full cursor-pointer flex flex-col overflow-hidden bg-foreground/[0.01] border-b border-border shrink-0 transition-colors duration-500"
       >
         {/* Arc Browser Header */}
-        <div className={`px-4 py-3.5 flex items-center justify-between border-b border-black/[0.04] select-none shrink-0 ${theme.headerBg}`}>
+        <div className={`px-4 py-3.5 flex items-center justify-between border-b border-border select-none shrink-0 ${theme.headerBg} transition-colors duration-500`}>
           {/* Control Dots (Exact MacOS/Arc Colors) */}
           <div className="flex gap-1.5 items-center shrink-0">
             <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] border border-black/10" />
@@ -64,7 +64,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           </div>
 
           {/* Address Bar */}
-          <div className={`mx-auto w-full max-w-[130px] sm:max-w-[170px] bg-white/75 backdrop-blur-sm border ${theme.addressBorder} text-[9px] font-mono px-3 py-1 rounded-full text-center truncate flex items-center justify-center gap-1.5 shadow-inner`}>
+          <div className={`mx-auto w-full max-w-[130px] sm:max-w-[170px] bg-background/75 backdrop-blur-sm border ${theme.addressBorder} text-[9px] font-mono px-3 py-1 rounded-full text-center truncate flex items-center justify-center gap-1.5 shadow-inner transition-colors duration-500`}>
             <svg
               className="w-2.5 h-2.5 text-[#2ecc71]/90 shrink-0"
               fill="none"
@@ -85,7 +85,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="w-7 h-7 rounded-full hover:bg-black/5 flex items-center justify-center transition-colors text-[#70706c] hover:text-[#121212]"
+                className="w-7 h-7 rounded-full hover:bg-foreground/5 flex items-center justify-center transition-colors text-muted hover:text-foreground"
                 title="Visit live site"
               >
                 <ExternalLink size={14} strokeWidth={2} />
@@ -102,8 +102,8 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
           {/* Glass hover details indicator */}
-          <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <div className="px-5 py-2.5 bg-white/95 backdrop-blur-sm rounded-full shadow-sm text-[10px] sm:text-xs font-mono font-bold text-[#121212] tracking-wider uppercase scale-90 group-hover:scale-100 transition-all duration-300">
+          <div className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <div className="px-5 py-2.5 bg-background/95 backdrop-blur-sm rounded-full shadow-sm text-[10px] sm:text-xs font-mono font-bold text-foreground tracking-wider uppercase scale-90 group-hover:scale-100 transition-all duration-300">
               View Details
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         <div className="space-y-4">
           {/* Meta information tags */}
           <div className="flex items-center justify-between gap-4 select-none">
-            <span className="text-[10px] font-mono text-[#70706c]/80 font-bold tracking-[0.2em] uppercase">
+            <span className="text-[10px] font-mono text-muted/80 font-bold tracking-[0.2em] uppercase transition-colors duration-500">
               {String(index + 1).padStart(2, "0")} /{" "}
               {project.category === "client"
                 ? "Client"
@@ -135,11 +135,11 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           <div>
             <h3
               onClick={() => router.push(`/work/${project.id}`)}
-              className="text-2xl sm:text-3xl font-bold tracking-tight text-[#121212] group-hover:text-secondary cursor-pointer transition-colors duration-300 font-claude"
+              className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground group-hover:text-secondary cursor-pointer transition-colors duration-300 font-claude"
             >
               {project.name}
             </h3>
-            <p className="text-[10px] sm:text-xs font-mono text-[#70706c]/90 mt-1.5 select-none font-semibold">
+            <p className="text-[10px] sm:text-xs font-mono text-muted/90 mt-1.5 select-none font-semibold transition-colors duration-500">
               {project.role} • {project.timeline || "Ongoing"}
             </p>
           </div>
@@ -152,23 +152,23 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           </div>
 
           {/* Description */}
-          <p className="text-sm md:text-[15px] text-[#70706c] leading-relaxed line-clamp-2 md:line-clamp-3">
+          <p className="text-sm md:text-[15px] text-muted leading-relaxed line-clamp-2 md:line-clamp-3 transition-colors duration-500">
             {project.description}
           </p>
         </div>
 
         {/* Action Pill Buttons */}
-        <div className="flex flex-nowrap items-center gap-2 pt-3 border-t border-black/[0.04] select-none shrink-0 overflow-x-auto no-scrollbar pb-1">
+        <div className="flex flex-nowrap items-center gap-2 pt-3 border-t border-border select-none shrink-0 overflow-x-auto no-scrollbar pb-1 transition-colors duration-500">
           {/* Primary pill */}
           <button
             onClick={() => router.push(`/work/${project.id}`)}
-            className="px-4 py-2 bg-[#121212] hover:bg-secondary text-white rounded-full font-bold text-[10px] font-mono uppercase tracking-wider shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer inline-flex items-center gap-1.5 group/btn shrink-0"
+            className="px-4 py-2 bg-foreground hover:bg-secondary text-foreground-inverse rounded-full font-bold text-[10px] font-mono uppercase tracking-wider shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer inline-flex items-center gap-1.5 group/btn shrink-0"
           >
             Project Details
             <div className="w-3.5 h-3.5 relative overflow-hidden flex items-center justify-center shrink-0">
               {/* Active Arrow */}
               <svg
-                className="w-3 h-3 text-white absolute transition-all duration-300 ease-in-out -rotate-45 group-hover/btn:translate-x-3.5 group-hover/btn:-translate-y-3.5 group-hover/btn:opacity-0"
+                className="w-3 h-3 text-foreground-inverse absolute transition-all duration-300 ease-in-out -rotate-45 group-hover/btn:translate-x-3.5 group-hover/btn:-translate-y-3.5 group-hover/btn:opacity-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -178,7 +178,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               </svg>
               {/* Incoming Arrow */}
               <svg
-                className="w-3 h-3 text-white absolute transition-all duration-300 ease-in-out -rotate-45 -translate-x-3.5 translate-y-3.5 opacity-0 group-hover/btn:translate-x-0 group-hover/btn:translate-y-0 group-hover/btn:opacity-100"
+                className="w-3 h-3 text-foreground-inverse absolute transition-all duration-300 ease-in-out -rotate-45 -translate-x-3.5 translate-y-3.5 opacity-0 group-hover/btn:translate-x-0 group-hover/btn:translate-y-0 group-hover/btn:opacity-100"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -195,7 +195,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               href={project.links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-2 border border-black/10 hover:border-black/20 bg-white text-[#70706c] hover:text-[#121212] rounded-full font-bold text-[10px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm shrink-0"
+              className="px-3 py-2 border border-border hover:border-foreground/20 bg-surface text-muted hover:text-foreground rounded-full font-bold text-[10px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm shrink-0"
             >
               Live
               <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -209,7 +209,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               href={project.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-2 border border-black/10 hover:border-black/20 bg-white text-[#70706c] hover:text-[#121212] rounded-full font-bold text-[10px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm shrink-0"
+              className="px-3 py-2 border border-border hover:border-foreground/20 bg-surface text-muted hover:text-foreground rounded-full font-bold text-[10px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm shrink-0"
             >
               Code
               <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">

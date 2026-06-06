@@ -50,7 +50,7 @@ export default function ProjectDetailsPage({
   );
 
   return (
-    <div className="min-h-screen bg-[#f9f8f4] text-[#121212] selection:bg-secondary selection:text-white pb-32">
+    <div className="min-h-screen bg-background text-foreground selection:bg-secondary selection:text-white pb-32 transition-colors duration-500">
       
       {/* Absolute Back Button */}
       <button
@@ -104,30 +104,30 @@ export default function ProjectDetailsPage({
       </div>
 
       {/* Main Content Area */}
-      <div className="w-full bg-[#f9f8f4] relative z-20 -mt-10 rounded-t-[2rem] sm:rounded-t-[4rem] px-6 py-20 sm:py-32">
+      <div className="w-full bg-background relative z-20 -mt-10 rounded-t-[2rem] sm:rounded-t-[4rem] px-6 py-20 sm:py-32 transition-colors duration-500">
         <div className="max-w-[1400px] mx-auto">
           
           {/* Hero Tagline Pull Quote */}
           <div className="w-full text-center max-w-5xl mx-auto mb-24 md:mb-32">
-             <h2 className="text-3xl sm:text-5xl md:text-[4vw] leading-[1.1] font-claude text-[#121212]">
+             <h2 className="text-3xl sm:text-5xl md:text-[4vw] leading-[1.1] font-claude text-foreground">
                "{project.tagline}"
              </h2>
           </div>
 
           {/* Minimal Metadata Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 py-12 md:py-16 border-y border-black/[0.08] mb-24 md:mb-32 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 py-12 md:py-16 border-y border-border mb-24 md:mb-32 max-w-6xl mx-auto">
             <div className="flex flex-col gap-3">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#70706c]">Role</span>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-muted">Role</span>
               <span className="font-bold text-sm">{project.role}</span>
             </div>
             {project.timeline && (
               <div className="flex flex-col gap-3">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#70706c]">Timeline</span>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-muted">Timeline</span>
                 <span className="font-bold text-sm">{project.timeline}</span>
               </div>
             )}
             <div className="flex flex-col gap-3 col-span-2 md:col-span-1">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#70706c]">Stack</span>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-muted">Stack</span>
               <div className="flex flex-wrap gap-x-2 gap-y-1">
                 {project.stack.map((tech, i) => (
                   <span key={tech} className="font-bold text-sm">
@@ -138,7 +138,7 @@ export default function ProjectDetailsPage({
             </div>
             {project.links && (
               <div className="flex flex-col gap-4 col-span-2 md:col-span-1">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#70706c]">Live Links</span>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-muted">Live Links</span>
                 {project.links.live && (
                   <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="text-sm font-bold hover:text-secondary flex items-center gap-2 group">
                     Live Site
@@ -161,7 +161,7 @@ export default function ProjectDetailsPage({
 
           {/* Description */}
           <div className="max-w-3xl mx-auto mb-32 md:mb-48 text-center sm:text-left">
-            <p className="text-lg md:text-2xl text-[#555] leading-relaxed">
+            <p className="text-lg md:text-2xl text-foreground/70 leading-relaxed">
               {project.description}
             </p>
           </div>
@@ -178,7 +178,7 @@ export default function ProjectDetailsPage({
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className={`w-full ${idx === 0 ? 'md:w-full' : (isEven ? 'md:w-[80%] mr-auto' : 'md:w-[80%] ml-auto')} bg-black/5 rounded-2xl md:rounded-[3rem] overflow-hidden`}
+                    className={`w-full ${idx === 0 ? 'md:w-full' : (isEven ? 'md:w-[80%] mr-auto' : 'md:w-[80%] ml-auto')} bg-foreground/5 rounded-2xl md:rounded-[3rem] overflow-hidden`}
                   >
                     <img src={src} alt={`Gallery ${idx}`} className="w-full h-auto object-cover" />
                   </motion.div>
@@ -192,20 +192,20 @@ export default function ProjectDetailsPage({
             <div className="grid md:grid-cols-2 gap-16 md:gap-32 mb-32 md:mb-48 max-w-6xl mx-auto">
               {project.problem && (
                 <div className="space-y-8">
-                  <h3 className="text-sm font-mono uppercase tracking-[0.2em] font-bold text-[#121212] border-b border-black/10 pb-6">
+                  <h3 className="text-sm font-mono uppercase tracking-[0.2em] font-bold text-foreground border-b border-border pb-6">
                     The Challenge
                   </h3>
-                  <p className="text-base md:text-lg text-[#555] leading-relaxed">
+                  <p className="text-base md:text-lg text-foreground/70 leading-relaxed">
                     {project.problem}
                   </p>
                 </div>
               )}
               {project.solution && (
                 <div className="space-y-8">
-                  <h3 className="text-sm font-mono uppercase tracking-[0.2em] font-bold text-[#121212] border-b border-black/10 pb-6">
+                  <h3 className="text-sm font-mono uppercase tracking-[0.2em] font-bold text-foreground border-b border-border pb-6">
                     The Solution
                   </h3>
-                  <p className="text-base md:text-lg text-[#555] leading-relaxed">
+                  <p className="text-base md:text-lg text-foreground/70 leading-relaxed">
                     {project.solution}
                   </p>
                 </div>
@@ -216,7 +216,7 @@ export default function ProjectDetailsPage({
           {/* Key Features List */}
           {project.keyFeatures && project.keyFeatures.length > 0 && (
             <div className="max-w-6xl mx-auto mb-32">
-              <h3 className="text-sm font-mono uppercase tracking-[0.2em] font-bold text-[#121212] mb-16 border-b border-black/10 pb-6">
+              <h3 className="text-sm font-mono uppercase tracking-[0.2em] font-bold text-foreground mb-16 border-b border-border pb-6">
                 Implementation Highlights
               </h3>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
@@ -225,7 +225,7 @@ export default function ProjectDetailsPage({
                     <span className="text-secondary font-mono text-sm font-bold tracking-widest bg-secondary/10 px-3 py-1 rounded-full">
                       {(idx + 1).toString().padStart(2, '0')}
                     </span>
-                    <p className="text-base text-[#555] leading-relaxed font-medium">
+                    <p className="text-base text-foreground/70 leading-relaxed font-medium">
                       {feat}
                     </p>
                   </div>
@@ -237,20 +237,20 @@ export default function ProjectDetailsPage({
           {/* Video Player Embed Card (Loom / Vimeo) */}
           {project.video && (
             <div className="w-full max-w-6xl mx-auto mb-32">
-              <div className="text-sm font-mono uppercase tracking-[0.2em] font-bold text-[#121212] mb-8 border-b border-black/10 pb-6">
+              <div className="text-sm font-mono uppercase tracking-[0.2em] font-bold text-foreground mb-8 border-b border-border pb-6">
                 Video Walkthrough
               </div>
               <div
-                className="w-full bg-black/5 rounded-[2rem] overflow-hidden"
+                className="w-full bg-foreground/5 rounded-[2rem] overflow-hidden"
                 dangerouslySetInnerHTML={{ __html: project.video }}
               />
             </div>
           )}
 
           {/* Next Steps / Footer CTA */}
-          <div className="w-full border-t border-black/10 pt-32 pb-16 flex flex-col items-center justify-center text-center">
+          <div className="w-full border-t border-border pt-32 pb-16 flex flex-col items-center justify-center text-center">
             <h2 className="text-4xl md:text-6xl font-claude mb-12">Interested in working together?</h2>
-            <a href="mailto:bharathkrishna.ab.dev@gmail.com" className="px-8 py-4 bg-[#121212] text-white rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 hover:bg-secondary transition-all duration-300">
+            <a href="mailto:bharathkrishna.ab.dev@gmail.com" className="px-8 py-4 bg-foreground text-foreground-inverse rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 hover:bg-secondary hover:text-white transition-all duration-300">
               Get in Touch
             </a>
           </div>

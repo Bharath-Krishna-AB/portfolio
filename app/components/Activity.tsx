@@ -379,7 +379,7 @@ export default function Activity() {
   }, { scope: container });
 
   return (
-    <section ref={container} className="py-24 bg-[#f9f8f4] relative overflow-hidden">
+    <section ref={container} className="py-24 bg-background relative overflow-hidden transition-colors duration-500">
       {/* Subtle background glow */}
       <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-clay-light/10 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
 
@@ -392,14 +392,14 @@ export default function Activity() {
                 <span className="w-1.5 h-1.5 rounded-full bg-clay-accent" />
                 Activity
               </span>
-              <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+              <h2 className="text-3xl sm:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline transition-colors duration-500">
                 <TextReveal text="Developer " />
                 <TextReveal text="pulse." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
               </h2>
             </div>
 
             {/* Premium segmented control */}
-            <div className="flex overflow-x-auto no-scrollbar bg-[#f3f2eb] p-1.5 rounded-full border border-black/5 gap-1 relative w-full md:w-auto shrink-0 self-start md:self-end">
+            <div className="flex overflow-x-auto no-scrollbar bg-background p-1.5 rounded-full border border-border gap-1 relative w-full md:w-auto shrink-0 self-start md:self-end transition-colors duration-500">
               {tabs.map((tab) => {
                 const isActive = activeTab === tab.id;
                 return (
@@ -407,13 +407,13 @@ export default function Activity() {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id as any)}
                     className={`relative z-10 px-5 py-2 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase transition-colors duration-300 flex-1 md:flex-none text-center cursor-pointer select-none ${
-                      isActive ? "text-white" : "text-[#70706c] hover:text-[#121212]"
+                      isActive ? "text-foreground-inverse" : "text-muted hover:text-foreground"
                     }`}
                   >
                     {isActive && (
                       <motion.div
                         layoutId="activeActivityTab"
-                        className="absolute inset-0 bg-[#121212] rounded-full -z-10"
+                        className="absolute inset-0 bg-foreground rounded-full -z-10"
                         transition={{ type: "spring", stiffness: 350, damping: 28 }}
                       />
                     )}
@@ -437,14 +437,14 @@ export default function Activity() {
                   className="space-y-6"
                 >
                   {/* Calendar Widget */}
-                  <div className="bg-white border border-black/5 rounded-3xl p-6 shadow-[0_4px_24px_rgba(18,18,18,0.01)] text-left">
+                  <div className="bg-surface border border-border rounded-3xl p-6 shadow-[0_4px_24px_rgba(18,18,18,0.01)] text-left transition-colors duration-500">
                     <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
                       <div className="flex items-center gap-2">
                         <div className="relative flex items-center justify-center w-2 h-2 shrink-0">
                           <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75 animate-ping" />
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
                         </div>
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#70706c]">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-muted transition-colors duration-500">
                           Live Contribution Grid
                         </span>
                       </div>
@@ -452,7 +452,7 @@ export default function Activity() {
                         href="https://github.com/Bharath-Krishna-AB"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[10px] font-mono text-[#70706c] hover:text-clay-accent transition-colors flex items-center gap-1"
+                        className="text-[10px] font-mono text-muted hover:text-clay-accent transition-colors flex items-center gap-1"
                       >
                         @Bharath-Krishna-AB
                         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -508,7 +508,7 @@ export default function Activity() {
                           {stat.value === null ? (
                             <div className="h-7 w-20 bg-black/5 animate-pulse rounded-md mt-1 mb-1.5" />
                           ) : (
-                            <div className="text-2xl sm:text-3xl font-bold text-[#121212] tracking-tight font-claude leading-tight">
+                            <div className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight font-claude leading-tight transition-colors duration-500">
                               {stat.value}
                             </div>
                           )}
@@ -532,9 +532,9 @@ export default function Activity() {
                   className="grid md:grid-cols-12 gap-6 text-left"
                 >
                   {/* Left Column: Languages (7 cols) */}
-                  <div className="md:col-span-7 bg-white border border-black/5 rounded-3xl p-6 md:p-8 shadow-[0_4px_24px_rgba(18,18,18,0.01)] flex flex-col justify-between">
+                  <div className="md:col-span-7 bg-surface border border-border rounded-3xl p-6 md:p-8 shadow-[0_4px_24px_rgba(18,18,18,0.01)] flex flex-col justify-between transition-colors duration-500">
                     <div>
-                      <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-[#121212] mb-6 flex items-center gap-2 select-none">
+                      <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-foreground mb-6 flex items-center gap-2 select-none transition-colors duration-500">
                         <svg className="w-4 h-4 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                         </svg>
@@ -564,11 +564,11 @@ export default function Activity() {
                           {languageStats.map((lang, idx) => (
                             <div key={idx} className="space-y-1.5">
                               <div className="flex justify-between items-center text-xs">
-                                <span className="font-bold text-[#121212]">{lang.name}</span>
-                                <span className="font-mono text-[#70706c] font-bold">{lang.percentage}%</span>
+                                <span className="font-bold text-foreground transition-colors duration-500">{lang.name}</span>
+                                <span className="font-mono text-muted font-bold transition-colors duration-500">{lang.percentage}%</span>
                               </div>
                               {/* Animated progress bar */}
-                              <div className="h-2 w-full bg-[#f3f2eb] rounded-full overflow-hidden">
+                              <div className="h-2 w-full bg-background rounded-full overflow-hidden transition-colors duration-500">
                                 <motion.div
                                   initial={{ width: 0 }}
                                   animate={{ width: `${lang.percentage}%` }}
@@ -581,15 +581,15 @@ export default function Activity() {
                         </div>
                       )}
                     </div>
-                    <p className="text-[10px] text-[#70706c]/70 font-mono mt-8 border-t border-black/[0.03] pt-4 select-none">
+                    <p className="text-[10px] text-muted/70 font-mono mt-8 border-t border-black/[0.03] pt-4 select-none transition-colors duration-500">
                       * Aggregated from repositories statistics and primary coding lines.
                     </p>
                   </div>
 
                   {/* Right Column: Elevator Pitch / Disciplines (5 cols) */}
-                  <div className="md:col-span-5 bg-white border border-black/5 rounded-3xl p-6 md:p-8 shadow-[0_4px_24px_rgba(18,18,18,0.01)] flex flex-col justify-between">
+                  <div className="md:col-span-5 bg-surface border border-border rounded-3xl p-6 md:p-8 shadow-[0_4px_24px_rgba(18,18,18,0.01)] flex flex-col justify-between transition-colors duration-500">
                     <div>
-                      <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-[#121212] mb-6 flex items-center gap-2 select-none">
+                      <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-foreground mb-6 flex items-center gap-2 select-none transition-colors duration-500">
                         <svg className="w-4 h-4 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.475 3.475 0 011.89 1.89 3.475 3.475 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.475 3.475 0 01-1.89 1.89 3.475 3.475 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.475 3.475 0 01-1.89-1.89 3.475 3.475 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.475 3.475 0 011.89-1.89z" />
                         </svg>
@@ -599,10 +599,10 @@ export default function Activity() {
                         {disciplines.map((disc, idx) => (
                           <div key={idx} className="space-y-1.5">
                             <div className="flex justify-between items-center text-xs">
-                              <span className="font-bold text-[#121212]">{disc.name}</span>
+                              <span className="font-bold text-foreground transition-colors duration-500">{disc.name}</span>
                               <span className="font-mono text-secondary font-bold">{disc.percentage}%</span>
                             </div>
-                            <div className="h-1.5 w-full bg-[#f3f2eb] rounded-full overflow-hidden">
+                            <div className="h-1.5 w-full bg-background rounded-full overflow-hidden transition-colors duration-500">
                               <motion.div
                                 initial={{ width: 0 }}
                                 animate={{ width: `${disc.percentage}%` }}
@@ -618,9 +618,9 @@ export default function Activity() {
                     <div className="mt-6 pt-4 border-t border-black/[0.03] space-y-2 select-none text-left">
                       <div className="flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
-                        <span className="text-[10px] font-mono text-[#70706c] font-bold">Focus: Full-Stack Web Solutions</span>
+                        <span className="text-[10px] font-mono text-muted font-bold transition-colors duration-500">Focus: Full-Stack Web Solutions</span>
                       </div>
-                      <p className="text-[10px] text-[#70706c] leading-relaxed">
+                      <p className="text-[10px] text-muted leading-relaxed transition-colors duration-500">
                         Engineering responsive user interfaces and robust backend architectures.
                       </p>
                     </div>
@@ -635,14 +635,14 @@ export default function Activity() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.35, ease: "easeInOut" }}
-                  className="bg-white border border-black/5 rounded-3xl p-6 md:p-8 shadow-[0_4px_24px_rgba(18,18,18,0.01)] text-left"
+                  className="bg-surface border border-border rounded-3xl p-6 md:p-8 shadow-[0_4px_24px_rgba(18,18,18,0.01)] text-left transition-colors duration-500"
                 >
                   <div className="flex items-center justify-between mb-8 flex-wrap gap-2 select-none">
                     <div className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                       </svg>
-                      <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-[#121212]">
+                      <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-foreground transition-colors duration-500">
                         Recent Product Deliverables
                       </h4>
                     </div>
@@ -671,7 +671,7 @@ export default function Activity() {
                     </div>
                   ) : commitFeed.length === 0 ? (
                     <div className="text-center py-12">
-                      <p className="text-xs text-[#70706c] font-mono mb-4">No recent commit logs found on your public profile.</p>
+                      <p className="text-xs text-muted font-mono mb-4 transition-colors duration-500">No recent commit logs found on your public profile.</p>
                       <a
                         href="https://github.com/Bharath-Krishna-AB"
                         target="_blank"
@@ -687,7 +687,7 @@ export default function Activity() {
                       {commitFeed.map((commit, idx) => (
                         <div key={idx} className="relative group">
                           {/* Timeline point */}
-                          <span className="absolute -left-[31px] sm:-left-[35px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#f9f8f4] border-[3px] border-[#121212] group-hover:border-clay-accent transition-colors duration-300" />
+                          <span className="absolute -left-[31px] sm:-left-[35px] top-1.5 w-2.5 h-2.5 rounded-full bg-background border-[3px] border-foreground group-hover:border-clay-accent transition-colors duration-500" />
 
                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                             {/* Heading details */}
@@ -698,19 +698,19 @@ export default function Activity() {
                               <span className={`text-[8px] font-mono font-bold uppercase px-2 py-0.5 rounded border select-none ${commit.category.color} ${commit.category.bg}`}>
                                 {commit.category.label}
                               </span>
-                              <span className="text-[10px] font-mono text-[#70706c] bg-[#f3f2eb] px-1.5 py-0.5 rounded border border-black/5 select-none font-bold">
+                              <span className="text-[10px] font-mono text-muted bg-background px-1.5 py-0.5 rounded border border-black/5 select-none font-bold transition-colors duration-500">
                                 {commit.hash}
                               </span>
-                              <span className="text-xs font-bold text-[#121212] tracking-tight ml-1 font-claude">
+                              <span className="text-xs font-bold text-foreground tracking-tight ml-1 font-claude transition-colors duration-500">
                                 {commit.message}
                               </span>
                             </div>
                             {/* Timestamp */}
-                            <span className="text-[10px] font-mono text-[#70706c]/70 self-start sm:self-center shrink-0">
+                            <span className="text-[10px] font-mono text-muted/70 self-start sm:self-center shrink-0 transition-colors duration-500">
                               {commit.time}
                             </span>
                           </div>
-                          <p className="text-xs text-[#70706c] mt-2 leading-relaxed max-w-2xl font-claude">
+                          <p className="text-xs text-muted mt-2 leading-relaxed max-w-2xl font-claude transition-colors duration-500">
                             {commit.description}
                           </p>
                         </div>

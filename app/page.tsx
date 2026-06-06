@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
 import Preloader from "./components/Preloader";
@@ -21,6 +22,26 @@ export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isBrandHovered, setIsBrandHovered] = useState(false);
   const [isStatusHovered, setIsStatusHovered] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const isDark = localStorage.getItem("theme") === "dark";
+    setIsDarkMode(isDark);
+    
+    const handleThemeChange = () => {
+      setIsDarkMode(localStorage.getItem("theme") === "dark");
+    };
+    window.addEventListener('theme-change', handleThemeChange);
+    return () => window.removeEventListener('theme-change', handleThemeChange);
+  }, []);
+
+  const toggleTheme = () => {
+    const nextDark = !isDarkMode;
+    setIsDarkMode(nextDark);
+    localStorage.setItem("theme", nextDark ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", nextDark);
+    window.dispatchEvent(new Event('theme-change'));
+  };
 
   // Initialize Lenis Smooth Scroll
   useEffect(() => {
@@ -62,11 +83,11 @@ export default function Home() {
       <Preloader onComplete={() => setIsLoaded(true)} />
 
       {isLoaded && (
-        <div className="flex flex-col min-h-screen bg-[#f9f8f4] text-[#121212] font-claude selection:bg-clay-light selection:text-clay-accent">
+        <div className="flex flex-col min-h-screen bg-background text-foreground font-claude selection:bg-clay-light selection:text-clay-accent transition-colors duration-500">
           {/* Top Thin Scroll Progress Bar */}
           <div className="fixed top-0 left-0 right-0 z-[100] h-[2px] bg-transparent">
             <div
-              className="h-full bg-[#121212]/30 transition-all duration-75 ease-out"
+              className="h-full bg-foreground/30 transition-all duration-75 ease-out"
               style={{ width: `${scrollProgress}%` }}
             />
           </div>
@@ -79,7 +100,7 @@ export default function Home() {
                 href="#home"
                 onMouseEnter={() => setIsBrandHovered(true)}
                 onMouseLeave={() => setIsBrandHovered(false)}
-                className="relative overflow-hidden text-[10px] sm:text-xs font-mono font-bold tracking-wider px-4 py-2 bg-[#f3f2eb] border border-black/5 hover:border-clay-accent/20 rounded-full text-[#121212] flex items-center justify-center min-w-[150px] h-8 transition-colors select-none"
+                className="relative overflow-hidden text-[10px] sm:text-xs font-mono font-bold tracking-wider px-4 py-2 bg-surface border border-border hover:border-clay-accent/20 rounded-full text-foreground flex items-center justify-center min-w-[150px] h-8 transition-colors select-none"
               >
                 <AnimatePresence mode="wait">
                   {!isBrandHovered ? (
@@ -147,6 +168,37 @@ export default function Home() {
                   )}
                 </AnimatePresence>
               </motion.div>
+
+              {/* Theme Toggle Button */}
+              <button
+                onClick={toggleTheme}
+                className="ml-2 w-8 h-8 rounded-full flex items-center justify-center bg-surface border border-border text-foreground hover:bg-foreground/5 hover:scale-105 active:scale-95 transition-all"
+                aria-label="Toggle theme"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {isDarkMode ? (
+                    <motion.div
+                      key="moon"
+                      initial={{ opacity: 0, rotate: -90 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: 90 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Moon size={14} strokeWidth={2.5} />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="sun"
+                      initial={{ opacity: 0, rotate: 90 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: -90 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Sun size={14} strokeWidth={2.5} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </button>
             </div>
           </header>
 

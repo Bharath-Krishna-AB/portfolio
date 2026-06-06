@@ -71,7 +71,7 @@ export default function Projects() {
     <section
       ref={container}
       id="work"
-      className="w-full relative bg-[#f9f8f4] py-24 overflow-hidden"
+      className="w-full relative bg-background py-24 overflow-hidden transition-colors duration-500"
     >
       <div className="w-full flex flex-col gap-10 md:gap-12">
         {/* Section Header */}
@@ -81,7 +81,7 @@ export default function Projects() {
               <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
               Work
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+            <h2 className="text-3xl sm:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline transition-colors duration-500">
               <TextReveal text="Selected " />
               <TextReveal text="work." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
             </h2>
@@ -99,9 +99,9 @@ export default function Projects() {
           {/* View All Projects Card */}
           <div
             onClick={() => router.push("/works")}
-            className="project-item w-full h-full min-h-[450px] md:min-h-[480px] rounded-[2rem] md:rounded-[2.5rem] bg-[#edeae0]/40 border border-dashed border-black/15 flex flex-col items-center justify-center p-8 text-center gap-4 hover:bg-[#edeae0]/70 transition-colors duration-300 select-none cursor-pointer group shadow-sm md:col-span-2 lg:col-span-1"
+            className="project-item w-full h-full min-h-[450px] md:min-h-[480px] rounded-[2rem] md:rounded-[2.5rem] bg-foreground/5 border border-dashed border-foreground/15 flex flex-col items-center justify-center p-8 text-center gap-4 hover:bg-foreground/10 transition-colors duration-500 select-none cursor-pointer group shadow-sm md:col-span-2 lg:col-span-1"
           >
-            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-black/5 shadow-sm relative overflow-hidden group-hover:scale-110 transition-transform duration-300">
+            <div className="w-12 h-12 rounded-full bg-surface flex items-center justify-center border border-border shadow-sm relative overflow-hidden group-hover:scale-110 transition-all duration-300">
               {/* Active Arrow */}
               <svg
                 className="w-5 h-5 text-secondary absolute transition-all duration-300 ease-in-out -rotate-45 group-hover:translate-x-6 group-hover:-translate-y-6 group-hover:opacity-0"
@@ -124,8 +124,8 @@ export default function Projects() {
               </svg>
             </div>
             <div className="mt-2">
-              <h3 className="font-claude font-bold text-xl sm:text-2xl text-[#121212]">View All Projects</h3>
-              <p className="text-sm text-[#70706c] mt-2 font-medium">Explore the complete collection of {projects.length} works</p>
+              <h3 className="font-claude font-bold text-xl sm:text-2xl text-foreground transition-colors duration-500">View All Projects</h3>
+              <p className="text-sm text-muted mt-2 font-medium transition-colors duration-500">Explore the complete collection of {projects.length} works</p>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ export default function Hero({ introComplete = true }: HeroProps) {
   return (
     <section
       id="home"
-      className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden bg-[#f9f8f4] pt-28 pb-16"
+      className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden bg-background pt-28 pb-16 transition-colors duration-500"
     >
       {/* Background Decorative Glow Blobs */}
       <div className="absolute top-0 left-0 right-0 h-[600px] overflow-hidden pointer-events-none z-0">
@@ -39,10 +39,10 @@ export default function Hero({ introComplete = true }: HeroProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: introComplete ? 1 : 0, y: introComplete ? 0 : 10 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex items-center gap-2 text-sm text-[#70706c] mb-6"
+          className="flex items-center gap-2 text-sm text-muted mb-6 transition-colors duration-500"
         >
           <svg
-            className="w-3.5 h-3.5 text-[#70706c]"
+            className="w-3.5 h-3.5 text-muted"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -71,7 +71,7 @@ export default function Hero({ introComplete = true }: HeroProps) {
                 initial={{ y: "110%", rotateZ: 8, skewY: 5 }}
                 animate={introComplete ? { y: "0%", rotateZ: 0, skewY: 0 } : { y: "110%", rotateZ: 8, skewY: 5 }}
                 transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                className="block text-[#121212] origin-top-left"
+                className="block text-foreground origin-top-left transition-colors duration-500"
               >
                 Hey, I'm <span className="font-instrument font-normal tracking-normal text-clay-accent">Bharath</span>
               </motion.span>
@@ -83,9 +83,9 @@ export default function Hero({ introComplete = true }: HeroProps) {
                 initial={{ y: "110%", rotateZ: 8, skewY: 5 }}
                 animate={introComplete ? { y: "0%", rotateZ: 0, skewY: 0 } : { y: "110%", rotateZ: 8, skewY: 5 }}
                 transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-                className="block text-[#121212] origin-top-left"
+                className="block text-foreground origin-top-left transition-colors duration-500"
               >
-                I build <span className="font-instrument font-normal italic tracking-[-0.02em] text-[#121212]">web products</span>
+                I build <span className="font-instrument font-normal italic tracking-[-0.02em] text-foreground">web products</span>
               </motion.span>
             </span>
 
@@ -95,7 +95,7 @@ export default function Hero({ introComplete = true }: HeroProps) {
                 initial={{ y: "110%", rotateZ: 8, skewY: 5 }}
                 animate={introComplete ? { y: "0%", rotateZ: 0, skewY: 0 } : { y: "110%", rotateZ: 8, skewY: 5 }}
                 transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-                className="block text-[#121212] origin-top-left"
+                className="block text-foreground origin-top-left transition-colors duration-500"
               >
                 that actually <span className="font-instrument font-normal italic tracking-[-0.02em] text-clay-accent">ship</span>
               </motion.span>
@@ -109,7 +109,7 @@ export default function Hero({ introComplete = true }: HeroProps) {
             initial={{ y: "100%", opacity: 0, skewY: 2 }}
             animate={introComplete ? { y: "0%", opacity: 1, skewY: 0 } : { y: "100%", opacity: 0, skewY: 2 }}
             transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
-            className="text-base sm:text-lg text-[#70706c] leading-relaxed max-w-2xl text-center"
+            className="text-base sm:text-lg text-muted leading-relaxed max-w-2xl text-center transition-colors duration-500"
           >
             Full-stack engineer crafting modern applications with MERN, Next.js, and AI integrations.
           </motion.p>
@@ -126,7 +126,7 @@ export default function Hero({ introComplete = true }: HeroProps) {
           <MagneticButton strength={20} className="w-full sm:w-auto">
             <a
               href="mailto:bharathkrishna.ab.dev@gmail.com"
-              className="group relative flex items-center justify-between sm:justify-start gap-4 px-6 py-3 w-full sm:w-auto bg-[#121212] text-white rounded-full font-semibold text-sm sm:text-base hover:scale-105 hover:bg-[#222] transition-all duration-300 shadow-xl shadow-black/10 cursor-pointer"
+              className="group relative flex items-center justify-between sm:justify-start gap-4 px-6 py-3 w-full sm:w-auto bg-foreground text-foreground-inverse rounded-full font-semibold text-sm sm:text-base hover:scale-105 hover:bg-secondary transition-all duration-300 shadow-xl shadow-black/10 cursor-pointer"
             >
               <span>Get in Touch</span>
               <div className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center shrink-0 relative overflow-hidden">
@@ -166,13 +166,13 @@ export default function Hero({ introComplete = true }: HeroProps) {
           <MagneticButton strength={15} className="w-full sm:w-auto">
             <a
               href="#work"
-              className="group relative flex items-center justify-between sm:justify-center gap-4 px-6 py-3 w-full sm:w-auto bg-white text-[#121212] rounded-full font-semibold text-sm sm:text-base border border-black/10 hover:border-black/20 hover:bg-[#fcfcfc] hover:scale-105 transition-all duration-300 shadow-sm cursor-pointer"
+              className="group relative flex items-center justify-between sm:justify-center gap-4 px-6 py-3 w-full sm:w-auto bg-background text-foreground rounded-full font-semibold text-sm sm:text-base border border-border hover:bg-surface hover:scale-105 transition-all duration-300 shadow-sm cursor-pointer"
             >
               <span>View Work</span>
-              <div className="w-7 h-7 rounded-full bg-black/[0.04] flex items-center justify-center group-hover:bg-black/[0.08] transition-colors shrink-0 relative overflow-hidden">
+              <div className="w-7 h-7 rounded-full bg-foreground/5 flex items-center justify-center group-hover:bg-foreground/10 transition-colors shrink-0 relative overflow-hidden">
                 {/* Active Arrow (slides out bottom on hover) */}
                 <svg
-                  className="w-3.5 h-3.5 text-[#121212] absolute transition-all duration-300 ease-in-out group-hover:translate-y-5 group-hover:opacity-0"
+                  className="w-3.5 h-3.5 text-foreground absolute transition-all duration-300 ease-in-out group-hover:translate-y-5 group-hover:opacity-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -186,7 +186,7 @@ export default function Hero({ introComplete = true }: HeroProps) {
                 </svg>
                 {/* Incoming Arrow (slides in from top on hover) */}
                 <svg
-                  className="w-3.5 h-3.5 text-[#121212] absolute transition-all duration-300 ease-in-out -translate-y-5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+                  className="w-3.5 h-3.5 text-foreground absolute transition-all duration-300 ease-in-out -translate-y-5 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

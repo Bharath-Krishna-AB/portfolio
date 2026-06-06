@@ -52,16 +52,16 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           initial={{ y: "0%" }}
           exit={{ y: "-100%" }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[9999] bg-[#f9f8f4] flex items-center justify-center"
+          className="fixed inset-0 z-[9999] bg-background flex items-center justify-center transition-colors duration-500"
         >
           <motion.h1 
             exit={{ scale: 0.8, opacity: 0, y: -20 }}
             transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="text-3xl sm:text-4xl md:text-5xl font-claude tracking-tight text-[#121212] select-none font-medium"
+            className="text-3xl sm:text-4xl md:text-5xl font-claude tracking-tight text-foreground select-none font-medium transition-colors duration-500"
           >
             <span>{text}</span>
             {showCursor && (
-              <span className="animate-pulse text-[#70706c] ml-0.5 font-light">|</span>
+              <span className="animate-pulse text-muted ml-0.5 font-light">|</span>
             )}
           </motion.h1>
         </motion.div>

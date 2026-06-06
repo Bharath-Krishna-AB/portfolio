@@ -86,7 +86,7 @@ export default function Services() {
   }, { scope: container });
 
   return (
-    <section ref={container} id="services" className="py-24 bg-[#f9f8f4] border-y border-black/[0.04] relative">
+    <section ref={container} id="services" className="py-24 bg-background border-y border-border relative transition-colors duration-500">
       <div className="w-full max-w-4xl mx-auto px-6">
         <div className="space-y-16">
           {/* Section Header */}
@@ -95,14 +95,14 @@ export default function Services() {
               <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
               Services
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+            <h2 className="text-3xl sm:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline transition-colors duration-500">
               <TextReveal text="Core " />
               <TextReveal text="competencies." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
             </h2>
           </div>
 
           {/* Resume Style List */}
-          <div className="divide-y divide-black/10">
+          <div className="divide-y divide-border transition-colors duration-500">
             {services.map((service, index) => {
               const detail = serviceDetails[index];
               return (
@@ -112,11 +112,11 @@ export default function Services() {
                 >
                   {/* Left Column: Index & Service Title */}
                   <div className="md:col-span-4 flex gap-4 items-start">
-                    <span className="text-xs font-mono text-[#70706c] select-none font-bold opacity-60 pt-0.5">
+                    <span className="text-xs font-mono text-muted select-none font-bold opacity-60 pt-0.5 transition-colors duration-500">
                       {detail.index}
                     </span>
                     <div>
-                      <h3 className="font-bold text-lg text-[#121212] tracking-tight group-hover:text-clay-accent transition-colors duration-300">
+                      <h3 className="font-bold text-lg text-foreground tracking-tight group-hover:text-clay-accent transition-colors duration-300">
                         {service.title}
                       </h3>
                       {/* Tech Tags */}
@@ -124,7 +124,7 @@ export default function Services() {
                         {detail.stack.map((tech) => (
                           <span
                             key={tech}
-                            className="text-[9px] font-mono px-2 py-0.5 bg-[#f3f2eb] border border-black/5 text-[#70706c] rounded"
+                            className="text-[9px] font-mono px-2 py-0.5 bg-surface border border-border text-muted rounded transition-colors duration-500"
                           >
                             {tech}
                           </span>
@@ -135,14 +135,14 @@ export default function Services() {
 
                   {/* Right Column: Description & Capabilities */}
                   <div className="md:col-span-8 space-y-4">
-                    <p className="text-sm text-[#70706c] leading-relaxed">
+                    <p className="text-sm text-muted leading-relaxed transition-colors duration-500">
                       {service.description}
                     </p>
                     
                     {/* Capabilities checklist */}
                     <ul className="space-y-2.5">
                       {detail.capabilities.map((cap, i) => (
-                        <li key={i} className="flex gap-2.5 text-xs text-[#70706c] leading-relaxed">
+                        <li key={i} className="flex gap-2.5 text-xs text-muted leading-relaxed transition-colors duration-500">
                           <span className="text-clay-accent font-bold mt-0.5">•</span>
                           <span>{cap}</span>
                         </li>

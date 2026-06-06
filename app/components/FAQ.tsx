@@ -53,7 +53,7 @@ export default function FAQ() {
   }, { scope: container });
 
   return (
-    <section ref={container} className="py-24 bg-[#f9f8f4] relative overflow-hidden">
+    <section ref={container} className="py-24 bg-background relative overflow-hidden transition-colors duration-500">
       <div className="w-full max-w-5xl mx-auto px-6">
         <div className="space-y-12">
           {/* Section Label */}
@@ -62,7 +62,7 @@ export default function FAQ() {
               <span className="w-1.5 h-1.5 rounded-full bg-clay-accent shrink-0" />
               FAQ
             </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#121212] tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline">
+            <h2 className="text-3xl sm:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline transition-colors duration-500">
               <TextReveal text="Got " />
               <TextReveal text="questions?" className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
             </h2>
@@ -76,18 +76,18 @@ export default function FAQ() {
               return (
                 <div
                   key={index}
-                  className={`faq-item soft-card bg-white border border-black/[0.04] overflow-hidden transition-all duration-300 ${
-                    isOpen ? "border-black/10 shadow-sm" : "hover:border-black/10"
+                  className={`faq-item soft-card bg-surface border border-border overflow-hidden transition-colors duration-500 ${
+                    isOpen ? "border-foreground/10 shadow-sm" : "hover:border-foreground/10"
                   }`}
                 >
                   {/* Trigger Header */}
                   <button
                     onClick={() => toggleIndex(index)}
-                    className="flex w-full items-center justify-between p-5 md:p-6 text-left font-bold text-sm sm:text-base text-[#121212] transition-colors focus:outline-none cursor-pointer"
+                    className="flex w-full items-center justify-between p-5 md:p-6 text-left font-bold text-sm sm:text-base text-foreground transition-colors duration-500 focus:outline-none cursor-pointer"
                   >
                     <span className="pr-4">{faq.question}</span>
                     {/* Rotate Chevron Icon */}
-                    <div className={`w-7 h-7 rounded-full bg-[#f3f2eb] flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 bg-secondary text-white" : "text-[#70706c]"}`}>
+                    <div className={`w-7 h-7 rounded-full bg-background flex items-center justify-center shrink-0 transition-all duration-500 ${isOpen ? "rotate-180 bg-secondary text-foreground-inverse" : "text-muted"}`}>
                       <svg
                         className="w-3.5 h-3.5"
                         fill="none"
@@ -110,8 +110,8 @@ export default function FAQ() {
                         transition={{ duration: 0.25, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="p-5 md:p-6 pt-0 border-t border-black/[0.02]">
-                          <p className="text-xs sm:text-sm text-[#70706c] leading-relaxed">
+                        <div className="p-5 md:p-6 pt-0 border-t border-border transition-colors duration-500">
+                          <p className="text-xs sm:text-sm text-muted leading-relaxed transition-colors duration-500">
                             {faq.answer}
                           </p>
                         </div>

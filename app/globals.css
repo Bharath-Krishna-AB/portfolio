@@ -3,22 +3,44 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9f8f4; /* Warm Alabaster */
-  --foreground: #121212; /* Deep Charcoal */
+  --background: #f9f8f4;
+  --foreground: #121212;
+  --foreground-inverse: #f9f8f4;
+  --surface: #ffffff;
   
-  --sand-bg: #f3f2eb;    /* Warm Sand/Eggshell */
-  --sage-accent: #c15f3c; /* Sage Green overridden to Terracotta #c15f3c */
-  --sage-light: #fdf5f2;  /* Sage Light overridden to Light Terracotta */
-  --clay-accent: #c15f3c; /* Clay Accent overridden to Terracotta #c15f3c */
-  --clay-light: #fdf5f2;  /* Clay Light overridden to Light Terracotta */
-  --secondary: #c15f3c;   /* Terracotta (#c15f3c) as secondary color */
-  --secondary-light: #fdf5f2; /* Light Terracotta */
+  --sand-bg: #f3f2eb;
+  --sage-accent: #c15f3c;
+  --sage-light: #fdf5f2;
+  --clay-accent: #c15f3c;
+  --clay-light: #fdf5f2;
+  --secondary: #c15f3c;
+  --secondary-light: #fdf5f2;
   --slate-accent: #70706c;
+  --border-color: rgba(18, 18, 18, 0.08);
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #f9f8f4;
+  --foreground-inverse: #121212;
+  --surface: #1c1c1c;
+  
+  --sand-bg: #1c1c1c;
+  --sage-accent: #c15f3c;
+  --sage-light: rgba(193, 95, 60, 0.15);
+  --clay-accent: #c15f3c;
+  --clay-light: rgba(193, 95, 60, 0.15);
+  --secondary: #c15f3c;
+  --secondary-light: rgba(193, 95, 60, 0.15);
+  --slate-accent: #a0a09c;
+  --border-color: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-foreground-inverse: var(--foreground-inverse);
+  --color-surface: var(--surface);
   --font-claude: "Inter", system-ui, -apple-system, sans-serif;
   --font-instrument: "Instrument Serif", serif;
   
@@ -30,6 +52,7 @@
   --color-secondary: var(--secondary);
   --color-secondary-light: var(--secondary-light);
   --color-slate-accent: var(--slate-accent);
+  --color-border: var(--border-color);
 }
 
 body {
@@ -42,7 +65,7 @@ body {
 
 /* Thin Editorial Borders & Subtle Shadows */
 .editorial-border {
-  border: 1px solid rgba(18, 18, 18, 0.08);
+  border: 1px solid var(--border-color);
 }
 
 .editorial-border-dashed {
@@ -71,7 +94,7 @@ body {
   font-size: 0.75rem;
   font-weight: 500;
   border-radius: 9999px;
-  border: 1px solid rgba(18, 18, 18, 0.08);
+  border: 1px solid var(--border-color);
   background: var(--sand-bg);
   color: var(--foreground);
   transition: all 0.2s ease;
@@ -221,10 +244,10 @@ body {
 }
 
 .liquid-glass {
-  background: rgba(243, 242, 235, 0.85);
+  background: color-mix(in srgb, var(--background) 85%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(18, 18, 18, 0.08);
+  border: 1px solid var(--border-color);
   box-shadow: 0 8px 32px 0 rgba(18, 18, 18, 0.03);
 }
 
