@@ -586,10 +586,10 @@ export default function Activity() {
                     <div className="mt-6 pt-4 border-t border-black/[0.03] space-y-2 select-none text-left">
                       <div className="flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
-                        <span className="text-[10px] font-mono text-[#70706c] font-bold">Focus: Scalable SaaS & UI UX</span>
+                        <span className="text-[10px] font-mono text-[#70706c] font-bold">Focus: Full-Stack Web Solutions</span>
                       </div>
                       <p className="text-[10px] text-[#70706c] leading-relaxed">
-                        Engineering pixel-perfect user interfaces and robust database APIs.
+                        Engineering responsive user interfaces and robust backend architectures.
                       </p>
                     </div>
                   </div>
