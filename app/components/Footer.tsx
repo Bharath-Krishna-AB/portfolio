@@ -57,10 +57,10 @@ export default function Footer() {
             {/* Direct Email Primary Button */}
             <a
               href="mailto:bharathkrishna.ab.dev@gmail.com"
-              className="group relative flex items-center justify-between gap-4 px-6 py-3 w-full sm:w-auto bg-foreground text-foreground-inverse rounded-full font-semibold text-sm sm:text-base hover:scale-105 transition-all duration-300 shadow-xl shadow-black/5 cursor-pointer hover:bg-secondary"
+              className="group relative flex items-center justify-between gap-4 px-6 py-3 w-full sm:w-auto bg-foreground text-foreground-inverse rounded-full font-semibold text-sm sm:text-base hover:scale-[1.02] active:scale-[0.98] hover:opacity-85 transition-all duration-300 shadow-xl shadow-black/5 cursor-pointer"
             >
               <span>Get in Touch</span>
-              <div className="w-7 h-7 rounded-full bg-clay-accent flex items-center justify-center shrink-0 relative overflow-hidden">
+              <div className="w-7 h-7 rounded-full bg-secondary text-white flex items-center justify-center shrink-0 relative overflow-hidden">
                 {/* Active Arrow (slides out top-right on hover) */}
                 <svg
                   className="w-3.5 h-3.5 text-white absolute transition-all duration-300 ease-in-out -rotate-45 group-hover:translate-x-5 group-hover:-translate-y-5 group-hover:opacity-0"
@@ -95,7 +95,7 @@ export default function Footer() {
             {/* Direct Call Secondary Button */}
             <a
               href="tel:+916235311216"
-              className="group flex items-center justify-between gap-3 px-6 py-3 w-full sm:w-auto bg-background text-foreground rounded-full font-semibold text-sm sm:text-base border border-border hover:bg-surface hover:scale-105 transition-all duration-300 cursor-pointer"
+              className="group flex items-center justify-between gap-3 px-6 py-3 w-full sm:w-auto bg-background text-foreground rounded-full font-semibold text-sm sm:text-base border border-border hover:bg-foreground/5 hover:border-foreground/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer"
             >
               <div className="w-7 h-7 rounded-full bg-surface flex items-center justify-center group-hover:translate-y-0.5 transition-transform shrink-0 border border-border">
                 <svg
@@ -194,18 +194,22 @@ export default function Footer() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="flex items-center justify-center px-3 sm:px-4 py-2 text-xs sm:text-sm text-foreground/75 hover:text-foreground transition-colors duration-200 rounded-full hover:bg-foreground/5"
             >
               {link.label}
             </a>
           ))}
 
-          {/* Direct Email button in nav */}
+          {/* Direct Phone button in nav */}
           <a
-            href="mailto:bharathkrishna.ab.dev@gmail.com"
-            className="flex items-center justify-center ml-1 px-4 py-2 text-xs sm:text-sm bg-foreground text-foreground-inverse rounded-full hover:bg-secondary transition-all duration-200 cursor-pointer"
+            href="tel:6235311216"
+            className="flex items-center justify-center ml-1 px-4 py-2 text-xs sm:text-sm bg-foreground text-foreground-inverse rounded-full hover:opacity-80 transition-opacity duration-200 cursor-pointer"
           >
-            Connect
+            Call me
           </a>
 
           {/* Theme Toggle Button */}

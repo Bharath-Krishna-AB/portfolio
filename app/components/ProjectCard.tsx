@@ -85,7 +85,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="w-7 h-7 rounded-full hover:bg-foreground/5 flex items-center justify-center transition-colors text-muted hover:text-foreground"
+                className="w-7 h-7 rounded-full hover:bg-foreground/5 flex items-center justify-center transition-all duration-300 text-muted hover:text-foreground hover:scale-110 active:scale-95"
                 title="Visit live site"
               >
                 <ExternalLink size={14} strokeWidth={2} />
@@ -162,7 +162,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           {/* Primary pill */}
           <button
             onClick={() => router.push(`/work/${project.id}`)}
-            className="px-4 py-2 bg-foreground hover:bg-secondary text-foreground-inverse rounded-full font-bold text-[10px] font-mono uppercase tracking-wider shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer inline-flex items-center gap-1.5 group/btn shrink-0"
+            className="px-4 py-2 bg-foreground hover:opacity-80 text-foreground-inverse rounded-full font-bold text-[10px] font-mono uppercase tracking-wider shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer inline-flex items-center gap-1.5 group/btn shrink-0"
           >
             Project Details
             <div className="w-3.5 h-3.5 relative overflow-hidden flex items-center justify-center shrink-0">
@@ -195,7 +195,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               href={project.links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-2 border border-border hover:border-foreground/20 bg-surface text-muted hover:text-foreground rounded-full font-bold text-[10px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm shrink-0"
+              className="px-3 py-2 border border-border hover:border-foreground/20 hover:bg-foreground/5 bg-surface text-muted hover:text-foreground rounded-full font-bold text-[10px] font-mono uppercase tracking-wider hover:scale-[1.02] active:scale-[0.98] transition-all inline-flex items-center gap-1 shadow-sm shrink-0"
             >
               Live
               <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -209,7 +209,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               href={project.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-2 border border-border hover:border-foreground/20 bg-surface text-muted hover:text-foreground rounded-full font-bold text-[10px] font-mono uppercase tracking-wider hover:scale-102 active:scale-98 transition-all inline-flex items-center gap-1 shadow-sm shrink-0"
+              className="px-3 py-2 border border-border hover:border-foreground/20 hover:bg-foreground/5 bg-surface text-muted hover:text-foreground rounded-full font-bold text-[10px] font-mono uppercase tracking-wider hover:scale-[1.02] active:scale-[0.98] transition-all inline-flex items-center gap-1 shadow-sm shrink-0"
             >
               Code
               <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">

@@ -98,6 +98,10 @@ export default function Home() {
               {/* Brand Label (Morphing rolling ticker) */}
               <a
                 href="#home"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 onMouseEnter={() => setIsBrandHovered(true)}
                 onMouseLeave={() => setIsBrandHovered(false)}
                 className="relative overflow-hidden text-[10px] sm:text-xs font-mono font-bold tracking-wider px-4 py-2 bg-surface border border-border hover:border-clay-accent/20 rounded-full text-foreground flex items-center justify-center min-w-[150px] h-8 transition-colors select-none"

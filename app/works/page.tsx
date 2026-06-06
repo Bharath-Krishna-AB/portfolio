@@ -110,9 +110,11 @@ export default function ProjectsArchive() {
       <div className="pt-32 pb-16 px-6 max-w-[1400px] mx-auto relative z-10">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-muted hover:text-foreground transition-colors mb-12 group"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground hover:opacity-80 text-foreground-inverse rounded-full font-bold text-[10px] font-mono uppercase tracking-[0.2em] shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer mb-12 group"
         >
-          <span className="w-6 h-[1px] bg-current group-hover:-translate-x-2 transition-transform duration-300" />
+          <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
           Back to Portfolio
         </Link>
         <motion.h1 
