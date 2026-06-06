@@ -126,83 +126,27 @@ export default function Home() {
                       transition={{ duration: 0.12 }}
                       className="text-clay-accent font-bold"
                     >
-                      aevon co-founder
+                      fullstack developer
                     </motion.span>
                   )}
                 </AnimatePresence>
               </a>
 
-              {/* Status Indicator (Radar pulse badge with hover reveal text) */}
-              <motion.div
-                onMouseEnter={() => setIsStatusHovered(true)}
-                onMouseLeave={() => setIsStatusHovered(false)}
-                animate={{ width: isStatusHovered ? 230 : 120 }}
-                transition={{ type: "spring", stiffness: 350, damping: 25 }}
-                className="flex items-center gap-2 px-3 py-1.5 bg-secondary-light border border-secondary/10 rounded-full cursor-help h-8 overflow-hidden select-none shrink-0 whitespace-nowrap"
+              {/* Status Indicator (Radar pulse badge) */}
+              <div
+                className="flex items-center gap-2 px-3 py-1.5 bg-secondary dark:bg-transparent border border-transparent rounded-full select-none shrink-0 whitespace-nowrap"
               >
                 {/* Radar Node pulse */}
                 <div className="relative flex items-center justify-center w-2 h-2 shrink-0">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75 animate-ping" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary" />
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-foreground-inverse dark:bg-secondary opacity-75 animate-ping" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-foreground-inverse dark:bg-secondary" />
                 </div>
+                <span className="text-[10px] font-mono font-bold text-foreground-inverse dark:text-secondary uppercase tracking-wider">
+                  Open to work
+                </span>
+              </div>
 
-                <AnimatePresence mode="wait">
-                  {!isStatusHovered ? (
-                    <motion.span
-                      key="status-short"
-                      initial={{ opacity: 0, x: -5 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 5 }}
-                      transition={{ duration: 0.12 }}
-                      className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wider"
-                    >
-                      Open to work
-                    </motion.span>
-                  ) : (
-                    <motion.span
-                      key="status-long"
-                      initial={{ opacity: 0, x: -5 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 5 }}
-                      transition={{ duration: 0.12 }}
-                      className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wider"
-                    >
-                      Available for Q2 projects • IST
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </motion.div>
 
-              {/* Theme Toggle Button */}
-              <button
-                onClick={toggleTheme}
-                className="ml-2 w-8 h-8 rounded-full flex items-center justify-center bg-surface border border-border text-foreground hover:bg-foreground/5 hover:scale-105 active:scale-95 transition-all"
-                aria-label="Toggle theme"
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  {isDarkMode ? (
-                    <motion.div
-                      key="moon"
-                      initial={{ opacity: 0, rotate: -90 }}
-                      animate={{ opacity: 1, rotate: 0 }}
-                      exit={{ opacity: 0, rotate: 90 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Moon size={14} strokeWidth={2.5} />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="sun"
-                      initial={{ opacity: 0, rotate: 90 }}
-                      animate={{ opacity: 1, rotate: 0 }}
-                      exit={{ opacity: 0, rotate: -90 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Sun size={14} strokeWidth={2.5} />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </button>
             </div>
           </header>
 

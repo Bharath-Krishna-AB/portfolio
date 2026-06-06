@@ -58,7 +58,7 @@ export default function Experience() {
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold text-foreground tracking-tight leading-[1.1] mt-4 font-claude text-left whitespace-nowrap flex items-baseline transition-colors duration-500">
               <TextReveal text="Career " />
-              <TextReveal text="log." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
+              <TextReveal text="history." className="font-instrument font-normal text-secondary italic tracking-normal" delay={0.1} />
             </h2>
           </div>
 

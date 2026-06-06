@@ -14,7 +14,6 @@
   --clay-accent: #c15f3c;
   --clay-light: #fdf5f2;
   --secondary: #c15f3c;
-  --secondary-light: #fdf5f2;
   --slate-accent: #70706c;
   --border-color: rgba(18, 18, 18, 0.08);
 }
@@ -31,7 +30,6 @@
   --clay-accent: #c15f3c;
   --clay-light: rgba(193, 95, 60, 0.15);
   --secondary: #c15f3c;
-  --secondary-light: rgba(193, 95, 60, 0.15);
   --slate-accent: #a0a09c;
   --border-color: rgba(255, 255, 255, 0.08);
 }
@@ -50,7 +48,6 @@
   --color-clay-accent: var(--clay-accent);
   --color-clay-light: var(--clay-light);
   --color-secondary: var(--secondary);
-  --color-secondary-light: var(--secondary-light);
   --color-slate-accent: var(--slate-accent);
   --color-border: var(--border-color);
 }

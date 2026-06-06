@@ -73,7 +73,7 @@ export default function Education() {
                 className="relative edu-item"
               >
                 {/* Timeline node dot with pulse */}
-                <div className="absolute left-[20px] top-6 w-2.5 h-2.5 rounded-full bg-secondary border border-white ring-4 ring-secondary-light z-10 hidden sm:block" />
+                <div className="absolute left-[20px] top-6 w-2.5 h-2.5 rounded-full bg-secondary border border-white dark:border-surface z-10 hidden sm:block" />
 
                 {/* Card Container */}
                 <div className="soft-card p-6 sm:ml-16 bg-surface hover:border-foreground/15 hover:shadow-[0_8px_30px_rgba(18,18,18,0.02)] transition-all text-left duration-500">
@@ -86,8 +86,8 @@ export default function Education() {
                         {item.degree}
                       </h3>
                       {item.status && (
-                        <span className="inline-flex items-center gap-1.5 text-[9px] font-mono font-bold px-2 py-0.5 mt-2 bg-secondary-light border border-secondary/15 text-secondary rounded-full uppercase tracking-wide">
-                          <span className="status-dot w-1 h-1 bg-secondary" />
+                        <span className="inline-flex items-center gap-1.5 text-[9px] font-mono font-bold px-2 py-0.5 mt-2 bg-secondary border border-transparent text-foreground-inverse rounded-full uppercase tracking-wide">
+                          <span className="status-dot w-1 h-1 bg-foreground-inverse" />
                           {item.status}
                         </span>
                       )}

@@ -646,7 +646,7 @@ export default function Activity() {
                         Recent Product Deliverables
                       </h4>
                     </div>
-                    <span className="text-[9px] font-mono px-2 py-0.5 bg-secondary-light text-secondary rounded border border-secondary/15 font-bold">
+                    <span className="text-[9px] font-mono px-2 py-0.5 bg-secondary text-foreground-inverse rounded border border-transparent font-bold">
                       ✓ Continuous Integration passing
                     </span>
                   </div>
